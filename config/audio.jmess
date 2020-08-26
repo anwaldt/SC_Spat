@@ -1,0 +1,162 @@
+<jmess>
+  <connection>
+    <output>Bitwig Studio:FX_1-L</output>
+    <input>supernova:input_9</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:FX_1-R</output>
+    <input>supernova:input_10</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:PERCY_1-L</output>
+    <input>supernova:input_1</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:PERCY_1-R</output>
+    <input>supernova:input_2</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:PERCY_2-L</output>
+    <input>supernova:input_3</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:PERCY_2-R</output>
+    <input>supernova:input_4</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:SYNTH_1-L</output>
+    <input>supernova:input_5</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:SYNTH_1-R</output>
+    <input>supernova:input_6</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:SYNTH_2-L</output>
+    <input>supernova:input_7</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:SYNTH_2-R</output>
+    <input>supernova:input_8</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-L</output>
+    <input>system:playback_1</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-L</output>
+    <input>system:playback_3</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-L</output>
+    <input>system:playback_5</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-L</output>
+    <input>system:playback_7</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-R</output>
+    <input>system:playback_2</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-R</output>
+    <input>system:playback_4</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-R</output>
+    <input>system:playback_6</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:MAIN_STEREO-R</output>
+    <input>system:playback_8</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:HORNS-L</output>
+    <input>system:playback_1</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:HORNS-R</output>
+    <input>system:playback_3</input>
+  </connection>
+  <connection>
+    <output>supernova:output_1</output>
+    <input>system:playback_1</input>
+  </connection>
+  <connection>
+    <output>supernova:output_2</output>
+    <input>system:playback_2</input>
+  </connection>
+  <connection>
+    <output>supernova:output_3</output>
+    <input>system:playback_3</input>
+  </connection>
+  <connection>
+    <output>supernova:output_4</output>
+    <input>system:playback_4</input>
+  </connection>
+  <connection>
+    <output>supernova:output_5</output>
+    <input>system:playback_5</input>
+  </connection>
+  <connection>
+    <output>supernova:output_6</output>
+    <input>system:playback_6</input>
+  </connection>
+  <connection>
+    <output>supernova:output_7</output>
+    <input>system:playback_7</input>
+  </connection>
+  <connection>
+    <output>supernova:output_8</output>
+    <input>system:playback_8</input>
+  </connection>
+  <connection>
+    <output>supernova:output_9</output>
+    <input>system:playback_9</input>
+  </connection>
+  <connection>
+    <output>supernova:output_10</output>
+    <input>system:playback_10</input>
+  </connection>
+  <connection>
+    <output>supernova:output_11</output>
+    <input>system:playback_11</input>
+  </connection>
+  <connection>
+    <output>supernova:output_12</output>
+    <input>system:playback_12</input>
+  </connection>
+  <connection>
+    <output>supernova:output_13</output>
+    <input>system:playback_13</input>
+  </connection>
+  <connection>
+    <output>supernova:output_14</output>
+    <input>system:playback_14</input>
+  </connection>
+  <connection>
+    <output>supernova:output_15</output>
+    <input>system:playback_15</input>
+  </connection>
+  <connection>
+    <output>supernova:output_16</output>
+    <input>system:playback_16</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:FX_2-L</output>
+    <input>supernova:input_11</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:FX_2-R</output>
+    <input>supernova:input_12</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:PAD-L</output>
+    <input>supernova:input_13</input>
+  </connection>
+  <connection>
+    <output>Bitwig Studio:PAD-R</output>
+    <input>supernova:input_14</input>
+  </connection>
+</jmess>

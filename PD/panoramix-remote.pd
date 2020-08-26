@@ -1,0 +1,76 @@
+#N canvas 0 106 1366 662 10;
+#X obj 390 686 udpsend;
+#X obj 390 598 packOSC;
+#X obj 31 519 loadbang;
+#X obj 31 667 list append;
+#X obj 97 598 list \$2;
+#X obj -34 621 fromsymbol;
+#X obj -34 598 symbol \$1;
+#X msg 31 690 connect \$1 \$2;
+#X floatatom 238 410 5 0 0 0 - - -, f 5;
+#X obj 454 386 bng 25 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X msg 285 511 /d2m/1/gain \$1;
+#X floatatom 299 410 5 0 0 0 - - -, f 5;
+#X msg 358 473 /d2m/2/gain \$1;
+#X floatatom 367 410 5 0 0 0 - - -, f 5;
+#X msg 420 443 /d2m/3/gain \$1;
+#X text 238 387 FRONT;
+#X text 299 387 SIDE;
+#X text 367 387 REAR;
+#X obj 238 155 vsl 22 222 -12 6 0 1 empty empty empty 0 -9 0 10 -191407
+-1 -1 14734 1;
+#X obj 299 155 vsl 22 222 -12 6 0 1 empty empty empty 0 -9 0 10 -191407
+-1 -1 14734 1;
+#X obj 367 155 vsl 22 222 -12 6 0 1 empty empty empty 0 -9 0 10 -191407
+-1 -1 14734 1;
+#X obj 424 386 bng 25 250 50 0 empty empty empty 17 7 0 10 -258113
+-1 -1;
+#X msg -116 644 disconnect;
+#X obj 295 45 loadbang;
+#X floatatom 160 410 5 0 0 0 - - -, f 5;
+#X obj 160 155 vsl 22 222 -12 6 0 1 empty empty empty 0 -9 0 10 -128992
+-1 -1 14734 1;
+#X msg 168 504 /bus/1/gain \$1;
+#X text 160 387 HOA;
+#X floatatom 495 399 5 0 0 0 - - -, f 5;
+#X obj 495 144 vsl 22 222 -24 6 0 1 empty empty empty 0 -9 0 10 -162280
+-1 -1 1600 1;
+#X text 495 376 SUB;
+#X msg 611 488 /lfe/gain \$1;
+#X text 217 128 SET MAIN SIGNAL BALANCE IN PAIRS;
+#X obj 31 713 print;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 2 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 0;
+#X connect 6 0 5 0;
+#X connect 7 0 0 0;
+#X connect 7 0 33 0;
+#X connect 8 0 10 0;
+#X connect 9 0 6 0;
+#X connect 9 0 4 0;
+#X connect 10 0 1 0;
+#X connect 11 0 12 0;
+#X connect 12 0 1 0;
+#X connect 13 0 14 0;
+#X connect 14 0 1 0;
+#X connect 18 0 8 0;
+#X connect 19 0 11 0;
+#X connect 20 0 13 0;
+#X connect 21 0 22 0;
+#X connect 22 0 0 0;
+#X connect 23 0 18 0;
+#X connect 23 0 19 0;
+#X connect 23 0 20 0;
+#X connect 23 0 25 0;
+#X connect 23 0 29 0;
+#X connect 24 0 26 0;
+#X connect 25 0 24 0;
+#X connect 26 0 1 0;
+#X connect 28 0 31 0;
+#X connect 29 0 28 0;
+#X connect 31 0 1 0;
+#X coords 0 -1 1 1 444 333 1 100 100;
