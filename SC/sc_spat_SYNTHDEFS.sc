@@ -181,6 +181,7 @@ SynthDef(\hoa_stereo_encoder, {
 
 
 
+/*
 SynthDef(\hoa_octa_decoder, {
 
 	|in_bus = 0|
@@ -206,6 +207,7 @@ SynthDef(\hoa_octa_decoder, {
 		gain:1) );
 
 }).add;
+*/
 
 
 
