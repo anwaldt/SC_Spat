@@ -109,7 +109,7 @@ SynthDef( \vbap_panner_stereo,
 
 
 
-SynthDef(\binaural_mono_encoder,
+SynthDef(\binaural_mono_encoder_3,
 	{
 		|
 		in_bus  = nil,
@@ -122,7 +122,7 @@ SynthDef(\binaural_mono_encoder,
 
 		var sound = gain * SoundIn.ar(in_bus);
 		var level =  (1.0/(dist+1.0))*(1.0/(dist+1.0));
-		var bform = HOASphericalHarmonics.coefN3D(5, azim, elev) * sound * level;
+		var bform = HOASphericalHarmonics.coefN3D(3, azim, elev) * sound * level;
 
 		Out.ar(out_bus, bform);
 
@@ -131,7 +131,7 @@ SynthDef(\binaural_mono_encoder,
 
 
 
-SynthDef(\hoa_mono_encoder,
+SynthDef(\hoa_mono_encoder_3,
 	{
 		|
 		in_bus  = nil,
@@ -210,14 +210,14 @@ SynthDef(\hoa_octa_decoder, {
 
 
 
-SynthDef(\hoa_binaural_decoder,
+SynthDef(\hoa_binaural_decoder_3,
 	{
 		|
 		in_bus  = 0,
 		out_bus = 0
 		|
 
-		var sig = HOABinaural.ar(5, In.ar(in_bus,36));
+		var sig = HOABinaural.ar(3, In.ar(in_bus,16));
 		Out.ar(0, sig);
 
 }).add;

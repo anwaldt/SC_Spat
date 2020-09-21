@@ -7,15 +7,18 @@ Henrik von Coler
 
 */
 
+// HOA Order
+~hoa_order = 3;
+
 // number of buses to the spatial modules
-~nInputs   = 24;
+~nInputs   = 32;
 
-Server.supernova;
+//Server.supernova;
 
 
-//s = Server(\binaural_server, NetAddr("127.0.0.1", 58010));
+Server.default = Server(\binaural_server, NetAddr("127.0.0.1", 58010));
 
-//s.options.device               = "SC_BINAURAL";
+s.options.device               = "SC_BINAURAL";
 s.options.numInputBusChannels  = ~nInputs;
 s.options.numOutputBusChannels = 4;
 s.options.maxLogins            = 8;
@@ -26,10 +29,10 @@ s.boot;
 
 
 
-~routing_OSC  = NetAddr("127.0.0.1", 57121);
+~routing_OSC  = NetAddr("127.0.0.1", 9595);
 ~spatial_OSC  = NetAddr("127.0.0.1", 9494);
 
-
+~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
 
 s.waitForBoot({
 
@@ -43,12 +46,6 @@ s.waitForBoot({
 
 	~set = File.readAllString("/home/anwaldt/Desktop/sc_spat/SC/sc_spat_SYNTHDEFS.sc","r");
 	~set.interpret;
-
-
-	HOABinaural.loadbinauralIRs(s);
-	HOABinaural.loadHeadphoneCorrections(s);
-	HOABinaural.binauralIRs;
-	HOABinaural.headPhoneIRs;
 
 	/////////////////////////////////////////////////////////////////
 	// THE BUSSES:
@@ -71,7 +68,7 @@ s.waitForBoot({
 
 
 	// bus for encoded 5th order HOA
-	~ambi_BUS = Bus.audio(s, 36);
+	~ambi_BUS = Bus.audio(s, ~n_hoa_channnels);
 
 
 
@@ -101,7 +98,7 @@ s.waitForBoot({
 		cnt.postln;
 
 		~binaural_panners = ~binaural_panners.add(
-			Synth(\binaural_mono_encoder,
+			Synth(\binaural_mono_encoder_3,
 				[
 					\in_bus, cnt,
 					\out_bus, ~ambi_BUS.index
@@ -134,7 +131,7 @@ s.waitForBoot({
 	~output_GROUP	 = ParGroup.after(~spatial_GROUP);
 
 
-	~decoder = Synth(\hoa_binaural_decoder,
+	~decoder = Synth(\hoa_binaural_decoder_3,
 		[
 			\in_bus,~ambi_BUS.index,
 			\out_bus, 0
@@ -151,7 +148,6 @@ s.waitForBoot({
 		{
 			arg msg, time, addr, recvPort;
 			var azim = msg[2];
-			// azim = min(max(azim,0),1);
 			~control_azim_BUS.setAt(msg[1],azim);
 
 	}, '/source/azim');
@@ -160,7 +156,6 @@ s.waitForBoot({
 		{
 			arg msg, time, addr, recvPort;
 			var elev = msg[2];
-			// azim = min(max(azim,0),1);
 			~control_elev_BUS.setAt(msg[1],elev);
 
 	}, '/source/elev');
@@ -169,11 +164,24 @@ s.waitForBoot({
 		{
 			arg msg, time, addr, recvPort;
 			var dist = msg[2];
-			// azim = min(max(azim,0),1);
 			~control_dist_BUS.setAt(msg[1],dist);
 
 	}, '/source/dist');
 
+
+	~aed_OSC = OSCFunc(
+		{
+			arg msg, time, addr, recvPort;
+
+			var azim = msg[2] / 360.0 * (2.0*pi);
+			var elev = msg[3] / 360.0 * (2.0*pi);
+			var dist = msg[4];
+
+			~control_azim_BUS.setAt(msg[1],azim);
+			~control_elev_BUS.setAt(msg[1],elev);
+			~control_dist_BUS.setAt(msg[1],dist);
+
+	}, '/source/aed');
 
 
 
@@ -217,7 +225,11 @@ s.waitForBoot({
 
 
 
+{
 
+	s.scope(12,~control_azim_BUS.index);
+
+};
 
 
 {
