@@ -7,6 +7,8 @@ Henrik von Coler
 
 */
 
+
+
 // HOA Order
 ~hoa_order = 3;
 
@@ -25,9 +27,11 @@ s.options.maxLogins            = 8;
 s.options.memSize              = 65536;
 s.options.numBuffers           = 4096;
 
+// get script's directory for relative paths
+~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
+
+
 s.boot;
-
-
 
 ~routing_OSC  = NetAddr("127.0.0.1", 9595);
 ~spatial_OSC  = NetAddr("127.0.0.1", 9494);
@@ -44,7 +48,7 @@ s.waitForBoot({
 
 	s.sync;
 
-	~set = File.readAllString("/home/anwaldt/Desktop/sc_spat/SC/sc_spat_SYNTHDEFS.sc","r");
+	~set = File.readAllString(~root_DIR++"sc_spat_SYNTHDEFS.sc","r");
 	~set.interpret;
 
 	/////////////////////////////////////////////////////////////////
