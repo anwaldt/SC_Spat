@@ -1,4 +1,4 @@
-#N canvas 0 106 1920 974 12;
+#N canvas 1 119 1920 974 12;
 #X obj 517 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 655 26 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -29,19 +29,6 @@
 #X obj 950 138 gb-speaker;
 #X obj 1086 133 gb-speaker;
 #X obj 1216 137 gb-speaker;
-#X obj 26 254 gemhead;
-#X obj 358 377 loadbang;
-#X obj 461 377 loadbang;
-#X obj 251 377 loadbang;
-#X msg 358 405 width 3;
-#X obj 48 87 inlet;
-#X obj 151 92 inlet;
-#X obj 26 283 color 1 1 1;
-#X obj 42 602 cone;
-#X msg 251 405 draw line;
-#X msg 461 405 1;
-#X obj 538 373 loadbang;
-#X msg 538 401 22;
 #X obj 497 88 \$1;
 #X obj 1410 21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -54,7 +41,7 @@
 #X obj 1510 90 \$15;
 #X obj 1569 92 \$16;
 #X connect 0 0 6 0;
-#X connect 0 0 37 0;
+#X connect 0 0 24 0;
 #X connect 1 0 7 0;
 #X connect 1 0 8 0;
 #X connect 2 0 9 0;
@@ -82,24 +69,14 @@
 #X connect 17 0 2 0;
 #X connect 17 0 4 0;
 #X connect 17 0 5 0;
-#X connect 17 0 38 0;
-#X connect 17 0 39 0;
-#X connect 24 0 31 0;
-#X connect 25 0 28 0;
-#X connect 26 0 34 0;
-#X connect 27 0 33 0;
-#X connect 28 0 32 0;
-#X connect 31 0 32 0;
-#X connect 33 0 32 0;
-#X connect 34 0 32 1;
-#X connect 35 0 36 0;
-#X connect 36 0 32 2;
-#X connect 37 0 18 0;
-#X connect 38 0 42 0;
-#X connect 38 0 43 0;
-#X connect 39 0 44 0;
-#X connect 39 0 45 0;
-#X connect 42 0 40 0;
-#X connect 43 0 40 1;
-#X connect 44 0 41 0;
-#X connect 45 0 41 1;
+#X connect 17 0 25 0;
+#X connect 17 0 26 0;
+#X connect 24 0 18 0;
+#X connect 25 0 29 0;
+#X connect 25 0 30 0;
+#X connect 26 0 31 0;
+#X connect 26 0 32 0;
+#X connect 29 0 27 0;
+#X connect 30 0 27 1;
+#X connect 31 0 28 0;
+#X connect 32 0 28 1;
