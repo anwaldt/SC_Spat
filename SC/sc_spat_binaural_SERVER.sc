@@ -1,6 +1,9 @@
 /*
 
+A minimal binaural rendering server.
 
+- based on SC-HOA
+- OSC listeners for spherical coordinates
 
 Henrik von Coler
 2020-09-19
@@ -8,17 +11,37 @@ Henrik von Coler
 */
 
 
+~server_ADDRESS = 58010;
+
+// number of buses to the spatial modules
+~nInputs   = 2;
 
 // HOA Order
 ~hoa_order = 3;
 
-// number of buses to the spatial modules
-~nInputs   = 32;
+
+/////////////////////////////////////////////////////////////////
+// THE BUSSES:
+/////////////////////////////////////////////////////////////////
+
+postln(thisProcess.argv[0]);
+
+if(size(thisProcess.argv)==1,
+	{
+		~nInputs   = thisProcess.argv[0].asInteger;
+});
+postln("Launching with "++~nInputs++" inputs!");
+
+if(size(thisProcess.argv)==2,
+	{
+		~server_ADDRESS   = thisProcess.argv[1].asInteger;
+});
+postln("Launching with port:"++~server_ADDRESS++"!");
+
 
 //Server.supernova;
 
-
-Server.default = Server(\binaural_server, NetAddr("127.0.0.1", 58010));
+Server.default = Server(\binaural_server, NetAddr("127.0.0.1", ~server_ADDRESS));
 
 s.options.device               = "SC_BINAURAL";
 s.options.numInputBusChannels  = ~nInputs;
@@ -29,6 +52,12 @@ s.options.numBuffers           = 4096;
 
 // get script's directory for relative paths
 ~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
+
+
+
+
+
+
 
 
 s.boot;
@@ -189,28 +218,33 @@ s.waitForBoot({
 
 
 
-	/*
+
 	~send_OSC_ROUTINE = Routine({
 
-	inf.do({
+		inf.do({
 
-	var azims      = ~control_vbap_azim_BUS.getnSynchronous(~nVbap);
-	var spreads    = ~control_vbap_spre_BUS.getnSynchronous(~nVbap);
+			var azim, elev, dist;
 
-	for (0, ~nVbap-1, { arg i;
 
-	~spatial_OSC.sendMsg('/vbap/azim', i, azims[i]);
-	~spatial_OSC.sendMsg('/vbap/spre', i, spreads[i]);
+			for (0, ~nInputs-1, {
 
-	});
+				arg i;
 
-	0.05.wait;
-	});
+				azim = ~control_azim_BUS.getnSynchronous(~nInputs)[i];
+				elev = ~control_elev_BUS.getnSynchronous(~nInputs)[i];
+				dist = ~control_dist_BUS.getnSynchronous(~nInputs)[i];
+
+				~spatial_OSC.sendMsg('/source/aed', i, azim, elev, dist);
+
+			});
+
+			0.01.wait;
+		});
 
 	});
 
 	~send_OSC_ROUTINE.play;
-	*/
+
 
 
 
@@ -220,9 +254,7 @@ s.waitForBoot({
 
 	post("Listening on port: ");
 	postln(NetAddr.langPort);
-	ServerMeter(s);
-
-
+	// ServerMeter(s);
 
 });
 
@@ -249,6 +281,7 @@ s.waitForBoot({
 	}.play;
 
 };
+
 
 
 
