@@ -138,16 +138,12 @@ SynthDef(\hoa_mono_encoder_3,
 		out_bus = 0,
 		azim    = 0,
 		elev    = 0,
-		dist    = 3
+		dist    = 3,
+		gain    = 1
 		|
 
-		var sound = In.ar(in_bus,1);
-		var level = (1.0/((dist*dist)+1.0));
-
-		// azim  = (azim * (2 * pi)) -pi;
-
-		// elev1 = MouseY.kr(0,3.14);
-		// elev2 = MouseY.kr(0,3.14);
+		var sound = gain * SoundIn.ar(in_bus);
+		var level =  (1.0/(dist+1.0))*(1.0/(dist+1.0));
 
 		Out.ar(out_bus, HOAEncoder.ar(3, sound, azim , elev));
 
