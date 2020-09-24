@@ -5,20 +5,14 @@ on SuperCollider. It combines different technologies and
 toolboxes, allowing an easy customization of rendering servers.
 
 
-### Binaural
+## SuperCollider
 
-The binaural part is based on the SC-HOA library:
+The HOA part and the binaural rendering are also based on the SC-HOA library. Using the SC-HOA library requires the SC3-Plugins:
 
 https://github.com/florian-grond/SC-HOA
 
-### HOA
 
-The HOA part is also based on the SC-HOA library.
-Using the SC-HOA library requires the SC3-Plugins.
-
-
-
-### ADT
+## ADT
 
 Building custom decoders depends on the 
 [Ambisonic Decoder Toolbox](https://bitbucket.org/ambidecodertoolbox/adt/src/master/), using Faust and Octave.
