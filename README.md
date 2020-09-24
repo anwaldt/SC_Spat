@@ -14,17 +14,32 @@ https://github.com/florian-grond/SC-HOA
 ### HOA
 
 The HOA part is also based on the SC-HOA library.
+Using the SC-HOA library requires the SC3-Plugins.
 
-Using the SC-HOA library requires the SC3-Plugins  
-and the Ambisonic Decoder Toolbox:
 
-https://bitbucket.org/ambidecodertoolbox/adt/src/master/
 
-Building decoders depends on Faust and Octave.
-It is a little bit tricky  
-the first time but actually well documented   
+### ADT
+
+Building custom decoders depends on the 
+[Ambisonic Decoder Toolbox](https://bitbucket.org/ambidecodertoolbox/adt/src/master/), using Faust and Octave.
+It is a little bit tricky the first time but actually well documented
 in the help files of the SC-HOA externals.
 
+**ADT Bugfixes:**
+
+There are some necessary changes 
+to the Octave script `run_dec_*.m`, 
+created by the SC-HOA tools.
+
+- Set plot flag == false segfaults otherwise.
+
+- The function call for the faust compiler
+ has to be changed to:
+
+```
+% convert the faustfile generated with the abisonics decoder toolkit from above into scsynth and supernova Ugens
+unix(["faust2supercollider -noprefix -sn -ks ",out_path,num2str(order,0),".dsp"]);
+```
 
 ## Puredata
 
