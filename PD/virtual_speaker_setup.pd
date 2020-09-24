@@ -1,0 +1,19 @@
+#N canvas 1215 285 832 610 10;
+#X obj 521 86 r DATA;
+#X obj 521 215 udpsend;
+#X msg 591 173 disconnect;
+#X obj 521 111 packOSC;
+#X msg 588 147 connect localhost 57121;
+#X obj 279 450 s SET;
+#X obj 279 391 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 266 214 fixed_source 3 2 0 1;
+#X obj 57 215 fixed_source 2 -2 0 1;
+#X obj 63 66 fixed_source 0 -0.8 0 1;
+#X obj 272 65 fixed_source 1 0.8 0 1;
+#X obj 151 135 fixed_source 4 0 1.3 1;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 6 0 5 0;

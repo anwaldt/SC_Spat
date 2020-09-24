@@ -3,7 +3,10 @@
 A minimal binaural rendering server.
 
 - based on SC-HOA
-- OSC listeners for spherical coordinates
+- individual OSC listeners for spherical coordinates
+- combined aed OSC listener
+
+- periodically sends aed states to OSC port 9494 on localhost
 
 Henrik von Coler
 2020-09-19
@@ -54,15 +57,8 @@ s.options.numBuffers           = 4096;
 ~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
 
 
-
-
-
-
-
-
 s.boot;
 
-~routing_OSC  = NetAddr("127.0.0.1", 9595);
 ~spatial_OSC  = NetAddr("127.0.0.1", 9494);
 
 ~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
@@ -73,7 +69,6 @@ s.waitForBoot({
 	HOABinaural.loadHeadphoneCorrections(s);
 	HOABinaural.binauralIRs;
 	HOABinaural.headPhoneIRs;
-
 
 	s.sync;
 
@@ -225,7 +220,6 @@ s.waitForBoot({
 
 			var azim, elev, dist;
 
-
 			for (0, ~nInputs-1, {
 
 				arg i;
@@ -245,9 +239,6 @@ s.waitForBoot({
 
 	~send_OSC_ROUTINE.play;
 
-
-
-
 	/////////////////////////////////////////////////////////////////
 	//
 	/////////////////////////////////////////////////////////////////
@@ -257,32 +248,6 @@ s.waitForBoot({
 	// ServerMeter(s);
 
 });
-
-
-
-
-{
-
-	s.scope(12,~control_azim_BUS.index);
-
-};
-
-
-{
-
-
-	// mouse xy controll with busses
-	~mouse_BUS = Bus.control(s,2);
-
-
-	~mouse   = {
-		Out.kr(~control_azim_BUS.index,   MouseX.kr(-pi, pi));
-		Out.kr(~control_elev_BUS.index, MouseY.kr(-1,1));
-	}.play;
-
-};
-
-
 
 
 
