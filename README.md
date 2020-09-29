@@ -1,6 +1,6 @@
 # SC_SPAT
 
-SC_Spat is a framework for real-time sound spatialization, based 
+SC_Spat is a framework for real-time sound spatialization, based
 on SuperCollider. It combines different technologies and
 toolboxes, allowing an easy customization of rendering servers.
 
@@ -14,10 +14,15 @@ https://github.com/florian-grond/SC-HOA
 
 ## ADT
 
-Building custom decoders depends on the 
+Building custom decoders depends on the
 [Ambisonic Decoder Toolbox](https://bitbucket.org/ambidecodertoolbox/adt/src/master/), using Faust and Octave.
 It is a little bit tricky the first time but actually well documented
 in the help files of the SC-HOA externals.
+
+The ADT can be directly included as a git submodule:
+
+ $ git clone --recurse-submodules https://gitlab.tubit.tu-berlin.de/henrikvoncoler/sc_spat.git
+
 
 **ADT Bugfixes:**
 
