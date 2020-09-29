@@ -8,7 +8,6 @@ toolboxes, allowing an easy customization of rendering servers.
 ## SuperCollider
 
 The HOA part and the binaural rendering are also based on the SC-HOA library. Using the SC-HOA library requires the SC3-Plugins:
-
 https://github.com/florian-grond/SC-HOA
 
 
@@ -21,7 +20,7 @@ in the help files of the SC-HOA externals.
 
 The ADT can be directly included as a git submodule:
 
- $ git clone --recurse-submodules https://gitlab.tubit.tu-berlin.de/henrikvoncoler/sc_spat.git
+    $ git clone --recurse-submodules https://gitlab.tubit.tu-berlin.de/henrikvoncoler/sc_spat.git
 
 
 **ADT Bugfixes:**

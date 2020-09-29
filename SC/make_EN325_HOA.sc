@@ -3,11 +3,16 @@
 Make HOA decoders for the dome at TU Studio (EN324)
 for different orders (up to 5), uing the ADT.
 
+- adapted from SC readme: 'HOA Tutorial Exercise 15'
+
+Henrik von Coler
+2020-09-29
+
 */
 
 
-// 1: Set the path to the ADT:
-~path = "../../adt/";
+// 1: Set the path to the ADT (included as submodule):
+~path = "adt/";
 
 
 // 2: Define speaker positions:
@@ -35,7 +40,7 @@ for different orders (up to 5), uing the ADT.
 [1.12055182121983e-16, 0,	1.83000000000000,   "spkr"],
 ];
 
-
+HOA
 
 ~hoaAmbiHelper = HOAAmbiDecoderHelper();
 
