@@ -1,4 +1,4 @@
-#N canvas 1102 799 450 300 10;
+#N canvas 1102 788 450 300 10;
 #X obj 67 34 gemhead;
 #X obj 431 35 loadbang;
 #X obj 534 35 loadbang;
@@ -9,7 +9,7 @@
 #X obj 611 31 loadbang;
 #X msg 431 63 width 2;
 #X msg 534 63 0.3;
-#X msg 612 59 3;
+#X msg 612 59 4;
 #X connect 0 0 4 0;
 #X connect 1 0 8 0;
 #X connect 2 0 9 0;

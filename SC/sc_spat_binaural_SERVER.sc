@@ -17,15 +17,13 @@ Henrik von Coler
 ~server_ADDRESS = 58010;
 
 // number of buses to the spatial modules
-~nInputs   = 2;
+~nInputs   = 16;
 
 // HOA Order
 ~hoa_order = 3;
 
 
-/////////////////////////////////////////////////////////////////
-// THE BUSSES:
-/////////////////////////////////////////////////////////////////
+
 
 postln(thisProcess.argv[0]);
 
@@ -59,7 +57,7 @@ s.options.numBuffers           = 4096;
 
 s.boot;
 
-~spatial_OSC  = NetAddr("127.0.0.1", 9494);
+~spatial_OSC  = NetAddr("127.0.0.1", 9595);
 
 ~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
 
@@ -245,7 +243,7 @@ s.waitForBoot({
 
 	post("Listening on port: ");
 	postln(NetAddr.langPort);
-	// ServerMeter(s);
+	ServerMeter(s);
 
 });
 

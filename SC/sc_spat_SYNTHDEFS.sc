@@ -121,7 +121,9 @@ SynthDef(\binaural_mono_encoder_3,
 		|
 
 		var sound = gain * SoundIn.ar(in_bus);
-		var level =  (1.0/(dist+1.0))*(1.0/(dist+1.0));
+
+		var level =  (0.75/(max(0,dist)+1.0))*(0.75/(max(0,dist)+1.0));
+
 		var bform = HOASphericalHarmonics.coefN3D(3, azim, elev) * sound * level;
 
 		Out.ar(out_bus, bform);
@@ -143,6 +145,7 @@ SynthDef(\hoa_mono_encoder_3,
 		|
 
 		var sound = gain * SoundIn.ar(in_bus);
+
 		var level =  (1.0/(dist+1.0))*(1.0/(dist+1.0));
 
 		Out.ar(out_bus, HOAEncoder.ar(3, sound, azim , elev));

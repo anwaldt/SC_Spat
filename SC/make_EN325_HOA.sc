@@ -56,4 +56,5 @@ HOA
 
 ~hoaAmbiHelper.makeAmbiDecoderAllradRunFile(order:5, chanOrder:"ACN", chanNorm:"N3D");
 
-~hoaAmbiHelper.makeWrapperClass(~path, 5);
+// Don't use wrapper class
+// ~hoaAmbiHelper.makeWrapperClass(~path, 5);

@@ -49,4 +49,5 @@ Henrik von Coler
 
 ~hoaAmbiHelper.makeAmbiDecoderAllradRunFile(order:3, chanOrder:"ACN", chanNorm:"N3D");
 
-~hoaAmbiHelper.makeWrapperClass(~path, 3);
+// Don't use wrapper class
+// ~hoaAmbiHelper.makeWrapperClass(~path, 3);

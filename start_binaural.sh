@@ -9,8 +9,7 @@
 #
 ################################################################
 
-sclang -u 57121 SC/sc_spat_binaural_SERVER.sc 24 &
-
+sclang -u 57121 SC/sc_spat_binaural_SERVER.sc 16 &
 
 
 puredata -noaudio -nogui PD/source_visualizer.pd &
