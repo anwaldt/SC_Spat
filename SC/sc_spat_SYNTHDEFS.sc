@@ -31,6 +31,21 @@ SynthDef(\double_lfo,
 }).add;
 
 
+SynthDef(\mono_input,
+	{
+		|
+		input_bus           = nil,
+		gain                = nil,
+		output_bus          = nil
+		|
+
+		var in;
+
+		in = SoundIn.ar(input_bus);
+
+		Out.ar(output_bus, in*gain);
+
+}).add;
 
 SynthDef(\input_module,
 	{
@@ -62,7 +77,7 @@ SynthDef(\input_module,
 
 
 // adapted to stereo from vbap_test.scd
-SynthDef( \kernel_shifter_stereo,
+SynthDef(\kernel_shifter_stereo,
 	{
 		|
 		in_bus1  = 0,
@@ -120,7 +135,7 @@ SynthDef(\binaural_mono_encoder_3,
 		gain    = 0.5
 		|
 
-		var sound = gain * SoundIn.ar(in_bus);
+		var sound = gain * In.ar(in_bus);
 
 		var level =  (0.75/(max(0,dist)+1.0))*(0.75/(max(0,dist)+1.0));
 
@@ -183,27 +198,27 @@ SynthDef(\hoa_stereo_encoder, {
 /*
 SynthDef(\hoa_octa_decoder, {
 
-	|in_bus = 0|
+|in_bus = 0|
 
 
-	Out.ar(0,Holzmarkt20203.ar(
-		In.ar(in_bus ),
-		In.ar(in_bus +1),
-		In.ar(in_bus +2),
-		In.ar(in_bus +3),
-		In.ar(in_bus +4),
-		In.ar(in_bus +5),
-		In.ar(in_bus +6),
-		In.ar(in_bus +7),
-		In.ar(in_bus +8),
-		In.ar(in_bus +9),
-		In.ar(in_bus +10),
-		In.ar(in_bus +11),
-		In.ar(in_bus +12),
-		In.ar(in_bus +13),
-		In.ar(in_bus +14),
-		In.ar(in_bus +15),
-		gain:1) );
+Out.ar(0,Holzmarkt20203.ar(
+In.ar(in_bus ),
+In.ar(in_bus +1),
+In.ar(in_bus +2),
+In.ar(in_bus +3),
+In.ar(in_bus +4),
+In.ar(in_bus +5),
+In.ar(in_bus +6),
+In.ar(in_bus +7),
+In.ar(in_bus +8),
+In.ar(in_bus +9),
+In.ar(in_bus +10),
+In.ar(in_bus +11),
+In.ar(in_bus +12),
+In.ar(in_bus +13),
+In.ar(in_bus +14),
+In.ar(in_bus +15),
+gain:1) );
 
 }).add;
 */
@@ -253,11 +268,85 @@ SynthDef(\output_module,
 	{
 		|
 		audio_bus = nil,
-		out_bus   = nil
+		out_bus   = nil,
+		delay     = 0,
+		gain      = 1,
+		hp_cutoff = 5
 		|
 
-		Out.ar(out_bus, In.ar(audio_bus,2));
+		var out;
+
+		out = HPF.ar(DelayN.ar(In.ar(audio_bus,1),0.3,delay),hp_cutoff);
+
+
+		Out.ar(out_bus, gain*out);
 
 }).add;
+
+
+
+
+SynthDef(\send_module,
+	{
+
+		|
+		in_chan       = nil,
+		send_bus      = nil,
+		common_bus    = nil
+		send_gains    = nil,
+		common_gains  = nil,
+		send_level    = 1
+		|
+
+		var in;
+		var gain, gains;
+
+		in = SoundIn.ar(in_chan);
+
+		for (0, ~nSends,
+
+			{arg cnt;
+
+				gain = In.kr(send_gains + cnt);
+
+				Out.ar(send_bus + (cnt),     in * gain * send_level);
+
+			}
+		);
+
+		for (0, ~nCommonSends,
+
+			{arg cnt;
+
+				gain = In.kr(common_gains + cnt);
+
+				Out.ar(common_bus + (cnt),     in * gain * send_level);
+
+			}
+		);
+
+	}
+).add;
+
+
+SynthDef(\sub_output_module,
+	{
+		|
+		audio_bus = nil,
+		out_bus   = nil,
+		delay     = 0,
+		gain      = 1,
+		lp_cutoff = 100
+		|
+
+		var in, out;
+
+		in  = DelayN.ar(In.ar(audio_bus,1),0.3,delay);
+		out = LPF.ar(in, lp_cutoff);
+
+		Out.ar(out_bus, gain*out);
+}).add;
+
+
 
 

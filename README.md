@@ -3,7 +3,8 @@
 SC_Spat is a framework for real-time sound spatialization, based
 on SuperCollider. It combines different technologies and
 toolboxes, allowing an easy customization of rendering servers.
-
+This repository features several application-specific tools
+which may serve as templates for new projects.
 
 ## SuperCollider
 
