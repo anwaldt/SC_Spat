@@ -295,11 +295,11 @@ SynthDef(\send_module,
 		common_bus    = nil
 		send_gains    = nil,
 		common_gains  = nil,
-		send_level    = 1
+		gain          = 1
 		|
 
 		var in;
-		var gain, gains;
+		var gain_i, gains;
 
 		in = SoundIn.ar(in_chan);
 
@@ -307,10 +307,9 @@ SynthDef(\send_module,
 
 			{arg cnt;
 
-				gain = In.kr(send_gains + cnt);
+				gain_i = In.kr(send_gains + cnt);
 
-				Out.ar(send_bus + (cnt),     in * gain * send_level);
-
+				Out.ar(send_bus + (cnt),     in * gain * gain_i);
 			}
 		);
 
@@ -318,10 +317,9 @@ SynthDef(\send_module,
 
 			{arg cnt;
 
-				gain = In.kr(common_gains + cnt);
+				gain_i = In.kr(common_gains + cnt);
 
-				Out.ar(common_bus + (cnt),     in * gain * send_level);
-
+				Out.ar(common_bus + (cnt),     in * gain * gain_i);
 			}
 		);
 

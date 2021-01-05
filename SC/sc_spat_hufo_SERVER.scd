@@ -2,35 +2,33 @@
 
 Mixing and HOA rendering software for the HuFo.
 
+- parallel use of internal HOA and external WFS
+- additional send bus for subwoofer output
+
+- allows individual delays for all outputs
+
 Henrik von Coler
-2021-01-5
+2021-01-05
 
 */
 
 ~server_ADDRESS = 58010;
 
-// number of buses to the spatial modules
+// number spatial input modules
 ~nInputs   = 64;
 
-
-// there are two kinds of send buses, help in individual arrays:
+/////////////////////////////////////////////////////////////////
+// Two kinds of send buses, held in individual arrays:
+/////////////////////////////////////////////////////////////////
 
 // number of individual sends per input
 // 0: hoa
 // 1: wfs
-~nSends    = 3;
-
-// number of common sends
+~nSends       = 3;
+// number of common sends:
 // 0: sub
 ~nCommonSends = 1;
 
-
-
-
-// HOA Order
-~hoa_order = 3;
-
-~n_hoa_speakers = 21;
 
 /////////////////////////////////////////////////////////////////
 // BASIC
@@ -50,6 +48,13 @@ if(size(thisProcess.argv)==2,
 });
 postln("Launching with port:"++~server_ADDRESS++"!");
 
+// get script's directory for relative paths
+~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
+
+
+/////////////////////////////////////////////////////////////////
+// Server Stuff
+/////////////////////////////////////////////////////////////////
 
 // Server.supernova;
 
@@ -63,9 +68,17 @@ s.options.maxLogins            = 2;
 s.options.memSize              = 65536;
 s.options.numBuffers           = 4096;
 
-// get script's directory for relative paths
-~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
 
+
+
+/////////////////////////////////////////////////////////////////
+// HOA parameters
+/////////////////////////////////////////////////////////////////
+
+~hoa_order      = 3;
+~n_hoa_speakers = 21;
+
+~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
 
 SynthDef(\hoa_decoder_EN325, {
 
@@ -94,15 +107,10 @@ SynthDef(\hoa_decoder_EN325, {
 }).add;
 
 
-
-
-
 s.boot;
 
 ~routing_OSC  = NetAddr("127.0.0.1", 9595);
 ~spatial_OSC  = NetAddr("127.0.0.1", 9494);
-
-~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
 
 s.waitForBoot({
 
@@ -129,15 +137,11 @@ s.waitForBoot({
 
 	// control
 	~send_gain_BUSES = Array.fill(~nInputs,
-		{
-			Bus.control(s, ~nSends);
-		}
+		Bus.control(s, ~nSends)
 	);
 
- 	~common_gain_BUSES = Array.fill(~nInputs,
-		{
+	~common_gain_BUSES = Array.fill(~nInputs,
 			Bus.control(s, ~nCommonSends);
-		}
 	);
 
 
@@ -145,9 +149,7 @@ s.waitForBoot({
 	// ~audio_BUS_spatial      = Bus.audio(s, ~nInputs);
 
 	~send_BUSES = Array.fill(~nInputs,
-		{
 			Bus.audio(s, ~nSends);
-		}
 	);
 
 	// bus for encoded HOA
@@ -160,6 +162,7 @@ s.waitForBoot({
 
 	/////////////////////////////////////////////////////////////////
 	// ROUTING SECTION
+/////////////////////////////////////////////////////////////////
 
 	~send_GROUP = Group.new;
 
@@ -189,7 +192,7 @@ s.waitForBoot({
 
 		~send_gain_BUSES[msg[1]].setAt(msg[2], in_value);
 
-	}, '/send/gain');
+	}, '/send/gain/individual');
 
 
 	~common_sends_OSC = OSCFunc({ arg msg, time, addr, recvPort;
@@ -256,11 +259,12 @@ s.waitForBoot({
 		],
 		target: ~output_GROUP);
 
-
-
+	/////////////////////////////////////////////////////////////////
+	// add one output module for each HOA channel
+	/////////////////////////////////////////////////////////////////
 	for (0, ~n_hoa_channnels -1, {arg cnt;
 
-		post('Adding output Module: ');
+		post('Adding HOA output Module: ');
 		cnt.postln;
 
 		~hoa_outputs = ~hoa_outputs.add(
@@ -274,13 +278,34 @@ s.waitForBoot({
 	});
 
 
+	/////////////////////////////////////////////////////////////////
+	// add one output module for each WFS channel
+	/////////////////////////////////////////////////////////////////
+	for (0, ~nInputs -1, {arg cnt;
 
-	 ~sub_output = Synth(\sub_output_module,
+		post('Adding WFS output Module: ');
+		cnt.postln;
+
+		~wfs_outputs = ~wfs_outputs.add(
+			Synth(\output_module,
 				[
-					\audio_bus, ~common_send_BUSES.index + 0,  //
-					\out_bus,   ~n_hoa_speakers + ~nInputs     // output after WFS and HOA outputs
+					\audio_bus, ~send_BUSES[cnt].index+1,  // individual HOA channels
+					\out_bus,   ~n_hoa_speakers + cnt      // first outputs are HOA
 				],
 				target: ~output_GROUP
+		);)
+	});
+
+
+	/////////////////////////////////////////////////////////////////
+	// add one SUB module
+	/////////////////////////////////////////////////////////////////
+	~sub_output = Synth(\sub_output_module,
+		[
+			\audio_bus, ~common_send_BUSES.index + 0,  //
+			\out_bus,   ~n_hoa_speakers + ~nInputs     // output after WFS and HOA outputs
+		],
+		target: ~output_GROUP
 	);
 
 	/////////////////////////////////////////////////////////////////
