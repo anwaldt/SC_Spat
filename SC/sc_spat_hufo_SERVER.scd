@@ -318,7 +318,6 @@ s.waitForBoot({
 			arg msg, time, addr, recvPort;
 			var azim = msg[2];
 			~control_azim_BUS.setAt(msg[1],azim);
-
 	}, '/source/azim');
 
 	~elev_OSC = OSCFunc(
@@ -326,7 +325,6 @@ s.waitForBoot({
 			arg msg, time, addr, recvPort;
 			var elev = msg[2];
 			~control_elev_BUS.setAt(msg[1],elev);
-
 	}, '/source/elev');
 
 	~dist_OSC = OSCFunc(
@@ -334,7 +332,6 @@ s.waitForBoot({
 			arg msg, time, addr, recvPort;
 			var dist = msg[2];
 			~control_dist_BUS.setAt(msg[1],dist);
-
 	}, '/source/dist');
 
 
