@@ -28,12 +28,12 @@
 #X msg 348 853 dimen 888 888 \, create \, 1 \, title SC_SPAT-Sourece-Visualizer
 ;
 #X msg 79 791 color 1 1 1;
-#X obj 50 531 gemhead;
-#X msg 52 484 rotate 1 1 0;
-#X obj 48 669 pix_draw;
-#X obj 50 638 translateXYZ;
-#X floatatom 131 595 5 0 0 0 - - -, f 5;
-#X obj 52 562 pix_image head_small_N.jpg;
+#X obj 26 504 gemhead;
+#X msg 26 457 rotate 1 1 0;
+#X obj 26 652 pix_draw;
+#X obj 26 621 translateXYZ;
+#X floatatom 95 581 5 0 0 0 - - -, f 5;
+#X obj 26 545 pix_image head_small_N.jpg;
 #X obj 190 1179 world_light;
 #X msg 329 1137 1 1 1;
 #X msg 276 1135 1 0 1;
