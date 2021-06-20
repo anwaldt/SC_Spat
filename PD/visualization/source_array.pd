@@ -1,4 +1,4 @@
-#N canvas 1273 169 1196 702 10;
+#N canvas 1273 125 1196 702 10;
 #X msg 280 470 vis 1 \, editmode 1;
 #X obj 343 275 + 1;
 #X floatatom 305 299 5 0 0 0 - - -, f 5;
@@ -13,12 +13,14 @@
 patch fora all channels:;
 #X obj 264 346 * 40;
 #X text 22 79 SUBPATCH for each partial;
-#N canvas 639 261 1920 974 sub 0;
+#N canvas 639 228 1920 974 sub 1;
 #X obj 100 40 sc_spat_plotter 0 0 1 1;
-#X obj 100 80 sc_spat_plotter 1 0.166667 1 1;
-#X obj 100 120 sc_spat_plotter 2 0.333333 0.833333 1;
-#X obj 100 160 sc_spat_plotter 3 0.5 0.666667 1;
-#X obj 100 200 sc_spat_plotter 4 0.666667 0.5 1;
+#X obj 100 80 sc_spat_plotter 1 0.125 1 1;
+#X obj 100 120 sc_spat_plotter 2 0.25 0.875 1;
+#X obj 100 160 sc_spat_plotter 3 0.375 0.75 1;
+#X obj 100 200 sc_spat_plotter 4 0.5 0.625 1;
+#X obj 100 240 sc_spat_plotter 5 0.625 0.5 1;
+#X obj 100 280 sc_spat_plotter 6 0.75 0.375 1;
 #X restore 25 97 pd sub;
 #X obj 305 247 metro 10;
 #X obj 305 321 - 0;
