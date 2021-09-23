@@ -46,9 +46,6 @@ MIDIIn.connectAll;
 
 
 
-
-
-
 s.waitForBoot({
 
 

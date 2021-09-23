@@ -48,6 +48,27 @@ for (0, ~nVbap -1, {arg idx;
 ~lfo[0].set(\offset,0.9);
 
 
+~mouse.free
 
+(
+{
+	///////////////////////////////////////////////////////////////////////////////////
+	// make an x-y control stream to a temp BUS
 
+	// mouse xy controll with busses
+	~mouse_BUS = Bus.control(s,2);
+
+	s.sync;
+
+	~mouse   = {
+		Out.kr(~mouse_BUS.index,   MouseX.kr(-3,3));
+		Out.kr(~mouse_BUS.index+1, MouseY.kr(-3,3));
+	}.play;
+
+}.fork;
+)
+
+~mouse_BUS.scope
+
+~binaural_panners.do({arg e; e.map(\azim,~mouse_BUS.index)})
 

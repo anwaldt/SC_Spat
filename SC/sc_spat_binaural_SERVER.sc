@@ -13,17 +13,15 @@ Henrik von Coler
 
 */
 
-
 ~server_ADDRESS = 58010;
+
+~input_OSC      = 8989;
 
 // number of buses to the spatial modules
 ~nInputs   = 16;
 
 // HOA Order
 ~hoa_order = 3;
-
-
-
 
 postln(thisProcess.argv[0]);
 
@@ -54,12 +52,12 @@ s.options.numBuffers           = 4096;
 // get script's directory for relative paths
 ~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
 
-
 s.boot;
 
 ~spatial_OSC  = NetAddr("127.0.0.1", 9595);
 
 ~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
+
 
 s.waitForBoot({
 
@@ -70,32 +68,33 @@ s.waitForBoot({
 
 	s.sync;
 
-	~set = File.readAllString(~root_DIR++"sc_spat_SYNTHDEFS.sc","r");
-	~set.interpret;
+	~synthdef_DIR = PathName(~root_DIR++"synthdefs/");
+
+	~synthdef_DIR.filesDo
+	{
+		|tmpFile|
+		var tmp_path = tmpFile.pathOnly.asSymbol++tmpFile.fileName.asSymbol;
+		tmp_path.load;
+		postln(tmp_path);
+	};
+	s.sync;
 
 	/////////////////////////////////////////////////////////////////
 	// THE BUSSES:
 	/////////////////////////////////////////////////////////////////
 
-
-	s.sync;
-
 	~control_azim_BUS     = Bus.control(s,~nInputs);
 	~control_elev_BUS     = Bus.control(s,~nInputs);
+	~control_elev_BUS.setAll(0);
 	~control_dist_BUS     = Bus.control(s,~nInputs);
-
-
+	~control_dist_BUS.setAll(1);
 	s.sync;
 
-
-
-	// create 2 audio buses for each spatialization module:
-	~audio_BUS_spatial      = Bus.audio(s, ~nInputs);
-
+	// create an bus for each spatialization module:
+	~audio_BUS_spatial = Bus.audio(s, ~nInputs);
 
 	// bus for encoded 5th order HOA
 	~ambi_BUS = Bus.audio(s, ~n_hoa_channnels);
-
 
 
 	/////////////////////////////////////////////////////////////////
@@ -104,18 +103,115 @@ s.waitForBoot({
 	~input_GROUP = Group.new;
 
 
+	/////////////////////////////////////////////////////////////////
+	// MODULATOR SECTION
+	/////////////////////////////////////////////////////////////////
+
+	~mod_GROUP = Group.after(~input_GROUP);
+
+	for (0, (~nInputs/2) -1, {arg idx;
+
+		post('Adding LFO Module: ');
+		idx.postln;
+
+		~lfo = ~lfo.add(
+			Synth.new(\double_lfo,
+				[
+					\trig, 0,
+					\rate, 1,
+					\dur,  1,
+					\out_bus1,  ~control_azim_BUS.index + (idx*2),
+					\out_bus2,  ~control_azim_BUS.index + (idx*2) + 1
+				],
+				target: ~mod_GROUP);
+
+		);
+	});
+
+	s.sync;
+
+	~lfo[0].set(\gain,0.1, \dur, 0.2);
+	~lfo[1].set(\gain,2, \dur, 2);
+	~lfo[2].set(\gain,1, \dur, 2);
+	~lfo[3].set(\gain,4, \dur, 0.5);
+
+	/*
+	~lfo.do({arg e,i; e.set(\trig, 1, \run, 1)});
+	~control_azim_BUS.scope
+	*/
+
+	OSCdef('/lfo/trigger',
+		{
+			arg msg, time, addr, recvPort;
+
+			var ind, val;
+
+			ind = msg[1];
+			val = msg[2];
+
+			~lfo[ind].set(\trig, val, \run, val);
+
+			// postln("Trigger "+ind);
+
+		},'/lfo/trigger'
+	);
+
+	OSCdef('/lfo/gain',
+		{
+			arg msg, time, addr, recvPort;
+
+			var ind, val;
+
+			ind = msg[1];
+			val = msg[2];
+
+			~lfo[ind].set(\gain, val);
+
+		},'/lfo/gain'
+	);
+
+
+	OSCdef('/lfo/dur',
+		{
+			arg msg, time, addr, recvPort;
+
+			var ind, val;
+
+			ind = msg[1];
+			val = msg[2];
+
+			~lfo[ind].set(\dur, val);
+
+		},'/lfo/dur'
+	);
+
+
+	OSCdef('/lfo/rate',
+		{
+			arg msg, time, addr, recvPort;
+
+			var ind, val;
+
+			ind = msg[1];
+			val = msg[2];
+
+			~lfo[ind].set(\rate, val);
+
+		},'/lfo/rate'
+	);
+
+
+
 
 	/////////////////////////////////////////////////////////////////
 	// SPATIAL SECTION
 	/////////////////////////////////////////////////////////////////
 
-	~spatial_GROUP = ParGroup.after(~input_GROUP);
+	~spatial_GROUP = Group.after(~input_GROUP);
 
 
 	/////////////////////////////////////////////////////////////////
 	// ambisonics
-
-
 
 
 	for (0, ~nInputs -1, {arg cnt;
@@ -126,14 +222,12 @@ s.waitForBoot({
 		~binaural_panners = ~binaural_panners.add(
 			Synth(\binaural_mono_encoder_3,
 				[
-					\in_bus, cnt,
+					\in_bus,   cnt,
 					\out_bus, ~ambi_BUS.index
 				],
 				target: ~spatial_GROUP
 		);)
 	});
-
-
 
 
 	for (0, ~nInputs -1, {arg cnt;
@@ -147,23 +241,25 @@ s.waitForBoot({
 
 	});
 
-
-
+	// ~binaural_panners.do({arg e; e.set(\elev,0)});
+	// ~binaural_panners.do({arg e; e.set(\azim,0)});
+	// ~binaural_panners.do({arg e; e.set(\dist,0)});
 
 	/////////////////////////////////////////////////////////////////
 	// decoder
 	/////////////////////////////////////////////////////////////////
 
-	~output_GROUP	 = ParGroup.after(~spatial_GROUP);
+	~output_GROUP	 = Group.after(~spatial_GROUP);
 
 
 	~decoder = Synth(\hoa_binaural_decoder_3,
 		[
-			\in_bus,~ambi_BUS.index,
+			\in_bus, ~ambi_BUS.index,
 			\out_bus, 0
 		],
 		target: ~output_GROUP);
 
+	// ~decoder.set(\in_bus,~ambi_BUS);
 
 	/////////////////////////////////////////////////////////////////
 	// OSC listeners:
@@ -195,21 +291,19 @@ s.waitForBoot({
 	}, '/source/dist');
 
 
-	~aed_OSC = OSCFunc(
+	OSCdef('/source/aed',
 		{
 			arg msg, time, addr, recvPort;
 
-			var azim = msg[2] / 360.0 * (2.0*pi);
-			var elev = msg[3] / 360.0 * (2.0*pi);
+			var azim = msg[2];
+			var elev = msg[3];
 			var dist = msg[4];
 
 			~control_azim_BUS.setAt(msg[1],azim);
 			~control_elev_BUS.setAt(msg[1],elev);
 			~control_dist_BUS.setAt(msg[1],dist);
 
-	}, '/source/aed');
-
-
+	},'/source/aed');
 
 
 	~send_OSC_ROUTINE = Routine({
@@ -241,13 +335,10 @@ s.waitForBoot({
 	//
 	/////////////////////////////////////////////////////////////////
 
+	thisProcess.openUDPPort(~input_OSC);
+
 	post("Listening on port: ");
-	postln(NetAddr.langPort);
+	postln(thisProcess.openPorts);
 	ServerMeter(s);
 
 });
-
-
-
-
-
