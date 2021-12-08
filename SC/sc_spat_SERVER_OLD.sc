@@ -48,13 +48,9 @@ MIDIIn.connectAll;
 
 s.waitForBoot({
 
-
-
 	/////////////////////////////////////////////////////////////////
 	// THE BUSSES:
 	/////////////////////////////////////////////////////////////////
-
-
 
 	~control_harmonic_mod_BUS = Bus.control(s,~nShifters);
 
@@ -451,17 +447,3 @@ s.waitForBoot({
 	s.scope(2,2);
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-

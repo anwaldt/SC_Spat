@@ -44,7 +44,7 @@ Server.default = Server(\binaural_server, NetAddr("127.0.0.1", ~server_ADDRESS))
 
 s.options.device               = "SC_BINAURAL";
 s.options.numInputBusChannels  = ~nInputs;
-s.options.numOutputBusChannels = 4;
+s.options.numOutputBusChannels = 32;
 s.options.maxLogins            = 8;
 s.options.memSize              = 65536;
 s.options.numBuffers           = 4096;
@@ -56,8 +56,7 @@ s.boot;
 
 ~spatial_OSC  = NetAddr("127.0.0.1", 9595);
 
-~n_hoa_channnels = pow(~hoa_order + 1.0 ,2.0);
-
+~n_hoa_channnels = (pow(~hoa_order + 1.0 ,2.0)).asInteger;
 
 s.waitForBoot({
 
@@ -83,19 +82,58 @@ s.waitForBoot({
 	// THE BUSSES:
 	/////////////////////////////////////////////////////////////////
 
-	~control_azim_BUS     = Bus.control(s,~nInputs);
-	~control_elev_BUS     = Bus.control(s,~nInputs);
+	// buses for direct control
+	~control_azim_BUS = Bus.control(s,~nInputs);
+	~control_azim_BUS.setAll(0);
+	~control_elev_BUS = Bus.control(s,~nInputs);
 	~control_elev_BUS.setAll(0);
-	~control_dist_BUS     = Bus.control(s,~nInputs);
+	~control_dist_BUS = Bus.control(s,~nInputs);
 	~control_dist_BUS.setAll(1);
+
+	// buses for LFO control
+	~lfo_azim_BUS = Bus.control(s,~nInputs);
+	~lfo_azim_BUS.setAll(0);
+	~lfo_elev_BUS = Bus.control(s,~nInputs);
+	~lfo_elev_BUS.setAll(0);
+	~lfo_dist_BUS = Bus.control(s,~nInputs);
+	~lfo_dist_BUS.setAll(1);
+
+	// only for monitoring
+	~monitor_azim_BUS = Bus.control(s,~nInputs);
+	~monitor_elev_BUS = Bus.control(s,~nInputs);
+	~monitor_dist_BUS = Bus.control(s,~nInputs);
+
+	//
+	~azim_MAPPER = Array.fill(~nInputs,{Synth.new(\mapper)});
+	~elev_MAPPER = Array.fill(~nInputs,{Synth.new(\mapper)});
+	~dist_MAPPER = Array.fill(~nInputs,{Synth.new(\mapper)});
+
 	s.sync;
 
-	// create an bus for each spatialization module:
+	~azim_MAPPER.do({arg e,i;
+		e.set(\offset,  0, \gain, 1);
+		e.set(\inbus,  ~control_azim_BUS.index + i);
+		e.set(\outbus, ~monitor_azim_BUS.index + i);
+	});
+
+	~elev_MAPPER.do({arg e,i;
+				e.set(\offset,  0, \gain, 1);
+		e.set(\inbus,  ~control_elev_BUS.index + i);
+		e.set(\outbus, ~monitor_elev_BUS.index + i);
+	});
+
+	~dist_MAPPER.do({arg e,i;
+				e.set(\offset,  0, \gain, 1);
+		e.set(\inbus,  ~control_dist_BUS.index + i);
+		e.set(\outbus, ~monitor_dist_BUS.index + i);
+	});
+
+
+	// create a bus for each spatialization module:
 	~audio_BUS_spatial = Bus.audio(s, ~nInputs);
 
 	// bus for encoded 5th order HOA
 	~ambi_BUS = Bus.audio(s, ~n_hoa_channnels);
-
 
 	/////////////////////////////////////////////////////////////////
 	// INPUT SECTION
@@ -120,26 +158,21 @@ s.waitForBoot({
 					\trig, 0,
 					\rate, 1,
 					\dur,  1,
-					\out_bus1,  ~control_azim_BUS.index + (idx*2),
-					\out_bus2,  ~control_azim_BUS.index + (idx*2) + 1
+					\out_bus1,  ~lfo_azim_BUS.index + (idx*2),
+					\out_bus2,  ~lfo_azim_BUS.index + (idx*2) + 1
 				],
 				target: ~mod_GROUP);
-
 		);
 	});
 
 	s.sync;
 
-	~lfo[0].set(\gain,0.1, \dur, 0.2);
-	~lfo[1].set(\gain,2, \dur, 2);
-	~lfo[2].set(\gain,1, \dur, 2);
-	~lfo[3].set(\gain,4, \dur, 0.5);
 
-	/*
-	~lfo.do({arg e,i; e.set(\trig, 1, \run, 1)});
-	~control_azim_BUS.scope
-	*/
 
+
+
+
+	// OSC listener for LFO trigger events
 	OSCdef('/lfo/trigger',
 		{
 			arg msg, time, addr, recvPort;
@@ -159,7 +192,6 @@ s.waitForBoot({
 	OSCdef('/lfo/gain',
 		{
 			arg msg, time, addr, recvPort;
-
 			var ind, val;
 
 			ind = msg[1];
@@ -174,7 +206,6 @@ s.waitForBoot({
 	OSCdef('/lfo/dur',
 		{
 			arg msg, time, addr, recvPort;
-
 			var ind, val;
 
 			ind = msg[1];
@@ -186,18 +217,31 @@ s.waitForBoot({
 	);
 
 
-	OSCdef('/lfo/rate',
+	OSCdef('/lfo/dir',
 		{
 			arg msg, time, addr, recvPort;
-
 			var ind, val;
 
 			ind = msg[1];
 			val = msg[2];
 
-			~lfo[ind].set(\rate, val);
+			~lfo[ind].set(\dir, val);
 
-		},'/lfo/rate'
+		},'/lfo/dir'
+	);
+
+
+	OSCdef('/lfo/offset',
+		{
+			arg msg, time, addr, recvPort;
+			var ind, val;
+
+			ind = msg[1];
+			val = msg[2];
+
+			~lfo[ind].set(\offset, val);
+
+		},'/lfo/offset'
 	);
 
 
@@ -209,7 +253,7 @@ s.waitForBoot({
 
 	~spatial_GROUP = Group.after(~input_GROUP);
 
-
+	s.sync;
 	/////////////////////////////////////////////////////////////////
 	// ambisonics
 
@@ -229,6 +273,9 @@ s.waitForBoot({
 		);)
 	});
 
+	s.sync;
+
+	// ~binaural_panners.do({arg e,i; e.set(\out_bus,~ambi_BUS.index)});
 
 	for (0, ~nInputs -1, {arg cnt;
 
@@ -241,6 +288,48 @@ s.waitForBoot({
 
 	});
 
+	//
+	OSCdef('/encoder/mode',
+		{
+			arg msg, time, addr, recvPort;
+			var mode = msg[1];
+
+			switch(mode,
+				'direct',
+				{
+					postln("Setting all encoders to direct control!");
+					~binaural_panners.do(
+						{arg e,i;
+							e.map(\azim,  ~control_azim_BUS.index + (i));
+
+
+						}
+					);
+
+					~azim_MAPPER.do({arg e,i;
+								e.set(\inbus,  ~control_azim_BUS.index + i);
+							});
+				},
+				'lfo',
+				{
+					postln("Setting all encoders to LFO!");
+					~binaural_panners.do(
+						{arg e,i;
+							e.map(\azim,  ~lfo_azim_BUS.index + i);
+
+
+
+						}
+					);
+
+					~azim_MAPPER.do({arg e,i;
+								e.set(\inbus,  ~lfo_azim_BUS.index + i);
+							});
+				}
+			);
+		},'/encoder/mode'
+	);
+
 	// ~binaural_panners.do({arg e; e.set(\elev,0)});
 	// ~binaural_panners.do({arg e; e.set(\azim,0)});
 	// ~binaural_panners.do({arg e; e.set(\dist,0)});
@@ -251,6 +340,11 @@ s.waitForBoot({
 
 	~output_GROUP	 = Group.after(~spatial_GROUP);
 
+	~hoa_output = {Out.ar(2 ,In.ar(~ambi_BUS.index,~n_hoa_channnels))}.play;
+
+	s.sync;
+
+	~hoa_output.moveToTail(~output_GROUP);
 
 	~decoder = Synth(\hoa_binaural_decoder_3,
 		[
@@ -259,7 +353,9 @@ s.waitForBoot({
 		],
 		target: ~output_GROUP);
 
-	// ~decoder.set(\in_bus,~ambi_BUS);
+	s.sync;
+
+	~decoder.set(\in_bus,~ambi_BUS);
 
 	/////////////////////////////////////////////////////////////////
 	// OSC listeners:
@@ -316,9 +412,9 @@ s.waitForBoot({
 
 				arg i;
 
-				azim = ~control_azim_BUS.getnSynchronous(~nInputs)[i];
-				elev = ~control_elev_BUS.getnSynchronous(~nInputs)[i];
-				dist = ~control_dist_BUS.getnSynchronous(~nInputs)[i];
+				azim = ~monitor_azim_BUS.getnSynchronous(~nInputs)[i];
+				elev = ~monitor_elev_BUS.getnSynchronous(~nInputs)[i];
+				dist = ~monitor_dist_BUS.getnSynchronous(~nInputs)[i];
 
 				~spatial_OSC.sendMsg('/source/aed', i, azim, elev, dist);
 

@@ -1,4 +1,4 @@
-#N canvas 639 119 1920 974 10;
+#N canvas 2286 367 1920 974 10;
 #X obj 222 285 poltocar;
 #X obj 119 593 gemhead;
 #X obj 274 355 + 0;
@@ -25,10 +25,10 @@
 #X msg 787 517 30;
 #X obj 222 389 * 0.6;
 #X obj 274 389 * 0.6;
-#X obj 499 511 * 0.25;
 #X text 421 509 size;
 #X obj 499 534 min 2;
 #X obj 499 557 max -2;
+#X obj 499 511 * 0.1;
 #X connect 0 0 7 0;
 #X connect 0 1 5 0;
 #X connect 1 0 4 0;
@@ -53,12 +53,12 @@
 #X connect 17 0 18 0;
 #X connect 18 0 20 0;
 #X connect 19 0 16 0;
-#X connect 20 0 26 0;
+#X connect 20 0 29 0;
 #X connect 21 0 6 1;
 #X connect 22 0 8 1;
 #X connect 23 0 14 2;
 #X connect 24 0 21 0;
 #X connect 25 0 22 0;
-#X connect 26 0 28 0;
-#X connect 28 0 29 0;
-#X connect 29 0 14 1;
+#X connect 27 0 28 0;
+#X connect 28 0 14 1;
+#X connect 29 0 27 0;

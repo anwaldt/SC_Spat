@@ -18,7 +18,7 @@ File.readAllString("SC/beatspat_SERVER.sc","r").interpret;
 
 ~control_vbap_azim_BUS.scope;
 
-~control_hoa_azim_BUS.scope;
+~control_azim_BUS.scope;
 
 
 

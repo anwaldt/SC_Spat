@@ -1,0 +1,1069 @@
+/options/name "Options"
+/options/color 1 0 0 1
+/options/annotation ""
+/options/lock 0
+/options/vumeters/rate 85
+/master/name "Master"
+/master/color 0 0 0 1
+/master/numinputs 128
+/master/numoutputs 128
+/master/visible 1
+/master/trim 0
+/master/dynamics/attack 10.01
+/master/dynamics/release 30
+/master/dynamics/lookahead 0
+/master/dynamics/compressor/threshold -30
+/master/dynamics/compressor/ratio 1
+/master/dynamics/expander/threshold -60
+/master/dynamics/expander/ratio 1
+/master/dynamics/makeup 0
+/master/dynamics/link 0
+/master/dynamics/bypass 1
+/master/dynamics/grid/visible 1
+/master/dynamics/curve/fill 1
+/master/dynamics/background/color 1 1 1 0
+/master/dynamics/foreground/color 0 0 0 0.6
+/master/dynamics/curve/color 0 0 0 1
+/master/dynamics/curve/thickness 1
+/master/dynamics/grid/color 0.501961 0.501961 0.501961 1
+/master/dynamics/title "Master"
+/master/equalizer/bypass 1
+/master/equalizer/gain 0
+/master/equalizer/filter/1/active 0
+/master/equalizer/filter/1/freq 50
+/master/equalizer/filter/1/order 2
+/master/equalizer/filter/2/active 1
+/master/equalizer/filter/2/freq 100
+/master/equalizer/filter/2/gain 0
+/master/equalizer/filter/2/q 1
+/master/equalizer/filter/3/active 1
+/master/equalizer/filter/3/freq 500
+/master/equalizer/filter/3/gain 0
+/master/equalizer/filter/3/q 1
+/master/equalizer/filter/4/active 1
+/master/equalizer/filter/4/freq 1000
+/master/equalizer/filter/4/gain 0
+/master/equalizer/filter/4/q 1
+/master/equalizer/filter/5/active 1
+/master/equalizer/filter/5/freq 2000
+/master/equalizer/filter/5/gain 0
+/master/equalizer/filter/5/q 1
+/master/equalizer/filter/6/active 1
+/master/equalizer/filter/6/freq 5000
+/master/equalizer/filter/6/gain 0
+/master/equalizer/filter/6/q 1
+/master/equalizer/filter/7/active 1
+/master/equalizer/filter/7/freq 10000
+/master/equalizer/filter/7/gain 0
+/master/equalizer/filter/7/q 1
+/master/equalizer/filter/8/active 0
+/master/equalizer/filter/8/freq 16000
+/master/equalizer/filter/8/order 2
+/master/gain 0
+/master/gain/ramptime 20
+/master/mute 0
+/master/annotation ""
+/master/levels/input/visible 1
+/master/levels/input/post 0
+/master/levels/input/mode "peak"
+/master/levels/output/visible 1
+/master/levels/output/post 1
+/master/levels/output/mode "peak"
+/master/channel/1/equalizer/bypass 1
+/master/channel/1/equalizer/gain 0
+/master/channel/1/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/2/equalizer/bypass 1
+/master/channel/2/equalizer/gain 0
+/master/channel/2/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/3/equalizer/bypass 1
+/master/channel/3/equalizer/gain 0
+/master/channel/3/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/4/equalizer/bypass 1
+/master/channel/4/equalizer/gain 0
+/master/channel/4/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/5/equalizer/bypass 1
+/master/channel/5/equalizer/gain 0
+/master/channel/5/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/6/equalizer/bypass 1
+/master/channel/6/equalizer/gain 0
+/master/channel/6/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/7/equalizer/bypass 1
+/master/channel/7/equalizer/gain 0
+/master/channel/7/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/8/equalizer/bypass 1
+/master/channel/8/equalizer/gain 0
+/master/channel/8/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/9/equalizer/bypass 1
+/master/channel/9/equalizer/gain 0
+/master/channel/9/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/10/equalizer/bypass 1
+/master/channel/10/equalizer/gain 0
+/master/channel/10/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/11/equalizer/bypass 1
+/master/channel/11/equalizer/gain 0
+/master/channel/11/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/12/equalizer/bypass 1
+/master/channel/12/equalizer/gain 0
+/master/channel/12/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/13/equalizer/bypass 1
+/master/channel/13/equalizer/gain 0
+/master/channel/13/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/14/equalizer/bypass 1
+/master/channel/14/equalizer/gain 0
+/master/channel/14/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/15/equalizer/bypass 1
+/master/channel/15/equalizer/gain 0
+/master/channel/15/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/16/equalizer/bypass 1
+/master/channel/16/equalizer/gain 0
+/master/channel/16/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/17/equalizer/bypass 1
+/master/channel/17/equalizer/gain 0
+/master/channel/17/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/18/equalizer/bypass 1
+/master/channel/18/equalizer/gain 0
+/master/channel/18/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/19/equalizer/bypass 1
+/master/channel/19/equalizer/gain 0
+/master/channel/19/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/20/equalizer/bypass 1
+/master/channel/20/equalizer/gain 0
+/master/channel/20/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/21/equalizer/bypass 1
+/master/channel/21/equalizer/gain 0
+/master/channel/21/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/22/equalizer/bypass 1
+/master/channel/22/equalizer/gain 0
+/master/channel/22/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/23/equalizer/bypass 1
+/master/channel/23/equalizer/gain 0
+/master/channel/23/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/24/equalizer/bypass 1
+/master/channel/24/equalizer/gain 0
+/master/channel/24/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/25/equalizer/bypass 1
+/master/channel/25/equalizer/gain 0
+/master/channel/25/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/26/equalizer/bypass 1
+/master/channel/26/equalizer/gain 0
+/master/channel/26/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/27/equalizer/bypass 1
+/master/channel/27/equalizer/gain 0
+/master/channel/27/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/28/equalizer/bypass 1
+/master/channel/28/equalizer/gain 0
+/master/channel/28/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/29/equalizer/bypass 1
+/master/channel/29/equalizer/gain 0
+/master/channel/29/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/30/equalizer/bypass 1
+/master/channel/30/equalizer/gain 0
+/master/channel/30/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/31/equalizer/bypass 1
+/master/channel/31/equalizer/gain 0
+/master/channel/31/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/32/equalizer/bypass 1
+/master/channel/32/equalizer/gain 0
+/master/channel/32/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/33/equalizer/bypass 1
+/master/channel/33/equalizer/gain 0
+/master/channel/33/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/34/equalizer/bypass 1
+/master/channel/34/equalizer/gain 0
+/master/channel/34/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/35/equalizer/bypass 1
+/master/channel/35/equalizer/gain 0
+/master/channel/35/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/36/equalizer/bypass 1
+/master/channel/36/equalizer/gain 0
+/master/channel/36/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/37/equalizer/bypass 1
+/master/channel/37/equalizer/gain 0
+/master/channel/37/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/38/equalizer/bypass 1
+/master/channel/38/equalizer/gain 0
+/master/channel/38/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/39/equalizer/bypass 1
+/master/channel/39/equalizer/gain 0
+/master/channel/39/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/40/equalizer/bypass 1
+/master/channel/40/equalizer/gain 0
+/master/channel/40/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/41/equalizer/bypass 1
+/master/channel/41/equalizer/gain 0
+/master/channel/41/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/42/equalizer/bypass 1
+/master/channel/42/equalizer/gain 0
+/master/channel/42/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/43/equalizer/bypass 1
+/master/channel/43/equalizer/gain 0
+/master/channel/43/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/44/equalizer/bypass 1
+/master/channel/44/equalizer/gain 0
+/master/channel/44/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/45/equalizer/bypass 1
+/master/channel/45/equalizer/gain 0
+/master/channel/45/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/46/equalizer/bypass 1
+/master/channel/46/equalizer/gain 0
+/master/channel/46/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/47/equalizer/bypass 1
+/master/channel/47/equalizer/gain 0
+/master/channel/47/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/48/equalizer/bypass 1
+/master/channel/48/equalizer/gain 0
+/master/channel/48/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/49/equalizer/bypass 1
+/master/channel/49/equalizer/gain 0
+/master/channel/49/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/50/equalizer/bypass 1
+/master/channel/50/equalizer/gain 0
+/master/channel/50/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/51/equalizer/bypass 1
+/master/channel/51/equalizer/gain 0
+/master/channel/51/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/52/equalizer/bypass 1
+/master/channel/52/equalizer/gain 0
+/master/channel/52/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/53/equalizer/bypass 1
+/master/channel/53/equalizer/gain 0
+/master/channel/53/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/54/equalizer/bypass 1
+/master/channel/54/equalizer/gain 0
+/master/channel/54/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/55/equalizer/bypass 1
+/master/channel/55/equalizer/gain 0
+/master/channel/55/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/56/equalizer/bypass 1
+/master/channel/56/equalizer/gain 0
+/master/channel/56/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/57/equalizer/bypass 1
+/master/channel/57/equalizer/gain 0
+/master/channel/57/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/58/equalizer/bypass 1
+/master/channel/58/equalizer/gain 0
+/master/channel/58/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/59/equalizer/bypass 1
+/master/channel/59/equalizer/gain 0
+/master/channel/59/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/60/equalizer/bypass 1
+/master/channel/60/equalizer/gain 0
+/master/channel/60/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/61/equalizer/bypass 1
+/master/channel/61/equalizer/gain 0
+/master/channel/61/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/62/equalizer/bypass 1
+/master/channel/62/equalizer/gain 0
+/master/channel/62/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/63/equalizer/bypass 1
+/master/channel/63/equalizer/gain 0
+/master/channel/63/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/64/equalizer/bypass 1
+/master/channel/64/equalizer/gain 0
+/master/channel/64/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/65/equalizer/bypass 1
+/master/channel/65/equalizer/gain 0
+/master/channel/65/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/66/equalizer/bypass 1
+/master/channel/66/equalizer/gain 0
+/master/channel/66/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/67/equalizer/bypass 1
+/master/channel/67/equalizer/gain 0
+/master/channel/67/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/68/equalizer/bypass 1
+/master/channel/68/equalizer/gain 0
+/master/channel/68/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/69/equalizer/bypass 1
+/master/channel/69/equalizer/gain 0
+/master/channel/69/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/70/equalizer/bypass 1
+/master/channel/70/equalizer/gain 0
+/master/channel/70/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/71/equalizer/bypass 1
+/master/channel/71/equalizer/gain 0
+/master/channel/71/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/72/equalizer/bypass 1
+/master/channel/72/equalizer/gain 0
+/master/channel/72/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/73/equalizer/bypass 1
+/master/channel/73/equalizer/gain 0
+/master/channel/73/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/74/equalizer/bypass 1
+/master/channel/74/equalizer/gain 0
+/master/channel/74/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/75/equalizer/bypass 1
+/master/channel/75/equalizer/gain 0
+/master/channel/75/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/76/equalizer/bypass 1
+/master/channel/76/equalizer/gain 0
+/master/channel/76/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/77/equalizer/bypass 1
+/master/channel/77/equalizer/gain 0
+/master/channel/77/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/78/equalizer/bypass 1
+/master/channel/78/equalizer/gain 0
+/master/channel/78/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/79/equalizer/bypass 1
+/master/channel/79/equalizer/gain 0
+/master/channel/79/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/80/equalizer/bypass 1
+/master/channel/80/equalizer/gain 0
+/master/channel/80/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/81/equalizer/bypass 1
+/master/channel/81/equalizer/gain 0
+/master/channel/81/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/82/equalizer/bypass 1
+/master/channel/82/equalizer/gain 0
+/master/channel/82/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/83/equalizer/bypass 1
+/master/channel/83/equalizer/gain 0
+/master/channel/83/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/84/equalizer/bypass 1
+/master/channel/84/equalizer/gain 0
+/master/channel/84/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/85/equalizer/bypass 1
+/master/channel/85/equalizer/gain 0
+/master/channel/85/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/86/equalizer/bypass 1
+/master/channel/86/equalizer/gain 0
+/master/channel/86/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/87/equalizer/bypass 1
+/master/channel/87/equalizer/gain 0
+/master/channel/87/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/88/equalizer/bypass 1
+/master/channel/88/equalizer/gain 0
+/master/channel/88/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/89/equalizer/bypass 1
+/master/channel/89/equalizer/gain 0
+/master/channel/89/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/90/equalizer/bypass 1
+/master/channel/90/equalizer/gain 0
+/master/channel/90/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/91/equalizer/bypass 1
+/master/channel/91/equalizer/gain 0
+/master/channel/91/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/92/equalizer/bypass 1
+/master/channel/92/equalizer/gain 0
+/master/channel/92/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/93/equalizer/bypass 1
+/master/channel/93/equalizer/gain 0
+/master/channel/93/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/94/equalizer/bypass 1
+/master/channel/94/equalizer/gain 0
+/master/channel/94/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/95/equalizer/bypass 1
+/master/channel/95/equalizer/gain 0
+/master/channel/95/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/96/equalizer/bypass 1
+/master/channel/96/equalizer/gain 0
+/master/channel/96/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/97/equalizer/bypass 1
+/master/channel/97/equalizer/gain 0
+/master/channel/97/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/98/equalizer/bypass 1
+/master/channel/98/equalizer/gain 0
+/master/channel/98/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/99/equalizer/bypass 1
+/master/channel/99/equalizer/gain 0
+/master/channel/99/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/100/equalizer/bypass 1
+/master/channel/100/equalizer/gain 0
+/master/channel/100/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/101/equalizer/bypass 1
+/master/channel/101/equalizer/gain 0
+/master/channel/101/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/102/equalizer/bypass 1
+/master/channel/102/equalizer/gain 0
+/master/channel/102/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/103/equalizer/bypass 1
+/master/channel/103/equalizer/gain 0
+/master/channel/103/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/104/equalizer/bypass 1
+/master/channel/104/equalizer/gain 0
+/master/channel/104/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/105/equalizer/bypass 1
+/master/channel/105/equalizer/gain 0
+/master/channel/105/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/106/equalizer/bypass 1
+/master/channel/106/equalizer/gain 0
+/master/channel/106/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/107/equalizer/bypass 1
+/master/channel/107/equalizer/gain 0
+/master/channel/107/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/108/equalizer/bypass 1
+/master/channel/108/equalizer/gain 0
+/master/channel/108/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/109/equalizer/bypass 1
+/master/channel/109/equalizer/gain 0
+/master/channel/109/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/110/equalizer/bypass 1
+/master/channel/110/equalizer/gain 0
+/master/channel/110/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/111/equalizer/bypass 1
+/master/channel/111/equalizer/gain 0
+/master/channel/111/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/112/equalizer/bypass 1
+/master/channel/112/equalizer/gain 0
+/master/channel/112/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/113/equalizer/bypass 1
+/master/channel/113/equalizer/gain 0
+/master/channel/113/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/114/equalizer/bypass 1
+/master/channel/114/equalizer/gain 0
+/master/channel/114/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/115/equalizer/bypass 1
+/master/channel/115/equalizer/gain 0
+/master/channel/115/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/116/equalizer/bypass 1
+/master/channel/116/equalizer/gain 0
+/master/channel/116/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/117/equalizer/bypass 1
+/master/channel/117/equalizer/gain 0
+/master/channel/117/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/118/equalizer/bypass 1
+/master/channel/118/equalizer/gain 0
+/master/channel/118/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/119/equalizer/bypass 1
+/master/channel/119/equalizer/gain 0
+/master/channel/119/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/120/equalizer/bypass 1
+/master/channel/120/equalizer/gain 0
+/master/channel/120/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/121/equalizer/bypass 1
+/master/channel/121/equalizer/gain 0
+/master/channel/121/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/122/equalizer/bypass 1
+/master/channel/122/equalizer/gain 0
+/master/channel/122/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/123/equalizer/bypass 1
+/master/channel/123/equalizer/gain 0
+/master/channel/123/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/124/equalizer/bypass 1
+/master/channel/124/equalizer/gain 0
+/master/channel/124/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/125/equalizer/bypass 1
+/master/channel/125/equalizer/gain 0
+/master/channel/125/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/126/equalizer/bypass 1
+/master/channel/126/equalizer/gain 0
+/master/channel/126/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/127/equalizer/bypass 1
+/master/channel/127/equalizer/gain 0
+/master/channel/127/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/channel/128/equalizer/bypass 1
+/master/channel/128/equalizer/gain 0
+/master/channel/128/equalizer/filters/params 0 50 2 1 100 0 1 1 500 0 1 1 1000 0 1 1 2000 0 1 1 5000 0 1 1 10000 0 1 0 16000 2
+/master/output/mode "everything"
+/master/dim 0
+/master/lock 0
+/monitoring/name "Monitoring"
+/monitoring/color 1 1 1 1
+/monitoring/numinputs 2
+/monitoring/numoutputs 2
+/monitoring/visible 0
+/monitoring/trim 0
+/monitoring/dynamics/attack 10.01
+/monitoring/dynamics/release 30
+/monitoring/dynamics/lookahead 0
+/monitoring/dynamics/compressor/threshold -30
+/monitoring/dynamics/compressor/ratio 1
+/monitoring/dynamics/expander/threshold -60
+/monitoring/dynamics/expander/ratio 1
+/monitoring/dynamics/makeup 0
+/monitoring/dynamics/link 0
+/monitoring/dynamics/bypass 1
+/monitoring/dynamics/grid/visible 1
+/monitoring/dynamics/curve/fill 1
+/monitoring/dynamics/background/color 1 1 1 0
+/monitoring/dynamics/foreground/color 1 1 1 0.6
+/monitoring/dynamics/curve/color 0.8 0.8 0.8 1
+/monitoring/dynamics/curve/thickness 1
+/monitoring/dynamics/grid/color 0.501961 0.501961 0.501961 1
+/monitoring/dynamics/title "Monitoring"
+/monitoring/equalizer/bypass 1
+/monitoring/equalizer/gain 0
+/monitoring/equalizer/filter/1/active 0
+/monitoring/equalizer/filter/1/freq 50
+/monitoring/equalizer/filter/1/order 2
+/monitoring/equalizer/filter/2/active 1
+/monitoring/equalizer/filter/2/freq 100
+/monitoring/equalizer/filter/2/gain 0
+/monitoring/equalizer/filter/2/q 1
+/monitoring/equalizer/filter/3/active 1
+/monitoring/equalizer/filter/3/freq 500
+/monitoring/equalizer/filter/3/gain 0
+/monitoring/equalizer/filter/3/q 1
+/monitoring/equalizer/filter/4/active 1
+/monitoring/equalizer/filter/4/freq 1000
+/monitoring/equalizer/filter/4/gain 0
+/monitoring/equalizer/filter/4/q 1
+/monitoring/equalizer/filter/5/active 1
+/monitoring/equalizer/filter/5/freq 2000
+/monitoring/equalizer/filter/5/gain 0
+/monitoring/equalizer/filter/5/q 1
+/monitoring/equalizer/filter/6/active 1
+/monitoring/equalizer/filter/6/freq 5000
+/monitoring/equalizer/filter/6/gain 0
+/monitoring/equalizer/filter/6/q 1
+/monitoring/equalizer/filter/7/active 1
+/monitoring/equalizer/filter/7/freq 10000
+/monitoring/equalizer/filter/7/gain 0
+/monitoring/equalizer/filter/7/q 1
+/monitoring/equalizer/filter/8/active 0
+/monitoring/equalizer/filter/8/freq 16000
+/monitoring/equalizer/filter/8/order 2
+/monitoring/gain 0
+/monitoring/gain/ramptime 20
+/monitoring/mute 1
+/monitoring/annotation ""
+/monitoring/levels/input/visible 1
+/monitoring/levels/input/post 0
+/monitoring/levels/input/mode "peak"
+/monitoring/levels/output/visible 1
+/monitoring/levels/output/post 1
+/monitoring/levels/output/mode "peak"
+/monitoring/dim 0
+/monitoring/itd/scaling 100
+/monitoring/itd/scaling/bypass 0
+/monitoring/hrtf ""
+/monitoring/listener/orientation 0 0 0 1
+/monitoring/routing/output/empty
+/monitoring/lock 0
+/bus/number 1
+/bus/indices 1
+/bus/1/format "HOA"
+/bus/1/name "HOA Bus 1"
+/bus/1/color 0.803922 0.521569 0.247059 1
+/bus/1/numinputs 9
+/bus/1/numoutputs 4
+/bus/1/visible 1
+/bus/1/trim 0
+/bus/1/dynamics/attack 10.01
+/bus/1/dynamics/release 30
+/bus/1/dynamics/lookahead 0
+/bus/1/dynamics/compressor/threshold -30
+/bus/1/dynamics/compressor/ratio 1
+/bus/1/dynamics/expander/threshold -60
+/bus/1/dynamics/expander/ratio 1
+/bus/1/dynamics/makeup 0
+/bus/1/dynamics/link 0
+/bus/1/dynamics/bypass 1
+/bus/1/dynamics/grid/visible 1
+/bus/1/dynamics/curve/fill 1
+/bus/1/dynamics/background/color 1 1 1 0
+/bus/1/dynamics/foreground/color 0.803922 0.521569 0.247059 0.6
+/bus/1/dynamics/curve/color 0.643137 0.415686 0.196078 1
+/bus/1/dynamics/curve/thickness 1
+/bus/1/dynamics/grid/color 0.501961 0.501961 0.501961 1
+/bus/1/dynamics/title "HOA Bus 1"
+/bus/1/equalizer/bypass 1
+/bus/1/equalizer/gain 0
+/bus/1/equalizer/filter/1/active 0
+/bus/1/equalizer/filter/1/freq 50
+/bus/1/equalizer/filter/1/order 2
+/bus/1/equalizer/filter/2/active 1
+/bus/1/equalizer/filter/2/freq 100
+/bus/1/equalizer/filter/2/gain 0
+/bus/1/equalizer/filter/2/q 1
+/bus/1/equalizer/filter/3/active 1
+/bus/1/equalizer/filter/3/freq 500
+/bus/1/equalizer/filter/3/gain 0
+/bus/1/equalizer/filter/3/q 1
+/bus/1/equalizer/filter/4/active 1
+/bus/1/equalizer/filter/4/freq 1000
+/bus/1/equalizer/filter/4/gain 0
+/bus/1/equalizer/filter/4/q 1
+/bus/1/equalizer/filter/5/active 1
+/bus/1/equalizer/filter/5/freq 2000
+/bus/1/equalizer/filter/5/gain 0
+/bus/1/equalizer/filter/5/q 1
+/bus/1/equalizer/filter/6/active 1
+/bus/1/equalizer/filter/6/freq 5000
+/bus/1/equalizer/filter/6/gain 0
+/bus/1/equalizer/filter/6/q 1
+/bus/1/equalizer/filter/7/active 1
+/bus/1/equalizer/filter/7/freq 10000
+/bus/1/equalizer/filter/7/gain 0
+/bus/1/equalizer/filter/7/q 1
+/bus/1/equalizer/filter/8/active 0
+/bus/1/equalizer/filter/8/freq 16000
+/bus/1/equalizer/filter/8/order 2
+/bus/1/gain 0
+/bus/1/gain/ramptime 20
+/bus/1/mute 0
+/bus/1/annotation ""
+/bus/1/levels/input/visible 1
+/bus/1/levels/input/post 0
+/bus/1/levels/input/mode "peak"
+/bus/1/levels/output/visible 1
+/bus/1/levels/output/post 1
+/bus/1/levels/output/mode "peak"
+/bus/1/speaker/number 4
+/bus/1/speakers/correction/delay "off"
+/bus/1/speakers/correction/gain "off"
+/bus/1/speakers/aed 46.6782 36.0363 0.981391 135 -35.2644 1 -47.1445 -36.6365 0.967513 -135 35.2644 1
+/bus/1/speaker/1/delay 0
+/bus/1/speaker/2/delay 0
+/bus/1/speaker/3/delay 0
+/bus/1/speaker/4/delay 0
+/bus/1/speaker/1/gain/db 0
+/bus/1/speaker/2/gain/db 0
+/bus/1/speaker/3/gain/db 0
+/bus/1/speaker/4/gain/db 0
+/bus/1/speaker/1/name "1"
+/bus/1/speaker/2/name "2"
+/bus/1/speaker/3/name "3"
+/bus/1/speaker/4/name "4"
+/bus/1/speakers/visible 0
+/bus/1/routing/output/1/master 1
+/bus/1/routing/output/2/master 2
+/bus/1/routing/output/3/master 3
+/bus/1/routing/output/4/master 4
+/bus/1/lock 0
+/bus/1/delay 0
+/bus/1/delay/bypass 0
+/bus/1/monitor 0
+/bus/1/interpolation/time 30
+/bus/1/decoder/type "basic"
+/bus/1/decoder/method "energy-preserving"
+/bus/1/decoder/normalization "N3D"
+/bus/1/decoder/crossover 700
+/bus/1/decoder/powercompensation 0
+/bus/1/yaw 0
+/bus/1/pitch 0
+/bus/1/roll 0
+/bus/1/blur/value 0
+/bus/1/blur/bypass 1
+/bus/1/focus/beam/number 1
+/bus/1/focus/dimension 3
+/bus/1/focus/zoom 1
+/bus/1/focus/dsp/bypass 1
+/bus/1/focus/beam/1/selectivity 0
+/bus/1/focus/beam/1/direction/aed 0 0 1
+/bus/1/focus/beam/1/color 1 1 1 1
+/bus/1/focus/beam/1/visible 0
+/bus/1/routing/stream/empty
+/reverb/1/name "HOA Reverb 1"
+/reverb/1/color 0.501961 0.501961 0.501961 1
+/reverb/1/numinputs 8
+/reverb/1/numoutputs 4
+/reverb/1/visible 1
+/reverb/1/trim 0
+/reverb/1/dynamics/attack 10.01
+/reverb/1/dynamics/release 30
+/reverb/1/dynamics/lookahead 0
+/reverb/1/dynamics/compressor/threshold -30
+/reverb/1/dynamics/compressor/ratio 1
+/reverb/1/dynamics/expander/threshold -60
+/reverb/1/dynamics/expander/ratio 1
+/reverb/1/dynamics/makeup 0
+/reverb/1/dynamics/link 0
+/reverb/1/dynamics/bypass 1
+/reverb/1/dynamics/grid/visible 1
+/reverb/1/dynamics/curve/fill 1
+/reverb/1/dynamics/background/color 1 1 1 0
+/reverb/1/dynamics/foreground/color 0.501961 0.501961 0.501961 0.6
+/reverb/1/dynamics/curve/color 0.4 0.4 0.4 1
+/reverb/1/dynamics/curve/thickness 1
+/reverb/1/dynamics/grid/color 0.501961 0.501961 0.501961 1
+/reverb/1/dynamics/title "HOA Reverb 1"
+/reverb/1/equalizer/bypass 1
+/reverb/1/equalizer/gain 0
+/reverb/1/equalizer/filter/1/active 0
+/reverb/1/equalizer/filter/1/freq 50
+/reverb/1/equalizer/filter/1/order 2
+/reverb/1/equalizer/filter/2/active 1
+/reverb/1/equalizer/filter/2/freq 100
+/reverb/1/equalizer/filter/2/gain 0
+/reverb/1/equalizer/filter/2/q 1
+/reverb/1/equalizer/filter/3/active 1
+/reverb/1/equalizer/filter/3/freq 500
+/reverb/1/equalizer/filter/3/gain 0
+/reverb/1/equalizer/filter/3/q 1
+/reverb/1/equalizer/filter/4/active 1
+/reverb/1/equalizer/filter/4/freq 1000
+/reverb/1/equalizer/filter/4/gain 0
+/reverb/1/equalizer/filter/4/q 1
+/reverb/1/equalizer/filter/5/active 1
+/reverb/1/equalizer/filter/5/freq 2000
+/reverb/1/equalizer/filter/5/gain 0
+/reverb/1/equalizer/filter/5/q 1
+/reverb/1/equalizer/filter/6/active 1
+/reverb/1/equalizer/filter/6/freq 5000
+/reverb/1/equalizer/filter/6/gain 0
+/reverb/1/equalizer/filter/6/q 1
+/reverb/1/equalizer/filter/7/active 1
+/reverb/1/equalizer/filter/7/freq 10000
+/reverb/1/equalizer/filter/7/gain 0
+/reverb/1/equalizer/filter/7/q 1
+/reverb/1/equalizer/filter/8/active 0
+/reverb/1/equalizer/filter/8/freq 16000
+/reverb/1/equalizer/filter/8/order 2
+/reverb/1/gain 0
+/reverb/1/gain/ramptime 20
+/reverb/1/mute 1
+/reverb/1/annotation ""
+/reverb/1/levels/input/visible 1
+/reverb/1/levels/input/post 0
+/reverb/1/levels/input/mode "peak"
+/reverb/1/levels/output/visible 1
+/reverb/1/levels/output/post 1
+/reverb/1/levels/output/mode "peak"
+/reverb/1/lock 0
+/reverb/1/cluster/gain -6
+/reverb/1/cluster/filter/bypass 1
+/reverb/1/cluster/gain/low 0
+/reverb/1/cluster/gain/med 0
+/reverb/1/cluster/gain/high 0
+/reverb/1/cluster/freq/low 250
+/reverb/1/cluster/freq/high 4000
+/reverb/1/cluster/mute 0
+/reverb/1/cluster/delays 20.25 31.3633 36.1999 44.4223 56.5628 64.2643 72.8267 83.42
+/reverb/1/tr0 1.995
+/reverb/1/trl 1
+/reverb/1/trm 1
+/reverb/1/trh 0.5
+/reverb/1/fl 250
+/reverb/1/fh 8000
+/reverb/1/air 1
+/reverb/1/reverb/delays 52.9 72.1111 80.4721 94.6858 115.673 128.986 143.788 162.1
+/lfe/name "LFE"
+/lfe/color 1 1 0 1
+/lfe/numinputs 1
+/lfe/numoutputs 1
+/lfe/visible 1
+/lfe/trim 0
+/lfe/dynamics/attack 10.01
+/lfe/dynamics/release 30
+/lfe/dynamics/lookahead 0
+/lfe/dynamics/compressor/threshold -30
+/lfe/dynamics/compressor/ratio 1
+/lfe/dynamics/expander/threshold -60
+/lfe/dynamics/expander/ratio 1
+/lfe/dynamics/makeup 0
+/lfe/dynamics/link 0
+/lfe/dynamics/bypass 1
+/lfe/dynamics/grid/visible 1
+/lfe/dynamics/curve/fill 1
+/lfe/dynamics/background/color 1 1 1 0
+/lfe/dynamics/foreground/color 1 1 0 0.6
+/lfe/dynamics/curve/color 0.8 0.8 0 1
+/lfe/dynamics/curve/thickness 1
+/lfe/dynamics/grid/color 0.501961 0.501961 0.501961 1
+/lfe/dynamics/title "LFE"
+/lfe/equalizer/bypass 1
+/lfe/equalizer/gain 0
+/lfe/equalizer/filter/1/active 0
+/lfe/equalizer/filter/1/freq 50
+/lfe/equalizer/filter/1/order 2
+/lfe/equalizer/filter/2/active 1
+/lfe/equalizer/filter/2/freq 100
+/lfe/equalizer/filter/2/gain 0
+/lfe/equalizer/filter/2/q 1
+/lfe/equalizer/filter/3/active 1
+/lfe/equalizer/filter/3/freq 500
+/lfe/equalizer/filter/3/gain 0
+/lfe/equalizer/filter/3/q 1
+/lfe/equalizer/filter/4/active 1
+/lfe/equalizer/filter/4/freq 1000
+/lfe/equalizer/filter/4/gain 0
+/lfe/equalizer/filter/4/q 1
+/lfe/equalizer/filter/5/active 1
+/lfe/equalizer/filter/5/freq 2000
+/lfe/equalizer/filter/5/gain 0
+/lfe/equalizer/filter/5/q 1
+/lfe/equalizer/filter/6/active 1
+/lfe/equalizer/filter/6/freq 5000
+/lfe/equalizer/filter/6/gain 0
+/lfe/equalizer/filter/6/q 1
+/lfe/equalizer/filter/7/active 1
+/lfe/equalizer/filter/7/freq 10000
+/lfe/equalizer/filter/7/gain 0
+/lfe/equalizer/filter/7/q 1
+/lfe/equalizer/filter/8/active 0
+/lfe/equalizer/filter/8/freq 16000
+/lfe/equalizer/filter/8/order 2
+/lfe/gain 0
+/lfe/gain/ramptime 20
+/lfe/mute 0
+/lfe/annotation ""
+/lfe/levels/input/visible 1
+/lfe/levels/input/post 0
+/lfe/levels/input/mode "peak"
+/lfe/levels/output/visible 1
+/lfe/levels/output/post 1
+/lfe/levels/output/mode "peak"
+/lfe/routing/output/empty
+/lfe/lock 0
+/lfe/cutoff 50
+/track/number 0
+/track/indices
+/stereo/number 0
+/stereo/indices
+/multi/number 1
+/multi/indices 1
+/eigenmike/number 0
+/eigenmike/indices
+/tree/number 0
+/tree/indices
+/d2m/number 0
+/d2m/indices
+/d2b/number 0
+/d2b/indices
+/bformat/number 0
+/bformat/indices
+/aformat/number 0
+/aformat/indices
+/zylia/number 0
+/zylia/indices
+/multi/1/name "HOA_input"
+/multi/1/color 0 1 1 1
+/multi/1/numinputs 16
+/multi/1/visible 1
+/multi/1/trim 0
+/multi/1/dynamics/attack 10.01
+/multi/1/dynamics/release 30
+/multi/1/dynamics/lookahead 0
+/multi/1/dynamics/compressor/threshold -30
+/multi/1/dynamics/compressor/ratio 1
+/multi/1/dynamics/expander/threshold -60
+/multi/1/dynamics/expander/ratio 1
+/multi/1/dynamics/makeup 0
+/multi/1/dynamics/link 0
+/multi/1/dynamics/bypass 1
+/multi/1/dynamics/grid/visible 1
+/multi/1/dynamics/curve/fill 1
+/multi/1/dynamics/background/color 1 1 1 0
+/multi/1/dynamics/foreground/color 0 1 1 0.6
+/multi/1/dynamics/curve/color 0 0.8 0.8 1
+/multi/1/dynamics/curve/thickness 1
+/multi/1/dynamics/grid/color 0.501961 0.501961 0.501961 1
+/multi/1/dynamics/title "HOA_input"
+/multi/1/equalizer/bypass 1
+/multi/1/equalizer/gain 0
+/multi/1/equalizer/filter/1/active 0
+/multi/1/equalizer/filter/1/freq 50
+/multi/1/equalizer/filter/1/order 2
+/multi/1/equalizer/filter/2/active 1
+/multi/1/equalizer/filter/2/freq 100
+/multi/1/equalizer/filter/2/gain 0
+/multi/1/equalizer/filter/2/q 1
+/multi/1/equalizer/filter/3/active 1
+/multi/1/equalizer/filter/3/freq 500
+/multi/1/equalizer/filter/3/gain 0
+/multi/1/equalizer/filter/3/q 1
+/multi/1/equalizer/filter/4/active 1
+/multi/1/equalizer/filter/4/freq 1000
+/multi/1/equalizer/filter/4/gain 0
+/multi/1/equalizer/filter/4/q 1
+/multi/1/equalizer/filter/5/active 1
+/multi/1/equalizer/filter/5/freq 2000
+/multi/1/equalizer/filter/5/gain 0
+/multi/1/equalizer/filter/5/q 1
+/multi/1/equalizer/filter/6/active 1
+/multi/1/equalizer/filter/6/freq 5000
+/multi/1/equalizer/filter/6/gain 0
+/multi/1/equalizer/filter/6/q 1
+/multi/1/equalizer/filter/7/active 1
+/multi/1/equalizer/filter/7/freq 10000
+/multi/1/equalizer/filter/7/gain 0
+/multi/1/equalizer/filter/7/q 1
+/multi/1/equalizer/filter/8/active 0
+/multi/1/equalizer/filter/8/freq 16000
+/multi/1/equalizer/filter/8/order 2
+/multi/1/gain 0
+/multi/1/gain/ramptime 20
+/multi/1/mute 0
+/multi/1/annotation ""
+/multi/1/levels/input/visible 1
+/multi/1/levels/input/post 0
+/multi/1/levels/input/mode "peak"
+/multi/1/levels/output/visible 1
+/multi/1/levels/output/post 1
+/multi/1/levels/output/mode "peak"
+/multi/1/solo 0
+/multi/1/bus/A/destination "HOA Bus 1"
+/multi/1/bus/B/destination "----"
+/multi/1/bus/C/destination "----"
+/multi/1/bus/D/destination "----"
+/multi/1/bus/E/destination "----"
+/multi/1/bus/F/destination "----"
+/multi/1/bus/A/mute 0
+/multi/1/bus/B/mute 0
+/multi/1/bus/C/mute 0
+/multi/1/bus/D/mute 0
+/multi/1/bus/E/mute 0
+/multi/1/bus/F/mute 0
+/multi/1/bus/A/gain 0
+/multi/1/bus/B/gain 0
+/multi/1/bus/C/gain 0
+/multi/1/bus/D/gain 0
+/multi/1/bus/E/gain 0
+/multi/1/bus/F/gain 0
+/multi/1/bus/display "A"
+/multi/1/routing/input/1/adc 1
+/multi/1/routing/input/2/adc 2
+/multi/1/routing/input/3/adc 3
+/multi/1/routing/input/4/adc 4
+/multi/1/routing/input/5/adc 5
+/multi/1/routing/input/6/adc 6
+/multi/1/routing/input/7/adc 7
+/multi/1/routing/input/8/adc 8
+/multi/1/routing/input/9/adc 9
+/multi/1/routing/input/10/adc 10
+/multi/1/routing/input/11/adc 11
+/multi/1/routing/input/12/adc 12
+/multi/1/routing/input/13/adc 13
+/multi/1/routing/input/14/adc 14
+/multi/1/routing/input/15/adc 15
+/multi/1/routing/input/16/adc 16
+/multi/1/lfe/send 0
+/multi/1/lfe/mute 0
+/multi/1/dist 1
+/multi/1/direct/linkedtodistance 1
+/multi/1/early/linkedtodistance 1
+/multi/1/reverb/linkedtodistance 1
+/multi/1/direct/gain -0.7
+/multi/1/direct/gain/low 0
+/multi/1/direct/gain/med 0
+/multi/1/direct/gain/high 0
+/multi/1/direct/freq/low 250
+/multi/1/direct/freq/high 4000
+/multi/1/direct/filter/bypass 1
+/multi/1/early/gain -8.5
+/multi/1/early/gain/low 0
+/multi/1/early/gain/med 0
+/multi/1/early/gain/high 0
+/multi/1/early/freq/low 250
+/multi/1/early/freq/high 4000
+/multi/1/early/filter/bypass 1
+/multi/1/reverb/send -18
+/multi/1/reverb/send/ramptime 20
+/multi/1/early/width 30
+/multi/1/direct/mute 0
+/multi/1/early/mute 0
+/multi/1/reverb/mute 0
+/multi/1/delay 0
+/multi/1/bus/A/early/delays 22.22 25.2969 26.6361 28.9126 32.274 34.4063 36.777 39.71
+/multi/1/bus/A/early/gains 1 1 1 1 1 1 1 1
+/multi/1/bus/B/early/delays 22.22 25.2969 26.6361 28.9126 32.274 34.4063 36.777 39.71
+/multi/1/bus/B/early/gains 1 1 1 1 1 1 1 1
+/multi/1/bus/C/early/delays 22.22 25.2969 26.6361 28.9126 32.274 34.4063 36.777 39.71
+/multi/1/bus/C/early/gains 1 1 1 1 1 1 1 1
+/multi/1/bus/D/early/delays 22.22 25.2969 26.6361 28.9126 32.274 34.4063 36.777 39.71
+/multi/1/bus/D/early/gains 1 1 1 1 1 1 1 1
+/multi/1/bus/E/early/delays 22.22 25.2969 26.6361 28.9126 32.274 34.4063 36.777 39.71
+/multi/1/bus/E/early/gains 1 1 1 1 1 1 1 1
+/multi/1/bus/F/early/delays 22.22 25.2969 26.6361 28.9126 32.274 34.4063 36.777 39.71
+/multi/1/bus/F/early/gains 1 1 1 1 1 1 1 1
+/multi/1/lock 0
+/multi/1/channel/number 16
+/multi/1/channels/correction/delay "off"
+/multi/1/channels/correction/gain "off"
+/multi/1/channels/aed 0 0 1 22.5 0 1 45 0 1 67.5 0 1 90 0 1 112.5 0 1 135 0 1 157.5 0 1 -180 0 1 -157.5 0 1 -135 0 1 -112.5 0 1 -90 0 1 -67.5 0 1 -45 0 1 -22.5 0 1
+/multi/1/channel/1/delay 0
+/multi/1/channel/2/delay 0
+/multi/1/channel/3/delay 0
+/multi/1/channel/4/delay 0
+/multi/1/channel/5/delay 0
+/multi/1/channel/6/delay 0
+/multi/1/channel/7/delay 0
+/multi/1/channel/8/delay 0
+/multi/1/channel/9/delay 0
+/multi/1/channel/10/delay 0
+/multi/1/channel/11/delay 0
+/multi/1/channel/12/delay 0
+/multi/1/channel/13/delay 0
+/multi/1/channel/14/delay 0
+/multi/1/channel/15/delay 0
+/multi/1/channel/16/delay 0
+/multi/1/channel/1/gain/db 0
+/multi/1/channel/2/gain/db 0
+/multi/1/channel/3/gain/db 0
+/multi/1/channel/4/gain/db 0
+/multi/1/channel/5/gain/db 0
+/multi/1/channel/6/gain/db 0
+/multi/1/channel/7/gain/db 0
+/multi/1/channel/8/gain/db 0
+/multi/1/channel/9/gain/db 0
+/multi/1/channel/10/gain/db 0
+/multi/1/channel/11/gain/db 0
+/multi/1/channel/12/gain/db 0
+/multi/1/channel/13/gain/db 0
+/multi/1/channel/14/gain/db 0
+/multi/1/channel/15/gain/db 0
+/multi/1/channel/16/gain/db 0
+/multi/1/channel/1/name "1"
+/multi/1/channel/2/name "2"
+/multi/1/channel/3/name "3"
+/multi/1/channel/4/name "4"
+/multi/1/channel/5/name "5"
+/multi/1/channel/6/name "6"
+/multi/1/channel/7/name "7"
+/multi/1/channel/8/name "8"
+/multi/1/channel/9/name "9"
+/multi/1/channel/10/name "10"
+/multi/1/channel/11/name "11"
+/multi/1/channel/12/name "12"
+/multi/1/channel/13/name "13"
+/multi/1/channel/14/name "14"
+/multi/1/channel/15/name "15"
+/multi/1/channel/16/name "16"
+/group/number 3
+/group/1/name "all"
+/group/1/affects/mute 1
+/group/1/affects/solo 1
+/group/1/affects/send 1
+/group/1/multi 1
+/group/1/active 0
+/group/2/name "all mono"
+/group/2/affects/mute 1
+/group/2/affects/solo 1
+/group/2/affects/send 1
+/group/2/active 0
+/group/3/name "all multi"
+/group/3/affects/mute 1
+/group/3/affects/solo 1
+/group/3/affects/send 1
+/group/3/multi 1
+/group/3/active 0
+/internals 8
+/viewer/layout "single"
+/viewer/background/color 0.709804 0.709804 0.709804 1
+/viewer/backgroundimage/file ""
+/viewer/backgroundimage/visible 1
+/viewer/backgroundimage/opacity 1
+/viewer/backgroundimage/scale 100
+/viewer/backgroundimage/angle 0
+/viewer/backgroundimage/offset/x 0
+/viewer/backgroundimage/offset/y 0
+/viewer/backgroundimage/quality "medium"
+/viewer/display/zoom 100
+/viewer/display/offset/x 0
+/viewer/display/offset/y 0
+/viewer/display/offset/z 0
+/viewer/display/zoom/lock 0
+/viewer/axis/visible 1
+/viewer/axis/label/visible 1
+/viewer/axis/origin/visible 1
+/viewer/axis/color 1 1 1 1
+/viewer/axis/thickness 2
+/viewer/grid/visible 1
+/viewer/grid/mode "circular"
+/viewer/grid/spacing 1
+/viewer/grid/line/number 30
+/viewer/grid/angulardivisions/number 16
+/viewer/grid/angulardivisions/visible 0
+/viewer/grid/dashed 0
+/viewer/grid/color 1 1 1 0.498039
+/viewer/grid/thickness 1
+/viewer/legend/visible 1
+/viewer/legend/color 1 1 1 1
+/viewer/legend/unit "meters"
+/viewer/emphasis/source 1
+/viewer/emphasis/speaker 0
+/viewer/emphasis/microphone 0
+/viewer/settings/visible 0
+/viewer/settings/editable 1
+/viewer/area/number 0
+/viewer/anchor/number 0

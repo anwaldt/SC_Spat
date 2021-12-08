@@ -14,9 +14,11 @@ SynthDef(\double_lfo,
 
 		var ramp, x;
 
+		dur = max(dur,0.01);
+
 		ramp = Sweep.kr(trig, run / dur).linlin(0, 1, 0, dir, \minmax);
 
-		x = (gain * sin(ramp)) + offset + 0.5;
+		x = (gain * sin(ramp)) + offset;
 
 
 		// var x = Sweep.kr(trig, rate);
@@ -26,3 +28,4 @@ SynthDef(\double_lfo,
 
 
 }).add;
+
