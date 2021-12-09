@@ -9,7 +9,7 @@ SynthDef(\binaural_mono_encoder_3,
 		gain    = 0.5
 		|
 
-		var sound = gain * SoundIn.ar(in_bus);
+		var sound = gain * In.ar(in_bus);
 
 		var level = (1/(max(0,dist)+1.0));
 

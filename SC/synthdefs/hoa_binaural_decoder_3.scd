@@ -7,6 +7,6 @@ SynthDef(\hoa_binaural_decoder_3,
 		|
 
 		var sig = HOABinaural.ar(3, In.ar(in_bus,16));
-		Out.ar(0, sig);
+		Out.ar(out_bus, sig);
 
 }).add;

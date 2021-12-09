@@ -590,7 +590,7 @@
 /bus/1/equalizer/filter/8/order 2
 /bus/1/gain 0
 /bus/1/gain/ramptime 20
-/bus/1/mute 0
+/bus/1/mute 1
 /bus/1/annotation ""
 /bus/1/levels/input/visible 1
 /bus/1/levels/input/post 0
@@ -785,7 +785,7 @@
 /lfe/equalizer/filter/8/order 2
 /lfe/gain 0
 /lfe/gain/ramptime 20
-/lfe/mute 0
+/lfe/mute 1
 /lfe/annotation ""
 /lfe/levels/input/visible 1
 /lfe/levels/input/post 0
