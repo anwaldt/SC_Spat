@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aj-snapshot>
+<jack>
+  <client name="system">
+    <port name="capture_1">
+      <connection port="SC_Spat:in_1" />
+    </port>
+    <port name="capture_2">
+      <connection port="SC_Spat:in_2" />
+    </port>
+    <port name="capture_3">
+      <connection port="SC_Spat:in_3" />
+    </port>
+    <port name="capture_4">
+      <connection port="SC_Spat:in_4" />
+    </port>
+    <port name="capture_5">
+      <connection port="SC_Spat:in_5" />
+    </port>
+    <port name="capture_6">
+      <connection port="SC_Spat:in_6" />
+    </port>
+    <port name="capture_7">
+      <connection port="SC_Spat:in_7" />
+    </port>
+    <port name="capture_8">
+      <connection port="SC_Spat:in_8" />
+    </port>
+    <port name="capture_9">
+      <connection port="SC_Spat:in_9" />
+    </port>
+    <port name="capture_10">
+      <connection port="SC_Spat:in_10" />
+    </port>
+    <port name="capture_11">
+      <connection port="SC_Spat:in_11" />
+    </port>
+    <port name="capture_12">
+      <connection port="SC_Spat:in_12" />
+    </port>
+    <port name="capture_13">
+      <connection port="SC_Spat:in_13" />
+    </port>
+    <port name="capture_14">
+      <connection port="SC_Spat:in_14" />
+    </port>
+    <port name="capture_15">
+      <connection port="SC_Spat:in_15" />
+    </port>
+    <port name="capture_16">
+      <connection port="SC_Spat:in_16" />
+    </port>
+    <port name="capture_17">
+      <connection port="SC_Spat:in_17" />
+    </port>
+    <port name="capture_18">
+      <connection port="SC_Spat:in_18" />
+    </port>
+    <port name="capture_19">
+      <connection port="SC_Spat:in_19" />
+    </port>
+    <port name="capture_20">
+      <connection port="SC_Spat:in_20" />
+    </port>
+    <port name="capture_21">
+      <connection port="SC_Spat:in_21" />
+    </port>
+    <port name="capture_22">
+      <connection port="SC_Spat:in_22" />
+    </port>
+    <port name="capture_23">
+      <connection port="SC_Spat:in_23" />
+    </port>
+    <port name="capture_24">
+      <connection port="SC_Spat:in_24" />
+    </port>
+    <port name="capture_25">
+      <connection port="SC_Spat:in_25" />
+    </port>
+    <port name="capture_26">
+      <connection port="SC_Spat:in_26" />
+    </port>
+    <port name="capture_27">
+      <connection port="SC_Spat:in_27" />
+    </port>
+    <port name="capture_28">
+      <connection port="SC_Spat:in_28" />
+    </port>
+    <port name="capture_29">
+      <connection port="SC_Spat:in_29" />
+    </port>
+    <port name="capture_30">
+      <connection port="SC_Spat:in_30" />
+    </port>
+    <port name="capture_31">
+      <connection port="SC_Spat:in_31" />
+    </port>
+    <port name="capture_32">
+      <connection port="SC_Spat:in_32" />
+    </port>
+    <port name="capture_33" />
+    <port name="capture_34" />
+    <port name="capture_35" />
+    <port name="capture_36" />
+    <port name="capture_37" />
+    <port name="capture_38" />
+    <port name="capture_39" />
+    <port name="capture_40" />
+    <port name="capture_41" />
+    <port name="capture_42" />
+    <port name="capture_43" />
+    <port name="capture_44" />
+    <port name="capture_45" />
+    <port name="capture_46" />
+    <port name="capture_47" />
+    <port name="capture_48" />
+  </client>
+  <client name="pulse_out">
+    <port name="front-left" />
+    <port name="front-right" />
+  </client>
+  <client name="a2j">
+    <port name="Midi Through [14] (capture): Midi Through Port-0" />
+  </client>
+  <client name="SC_Spat">
+    <port name="out_1">
+      <connection port="system:playback_1" />
+    </port>
+    <port name="out_2">
+      <connection port="system:playback_2" />
+    </port>
+    <port name="out_3">
+      <connection port="system:playback_3" />
+    </port>
+    <port name="out_4">
+      <connection port="system:playback_4" />
+    </port>
+    <port name="out_5">
+      <connection port="PanoramixJack:in_1" />
+    </port>
+    <port name="out_6">
+      <connection port="PanoramixJack:in_2" />
+    </port>
+    <port name="out_7">
+      <connection port="PanoramixJack:in_3" />
+    </port>
+    <port name="out_8">
+      <connection port="PanoramixJack:in_4" />
+    </port>
+    <port name="out_9">
+      <connection port="PanoramixJack:in_5" />
+    </port>
+    <port name="out_10">
+      <connection port="PanoramixJack:in_6" />
+    </port>
+    <port name="out_11">
+      <connection port="PanoramixJack:in_7" />
+    </port>
+    <port name="out_12">
+      <connection port="PanoramixJack:in_8" />
+    </port>
+    <port name="out_13">
+      <connection port="PanoramixJack:in_9" />
+    </port>
+    <port name="out_14">
+      <connection port="PanoramixJack:in_10" />
+    </port>
+    <port name="out_15">
+      <connection port="PanoramixJack:in_11" />
+    </port>
+    <port name="out_16">
+      <connection port="PanoramixJack:in_12" />
+    </port>
+    <port name="out_17">
+      <connection port="PanoramixJack:in_13" />
+    </port>
+    <port name="out_18">
+      <connection port="PanoramixJack:in_14" />
+    </port>
+    <port name="out_19">
+      <connection port="PanoramixJack:in_15" />
+    </port>
+    <port name="out_20">
+      <connection port="PanoramixJack:in_16" />
+    </port>
+    <port name="out_21" />
+    <port name="out_22" />
+    <port name="out_23" />
+    <port name="out_24" />
+    <port name="out_25" />
+    <port name="out_26" />
+    <port name="out_27" />
+    <port name="out_28" />
+    <port name="out_29" />
+    <port name="out_30" />
+    <port name="out_31" />
+    <port name="out_32" />
+  </client>
+  <client name="PanoramixJack">
+    <port name="out_1">
+      <connection port="system:playback_1" />
+    </port>
+    <port name="out_2">
+      <connection port="system:playback_2" />
+    </port>
+    <port name="out_3">
+      <connection port="system:playback_3" />
+    </port>
+    <port name="out_4">
+      <connection port="system:playback_4" />
+    </port>
+    <port name="out_5" />
+    <port name="out_6" />
+    <port name="out_7" />
+    <port name="out_8" />
+    <port name="out_9" />
+    <port name="out_10" />
+    <port name="out_11" />
+    <port name="out_12" />
+    <port name="out_13" />
+    <port name="out_14" />
+    <port name="out_15" />
+    <port name="out_16" />
+    <port name="out_17" />
+    <port name="out_18" />
+    <port name="out_19" />
+    <port name="out_20" />
+    <port name="out_21" />
+    <port name="out_22" />
+    <port name="out_23" />
+    <port name="out_24" />
+    <port name="out_25" />
+    <port name="out_26" />
+    <port name="out_27" />
+    <port name="out_28" />
+    <port name="out_29" />
+    <port name="out_30" />
+    <port name="out_31" />
+    <port name="out_32" />
+    <port name="out_33" />
+    <port name="out_34" />
+    <port name="out_35" />
+    <port name="out_36" />
+    <port name="out_37" />
+    <port name="out_38" />
+    <port name="out_39" />
+    <port name="out_40" />
+    <port name="out_41" />
+    <port name="out_42" />
+    <port name="out_43" />
+    <port name="out_44" />
+    <port name="out_45" />
+    <port name="out_46" />
+    <port name="out_47" />
+    <port name="out_48" />
+    <port name="out_49" />
+    <port name="out_50" />
+    <port name="out_51" />
+    <port name="out_52" />
+    <port name="out_53" />
+    <port name="out_54" />
+    <port name="out_55" />
+    <port name="out_56" />
+    <port name="out_57" />
+    <port name="out_58" />
+    <port name="out_59" />
+    <port name="out_60" />
+    <port name="out_61" />
+    <port name="out_62" />
+    <port name="out_63" />
+    <port name="out_64" />
+    <port name="out_65" />
+    <port name="out_66" />
+    <port name="out_67" />
+    <port name="out_68" />
+    <port name="out_69" />
+    <port name="out_70" />
+    <port name="out_71" />
+    <port name="out_72" />
+    <port name="out_73" />
+    <port name="out_74" />
+    <port name="out_75" />
+    <port name="out_76" />
+    <port name="out_77" />
+    <port name="out_78" />
+    <port name="out_79" />
+    <port name="out_80" />
+    <port name="out_81" />
+    <port name="out_82" />
+    <port name="out_83" />
+    <port name="out_84" />
+    <port name="out_85" />
+    <port name="out_86" />
+    <port name="out_87" />
+    <port name="out_88" />
+    <port name="out_89" />
+    <port name="out_90" />
+    <port name="out_91" />
+    <port name="out_92" />
+    <port name="out_93" />
+    <port name="out_94" />
+    <port name="out_95" />
+    <port name="out_96" />
+    <port name="out_97" />
+    <port name="out_98" />
+    <port name="out_99" />
+    <port name="out_100" />
+    <port name="out_101" />
+    <port name="out_102" />
+    <port name="out_103" />
+    <port name="out_104" />
+    <port name="out_105" />
+    <port name="out_106" />
+    <port name="out_107" />
+    <port name="out_108" />
+    <port name="out_109" />
+    <port name="out_110" />
+    <port name="out_111" />
+    <port name="out_112" />
+    <port name="out_113" />
+    <port name="out_114" />
+    <port name="out_115" />
+    <port name="out_116" />
+    <port name="out_117" />
+    <port name="out_118" />
+    <port name="out_119" />
+    <port name="out_120" />
+    <port name="out_121" />
+    <port name="out_122" />
+    <port name="out_123" />
+    <port name="out_124" />
+    <port name="out_125" />
+    <port name="out_126" />
+    <port name="out_127" />
+    <port name="out_128" />
+    <port name="out_129" />
+    <port name="out_130" />
+    <port name="out_131" />
+    <port name="out_132" />
+    <port name="out_133" />
+    <port name="out_134" />
+    <port name="out_135" />
+    <port name="out_136" />
+    <port name="out_137" />
+    <port name="out_138" />
+    <port name="out_139" />
+    <port name="out_140" />
+    <port name="out_141" />
+    <port name="out_142" />
+    <port name="out_143" />
+    <port name="out_144" />
+    <port name="out_145" />
+    <port name="out_146" />
+    <port name="out_147" />
+    <port name="out_148" />
+    <port name="out_149" />
+    <port name="out_150" />
+    <port name="out_151" />
+    <port name="out_152" />
+    <port name="out_153" />
+    <port name="out_154" />
+    <port name="out_155" />
+    <port name="out_156" />
+    <port name="out_157" />
+    <port name="out_158" />
+    <port name="out_159" />
+    <port name="out_160" />
+    <port name="out_161" />
+    <port name="out_162" />
+    <port name="out_163" />
+    <port name="out_164" />
+    <port name="out_165" />
+    <port name="out_166" />
+    <port name="out_167" />
+    <port name="out_168" />
+    <port name="out_169" />
+    <port name="out_170" />
+    <port name="out_171" />
+    <port name="out_172" />
+    <port name="out_173" />
+    <port name="out_174" />
+    <port name="out_175" />
+    <port name="out_176" />
+    <port name="out_177" />
+    <port name="out_178" />
+    <port name="out_179" />
+    <port name="out_180" />
+    <port name="out_181" />
+    <port name="out_182" />
+    <port name="out_183" />
+    <port name="out_184" />
+    <port name="out_185" />
+    <port name="out_186" />
+    <port name="out_187" />
+    <port name="out_188" />
+    <port name="out_189" />
+    <port name="out_190" />
+    <port name="out_191" />
+    <port name="out_192" />
+    <port name="out_193" />
+    <port name="out_194" />
+    <port name="out_195" />
+    <port name="out_196" />
+    <port name="out_197" />
+    <port name="out_198" />
+    <port name="out_199" />
+    <port name="out_200" />
+    <port name="out_201" />
+    <port name="out_202" />
+    <port name="out_203" />
+    <port name="out_204" />
+    <port name="out_205" />
+    <port name="out_206" />
+    <port name="out_207" />
+    <port name="out_208" />
+    <port name="out_209" />
+    <port name="out_210" />
+    <port name="out_211" />
+    <port name="out_212" />
+    <port name="out_213" />
+    <port name="out_214" />
+    <port name="out_215" />
+    <port name="out_216" />
+    <port name="out_217" />
+    <port name="out_218" />
+    <port name="out_219" />
+    <port name="out_220" />
+    <port name="out_221" />
+    <port name="out_222" />
+    <port name="out_223" />
+    <port name="out_224" />
+    <port name="out_225" />
+    <port name="out_226" />
+    <port name="out_227" />
+    <port name="out_228" />
+    <port name="out_229" />
+    <port name="out_230" />
+    <port name="out_231" />
+    <port name="out_232" />
+    <port name="out_233" />
+    <port name="out_234" />
+    <port name="out_235" />
+    <port name="out_236" />
+    <port name="out_237" />
+    <port name="out_238" />
+    <port name="out_239" />
+    <port name="out_240" />
+    <port name="out_241" />
+    <port name="out_242" />
+    <port name="out_243" />
+    <port name="out_244" />
+    <port name="out_245" />
+    <port name="out_246" />
+    <port name="out_247" />
+    <port name="out_248" />
+    <port name="out_249" />
+    <port name="out_250" />
+    <port name="out_251" />
+    <port name="out_252" />
+    <port name="out_253" />
+    <port name="out_254" />
+    <port name="out_255" />
+    <port name="out_256" />
+  </client>
+</jack>
+</aj-snapshot>
