@@ -44,10 +44,10 @@ postln("Launching with port:"++~server_ADDRESS++"!");
 
 Server.default = Server(\binaural_server, NetAddr("127.0.0.1", ~server_ADDRESS));
 
-s.options.device               = "SC_BINAURAL";
-s.options.numInputBusChannels  = ~nSpatialInputs;
+s.options.device               = "SC_Spat";
+s.options.numInputBusChannels  = 32;
 s.options.numOutputBusChannels = 32;
-s.options.maxLogins            = 32;
+s.options.maxLogins            = 2;
 s.options.memSize              = 65536;
 s.options.numBuffers           = 4096;
 
@@ -488,7 +488,7 @@ s.waitForBoot({
 
 			});
 
-			0.01.wait;
+			0.05.wait;
 		});
 
 	});
@@ -503,7 +503,7 @@ s.waitForBoot({
 
 	post("Listening on port: ");
 	postln(thisProcess.openPorts);
-	ServerMeter(s);
+	// ServerMeter(s);
 
 
 
