@@ -14,7 +14,7 @@ from kivy.app import App
 from kivy.base import runTouchApp
 
 from kivy.uix.widget import Widget
-from kivy.properties import ListProperty
+from kivy.properties import ListProperty, StringProperty
 from kivy.lang import Builder
 from kivy.graphics import Color, Ellipse
 
@@ -29,15 +29,25 @@ Builder.load_string('''
         Ellipse:
             pos: self.ellipse_pos
             size: self.ellipse_size
-
+    Label:
+        pos: root.pos[0]+20,root.pos[1]+20
+        size: min(self.size)*0.2, min(self.size)*0.2
+        text: unicode(self.x), unicode(self.y)
+        halign: 'right'
+        valign: 'middle'
+        text: root.text
+        color: 0,0,0,1
+        
 ''')
+
 
 class SourceWidget(Widget):
 
-
+    text          = StringProperty('as')
     color         = ListProperty([0.1, .8, .5])
-    ellipse_size  = ListProperty([22,22])
+    ellipse_size  = ListProperty([40,40])
     ellipse_pos   = ListProperty([22,22])
+    pos   = ListProperty([22,22])
 
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
@@ -45,6 +55,7 @@ class SourceWidget(Widget):
 
     def on_touch_move(self, touch):
         self.ellipse_pos = [touch.pos[0], touch.pos[1]]
+        self.pos = [touch.pos[0], touch.pos[1]]
 
 # creating the App class
 class SourceViewer(App):
@@ -56,8 +67,12 @@ class SourceViewer(App):
 
         self.sources = []
         for i in range(16):
-            s = SourceWidget()
-            s.color = [17/(i+1),(i+1)/8,0.15,1]
+            s       = SourceWidget()
+            s.color = [17/(i+1),(i+1)/8,(i%4)*100,0.5]
+            s.ellipse_pos   = [i*50,i*50]
+            s.pos   = [i*50,i*50]
+
+            s.text  = str(i)
             self.sources.append(s)
             self.main_layout.add_widget(s)
 
