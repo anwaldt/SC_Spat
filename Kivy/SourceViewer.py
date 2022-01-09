@@ -80,7 +80,9 @@ class SourceViewer(App):
         self.sources = []
         for i in range(16):
             s       = SourceWidget()
-            s.color = [17/(i+1),(i+1)/8,(i%4)*100,0.5]
+            c = 1+round(i/2)
+
+            s.color = (0.1*c, 0.5 ,1-(0.1*c))
             s.ellipse_pos   = [i*50,i*50]
             s.pos   = [i*50,i*50]
 
@@ -101,7 +103,7 @@ class SourceViewer(App):
         for i in range(16):
 
             self.button_grid.add_widget(self.select_buttons[i])
-
+            self.select_buttons[i].background_color = (0, 0.5, 0.6,1)
             self.select_buttons[i].bind(on_press= partial(self.toggle_source,i))
 
         self.all_visible_button = Button(text='View All')
@@ -144,28 +146,31 @@ class SourceViewer(App):
 
     def toggle_source(self,ind,button):
 
-        print(ind)
-
         s = self.sources[ind].visible
-        print(s)
+
         if s==True:
             self.sources[ind].alpha=0.1
             self.sources[ind].visible = False
+            self.select_buttons[ind].background_color = (1, 0.5, 0,0.3)
+
         if s==False:
             self.sources[ind].alpha=1
             self.sources[ind].visible = True
+            self.select_buttons[ind].background_color = (0, 0.5, 0.6,1)
 
     def all_visible(self,button):
 
         for i in range(16):
             self.sources[i].alpha   = 1
             self.sources[i].visible = True
+            self.select_buttons[i].background_color = (0, 0.5, 0.6,1)
 
     def all_invisible(self,button):
 
         for i in range(16):
             self.sources[i].alpha   = 0.1
             self.sources[i].visible = False
+            self.select_buttons[i].background_color = (1, 0, 0,0.3)
 
 # run the App
 if __name__=='__main__':
