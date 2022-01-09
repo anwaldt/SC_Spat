@@ -3,6 +3,7 @@
 from math import sin
 from math import cos
 from math import pi
+from math import floor
 
 import threading
 
@@ -80,9 +81,9 @@ class SourceViewer(App):
         self.sources = []
         for i in range(16):
             s       = SourceWidget()
-            c = 1+round(i/2)
-
-            s.color = (0.1*c, 0.5 ,1-(0.1*c))
+            c = 1+floor(i/2)
+            print(c)
+            s.color = ((0.33*c)%1, (0.5+c*0.4)%1 ,(0.2*c)%1)
             s.ellipse_pos   = [i*50,i*50]
             s.pos   = [i*50,i*50]
 
