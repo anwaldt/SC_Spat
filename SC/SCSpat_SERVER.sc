@@ -87,7 +87,7 @@ s.waitForBoot({
 	// create a X times Y routing
 	// matrix by using an array of multichannel
 	// control busses:
-	~gain_BUS_spatial = Array.fill(~nSpatialInputs,
+	~gain_BUS = Array.fill(~nDirectInputs+~nSpatialInputs,
 		{
 			// arg i;
 			// "Creating control busses for system: ".post;
@@ -97,15 +97,7 @@ s.waitForBoot({
 	);
 	s.sync;
 
-	~gain_BUS_direct = Array.fill(~nDirectInputs,
-		{
-			// arg i;
-			// "Creating control busses for system: ".post;
-			// i.postln;
-			Bus.control(s, ~nDirectInputs);
-		}
-	);
-	s.sync;
+
 
 	// buses for direct control
 	~control_azim_BUS = Bus.control(s,~nSpatialInputs);
@@ -154,8 +146,7 @@ s.waitForBoot({
 	});
 
 	// create a bus for each spatialization module:
-	~audio_BUS_spatial = Bus.audio(s, ~nSpatialInputs);
-	~audio_BUS_direct = Bus.audio(s, ~nDirectInputs);
+	~audio_send_BUS = Bus.audio(s, ~nDirectInputs+~nSpatialInputs);
 
 	// bus for encoded 5th order HOA
 	~ambi_BUS = Bus.audio(s, ~n_hoa_channels);
@@ -184,7 +175,7 @@ s.waitForBoot({
 	});
 	s.sync;*/
 
-	for (0, ~nSpatialInputs -1, {arg idx;
+	for (0, ~nDirectInputs+~nSpatialInputs -1, {arg idx;
 
 		post('Adding spatial input module: ');
 		idx.postln;
@@ -192,20 +183,22 @@ s.waitForBoot({
 		~spatial_inputs = ~spatial_inputs.add(
 			Synth(\input_module_mono,
 				[
-					\input_bus, idx+~nDirectInputs,
-					\output_bus,          ~audio_BUS_spatial.index,
-					\control_BUS_spatial, ~gain_BUS_spatial[idx].index,
+					\input_bus,           idx,
+					\output_bus,          ~audio_send_BUS.index,
+					\control_BUS_spatial, ~gain_BUS[idx].index,
 				],
 				target: ~input_GROUP
 		);)
 	});
 	s.sync;
 
+
 	/////////////////////////////////////////////////////////////////
 	// MODULATOR SECTION
 	/////////////////////////////////////////////////////////////////
 
 	~mod_GROUP = Group.after(~input_GROUP);
+	s.sync;
 
 	for (0, (~nSpatialInputs/2) -1, {arg idx;
 
@@ -246,7 +239,7 @@ s.waitForBoot({
 		~hoa_panners = ~hoa_panners.add(
 			Synth(\binaural_mono_encoder_3,
 				[
-					\in_bus,  ~audio_BUS_spatial.index+cnt,
+					\in_bus,  ~audio_send_BUS.index+~nDirectInputs+cnt,
 					\out_bus, ~ambi_BUS.index
 				],
 				target: ~spatial_GROUP
@@ -275,10 +268,11 @@ s.waitForBoot({
 	~output_GROUP	 = Group.after(~spatial_GROUP);
 	s.sync;
 
-	~direct_output1 = {Out.ar(0 ,Mix.ar(SoundIn.ar([0,1,2,3]),1))}.play;
-	~direct_output2 = {Out.ar(1 ,Mix.ar(SoundIn.ar([0,1,2,3]),1))}.play;
-	~direct_output3 = {Out.ar(2 ,Mix.ar(SoundIn.ar([0,1,2,3]),1))}.play;
-	~direct_output4 = {Out.ar(3 ,Mix.ar(SoundIn.ar([0,1,2,3]),1))}.play;
+
+	~direct_output1 = {Out.ar(0 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output2 = {Out.ar(1 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output3 = {Out.ar(2 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output4 = {Out.ar(3 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
 
 	~hoa_output = {Out.ar(~nDirectInputs ,In.ar(~ambi_BUS.index,~n_hoa_channels))}.play;
 	s.sync;
@@ -324,6 +318,6 @@ s.waitForBoot({
 
 
 	// ~gain_BUS_direct.do({arg e,i; e.setAt(i,0)});
-	~gain_BUS_spatial.do({arg e,i; e.setAt(i,1)});
+	~gain_BUS.do({arg e,i; e.setAt(i,1)});
 
 });
