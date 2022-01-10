@@ -37,7 +37,7 @@ Builder.load_string('''
             size: self.ellipse_size
     Label:
         pos: root.pos[0]+20,root.pos[1]+20
-        size: min(self.size)*0.2, min(self.size)*0.2
+        size: root.size[0],root.size[1]
         text: unicode(self.x), unicode(self.y)
         halign: 'right'
         valign: 'middle'
@@ -176,6 +176,6 @@ class SourceViewer(App):
 # run the App
 if __name__=='__main__':
 
-    Window.fullscreen = True
+    #Window.fullscreen = True
 
     SourceViewer().run()

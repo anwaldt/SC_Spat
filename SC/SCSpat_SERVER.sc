@@ -155,7 +155,7 @@ s.waitForBoot({
 
 	// create a bus for each spatialization module:
 	~audio_BUS_spatial = Bus.audio(s, ~nSpatialInputs);
-		~audio_BUS_direct = Bus.audio(s, ~nDirectInputs);
+	~audio_BUS_direct = Bus.audio(s, ~nDirectInputs);
 
 	// bus for encoded 5th order HOA
 	~ambi_BUS = Bus.audio(s, ~n_hoa_channels);
@@ -167,7 +167,7 @@ s.waitForBoot({
 	s.sync;
 
 
-	for (0, ~nDirectInputs -1, {arg idx;
+	/*for (0, ~nDirectInputs -1, {arg idx;
 
 		post('Adding direct input module: ');
 		idx.postln;
@@ -182,7 +182,7 @@ s.waitForBoot({
 				target: ~input_GROUP
 		);)
 	});
-	s.sync;
+	s.sync;*/
 
 	for (0, ~nSpatialInputs -1, {arg idx;
 
@@ -261,12 +261,11 @@ s.waitForBoot({
 		post('Mapping HOA module: ');
 		cnt.postln;
 
-		~hoa_panners[cnt].map(\azim, ~control_azim_BUS.index  + cnt);
-		~hoa_panners[cnt].map(\elev, ~control_elev_BUS.index  + cnt);
-		~hoa_panners[cnt].map(\dist, ~control_dist_BUS.index  + cnt);
+		~hoa_panners[cnt].map(\azim, ~monitor_azim_BUS.index  + cnt);
+		~hoa_panners[cnt].map(\elev, ~monitor_elev_BUS.index  + cnt);
+		~hoa_panners[cnt].map(\dist, ~monitor_dist_BUS.index  + cnt);
 
 	});
-
 
 
 	/////////////////////////////////////////////////////////////////
