@@ -1,6 +1,6 @@
 [Unit]
 Description=SuperCollider mixer and encoder
-After=sound.target local-fs.target scspat-jack.service
+After=sound.target local-fs.target jack.service
 
 [Install]
 WantedBy=default.target
@@ -9,7 +9,7 @@ WantedBy=default.target
 Type=idle
 PrivateTmp=true
 ExecStartPre=/bin/sleep 2
-WorkingDirectory=/home/anwaldt/SOUND/SC_Spat/SC
-Environment="QT_QPA_PLATFORM=minimal"
+WorkingDirectory=/home/anwaldt/SC_Spat/SC
+#Environment="QT_QPA_PLATFORM=minimal"
 ExecStart=/usr/local/bin/sclang SCSpat_SERVER.sc
 LimitRTPRIO=95

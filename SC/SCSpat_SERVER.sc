@@ -158,23 +158,6 @@ s.waitForBoot({
 	s.sync;
 
 
-	/*for (0, ~nDirectInputs -1, {arg idx;
-
-		post('Adding direct input module: ');
-		idx.postln;
-
-		~direct_inputs = ~direct_inputs.add(
-			Synth(\input_module_mono,
-				[
-					\input_bus,  idx,
-					\output_bus,          ~audio_BUS_direct.index,
-					\control_BUS_spatial, ~gain_BUS_direct[idx].index,
-				],
-				target: ~input_GROUP
-		);)
-	});
-	s.sync;*/
-
 	for (0, ~nDirectInputs+~nSpatialInputs -1, {arg idx;
 
 		post('Adding spatial input module: ');

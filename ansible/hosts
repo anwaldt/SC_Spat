@@ -1,0 +1,5 @@
+[remote]
+192.168.1.113
+
+[remote:vars]
+vnc_password=12345678
