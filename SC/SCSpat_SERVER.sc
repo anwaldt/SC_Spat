@@ -56,7 +56,7 @@ s.options.numBuffers           = 4096;
 
 s.boot;
 
-~spatial_OSC  = NetAddr("127.0.0.1", 9595);
+
 
 ~n_hoa_channels = (pow(~hoa_order + 1.0 ,2.0)).asInteger;
 
@@ -292,15 +292,16 @@ s.waitForBoot({
 	//
 	/////////////////////////////////////////////////////////////////
 
-	thisProcess.openUDPPort(~input_OSC);
 
-	post("Listening on port: ");
-	postln(thisProcess.openPorts);
 	ServerMeter(s);
 
 
 
 	// ~gain_BUS_direct.do({arg e,i; e.setAt(i,0)});
+	// ~gain_BUS.do({arg e,i; e.setAll(0)});
+	// ~gain_BUS[0].setAt(0,1);
+
+	// set to identity matrix
 	~gain_BUS.do({arg e,i; e.setAt(i,1)});
 
 });

@@ -1,3 +1,14 @@
+// outgoing OSC connection for spatial data:
+~spatial_OSC  = NetAddr("192.168.1.31", 9595);
+
+// outgoing OSC connection for send gain data:
+~gain_OSC     = NetAddr("192.168.1.31", 9596);
+
+thisProcess.openUDPPort(~input_OSC);
+
+post("Listening on port: ");
+postln(thisProcess.openPorts);
+
 /////////////////////////////////////////////////////////////////
 // Set source control to LFO or direct
 /////////////////////////////////////////////////////////////////
@@ -92,77 +103,77 @@ OSCdef('/source/aed',
 
 
 
-	// OSC listener for LFO trigger events
-	OSCdef('/lfo/trigger',
-		{
-			arg msg, time, addr, recvPort;
+// OSC listener for LFO trigger events
+OSCdef('/lfo/trigger',
+	{
+		arg msg, time, addr, recvPort;
 
-			var ind, val;
+		var ind, val;
 
-			ind = msg[1];
-			val = msg[2];
+		ind = msg[1];
+		val = msg[2];
 
-			~lfo[ind].set(\trig, val, \run, val);
+		~lfo[ind].set(\trig, val, \run, val);
 
-			// postln("Trigger "+ind);
+		// postln("Trigger "+ind);
 
-		},'/lfo/trigger'
-	);
+	},'/lfo/trigger'
+);
 
-	OSCdef('/lfo/gain',
-		{
-			arg msg, time, addr, recvPort;
-			var ind, val;
+OSCdef('/lfo/gain',
+	{
+		arg msg, time, addr, recvPort;
+		var ind, val;
 
-			ind = msg[1];
-			val = msg[2];
+		ind = msg[1];
+		val = msg[2];
 
-			~lfo[ind].set(\gain, val);
+		~lfo[ind].set(\gain, val);
 
-		},'/lfo/gain'
-	);
-
-
-	OSCdef('/lfo/dur',
-		{
-			arg msg, time, addr, recvPort;
-			var ind, val;
-
-			ind = msg[1];
-			val = msg[2];
-
-			~lfo[ind].set(\dur, val);
-
-		},'/lfo/dur'
-	);
+	},'/lfo/gain'
+);
 
 
-	OSCdef('/lfo/dir',
-		{
-			arg msg, time, addr, recvPort;
-			var ind, val;
+OSCdef('/lfo/dur',
+	{
+		arg msg, time, addr, recvPort;
+		var ind, val;
 
-			ind = msg[1];
-			val = msg[2];
+		ind = msg[1];
+		val = msg[2];
 
-			~lfo[ind].set(\dir, val);
+		~lfo[ind].set(\dur, val);
 
-		},'/lfo/dir'
-	);
+	},'/lfo/dur'
+);
 
 
-	OSCdef('/lfo/offset',
-		{
-			arg msg, time, addr, recvPort;
-			var ind, val;
+OSCdef('/lfo/dir',
+	{
+		arg msg, time, addr, recvPort;
+		var ind, val;
 
-			ind = msg[1];
-			val = msg[2];
+		ind = msg[1];
+		val = msg[2];
 
-			~lfo[ind].set(\offset, val);
+		~lfo[ind].set(\dir, val);
 
-		},'/lfo/offset'
-	);
+	},'/lfo/dir'
+);
+
+
+OSCdef('/lfo/offset',
+	{
+		arg msg, time, addr, recvPort;
+		var ind, val;
+
+		ind = msg[1];
+		val = msg[2];
+
+		~lfo[ind].set(\offset, val);
+
+	},'/lfo/offset'
+);
 
 
 /////////////////////////////////////////////////////////////////
@@ -170,7 +181,7 @@ OSCdef('/source/aed',
 /////////////////////////////////////////////////////////////////
 
 
-~send_OSC_ROUTINE = Routine({
+~send_positions_ROUTINE = Routine({
 
 	inf.do({
 
@@ -193,4 +204,31 @@ OSCdef('/source/aed',
 
 });
 
-~send_OSC_ROUTINE.play;
+~send_positions_ROUTINE.play;
+
+
+
+~send_sends_ROUTINE = Routine({
+
+	inf.do({
+
+		for (0, ~nDirectInputs+~nSpatialInputs-1,
+			{ arg i;
+
+				var array = ~gain_BUS[i].getnSynchronous(~nDirectInputs+~nSpatialInputs);
+
+				for (0, ~nSpatialInputs-1,
+					{ arg j;
+
+						~gain_OSC.sendMsg("/send/level", i, j, array[j]);
+				});
+
+				0.01.wait;
+		});
+	});
+});
+
+~send_sends_ROUTINE.play;
+
+
+~send_sends_ROUTINE.stop;
