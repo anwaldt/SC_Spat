@@ -1,8 +1,9 @@
-MIDIIn.connect;
+////////////////
 
+MIDIIn.connect;
 MIDIdef.freeAll;
 
-//   listener for LFO trigger events
+// listener for LFO trigger events
 
 MIDIdef(\lfo_trigger_on,
 	{

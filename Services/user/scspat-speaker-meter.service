@@ -1,0 +1,14 @@
+[Unit]
+Description=meterbridge for output signals
+After=sound.target local-fs.target jack.service
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=idle
+PrivateTmp=true
+ExecStartPre=/bin/sleep 2
+WorkingDirectory=/home/anwaldt/SC_Spat/
+ExecStart=/usr/bin/meterbridge -n speaker_meter -t dpm x x x x x x x x x x x x x x x x x x x x x x x x
+LimitRTPRIO=95

@@ -1,0 +1,27 @@
+---
+- hosts: remote
+  remote_user: anwaldt
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: copying scspat
+      copy:
+        src: ../Services/user/scspat.service
+        dest: /etc/systemd/user
+        owner: root
+        group: root
+
+
+- hosts: remote
+  remote_user: anwaldt
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: Enable scspat service and ensure it is not masked
+      ansible.builtin.systemd:
+        name: scspat
+        enabled: yes
+        masked: no
+        scope: user
