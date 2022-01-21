@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aj-snapshot>
+<alsa>
+  <client name="System">
+    <port id="0" />
+    <port id="1" />
+  </client>
+  <client name="Midi Through">
+    <port id="0" />
+  </client>
+  <client name="USB MIDI Interface">
+    <port id="0">
+      <connection client="SuperCollider" port="0" />
+    </port>
+  </client>
+  <client name="Client-128" />
+  <client name="SuperCollider">
+    <port id="1" />
+    <port id="2" />
+    <port id="3" />
+    <port id="4" />
+    <port id="5" />
+    <port id="6">
+      <connection client="USB MIDI Interface" port="0" />
+    </port>
+    <port id="7" />
+    <port id="8" />
+  </client>
+</alsa>
+</aj-snapshot>

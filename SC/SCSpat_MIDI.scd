@@ -1,5 +1,6 @@
 ////////////////
 
+MIDIClient.init;
 MIDIIn.connect;
 MIDIdef.freeAll;
 
