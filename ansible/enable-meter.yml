@@ -1,0 +1,26 @@
+---
+- hosts: remote
+  remote_user: anwaldt
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: copying scspat-speaker-meter service
+      copy:
+        src: ../Services/user/scspat-speaker-meter.service
+        dest: /etc/systemd/user
+        owner: root
+        group: root
+
+- hosts: remote
+  remote_user: anwaldt
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: Enable scspat-speaker-meter service and ensure it is not masked
+      ansible.builtin.systemd:
+        name: scspat-speaker-meter
+        enabled: yes
+        masked: no
+        scope: user
