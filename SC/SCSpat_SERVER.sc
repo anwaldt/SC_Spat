@@ -303,7 +303,7 @@ s.waitForBoot({
 	/////////////////////////////////////////////////////////////////
 
 	(~root_DIR++"SCSpat_OSC.scd").load;
-	(~root_DIR++"SCSpat_MIDI.scd").load;
+	// (~root_DIR++"SCSpat_MIDI.scd").load;
 
 	/////////////////////////////////////////////////////////////////
 	//
@@ -313,7 +313,7 @@ s.waitForBoot({
 
 	post("Listening on port: ");
 	postln(thisProcess.openPorts);
-	// ServerMeter(s);
+	ServerMeter(s);
 
 
 

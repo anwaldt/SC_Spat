@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aj-snapshot>
+<jack>
+  <client name="system">
+    <port name="capture_1">
+      <connection port="SC_Spat:in_1" />
+    </port>
+    <port name="capture_2">
+      <connection port="SC_Spat:in_2" />
+    </port>
+    <port name="capture_3">
+      <connection port="SC_Spat:in_3" />
+    </port>
+    <port name="capture_4">
+      <connection port="SC_Spat:in_4" />
+    </port>
+    <port name="capture_5">
+      <connection port="SC_Spat:in_5" />
+    </port>
+    <port name="capture_6">
+      <connection port="SC_Spat:in_6" />
+    </port>
+    <port name="capture_7">
+      <connection port="SC_Spat:in_7" />
+    </port>
+    <port name="capture_8">
+      <connection port="SC_Spat:in_8" />
+    </port>
+    <port name="capture_9">
+      <connection port="SC_Spat:in_9" />
+    </port>
+    <port name="capture_10">
+      <connection port="SC_Spat:in_10" />
+    </port>
+    <port name="capture_11">
+      <connection port="SC_Spat:in_11" />
+    </port>
+    <port name="capture_12">
+      <connection port="SC_Spat:in_12" />
+    </port>
+    <port name="capture_13">
+      <connection port="SC_Spat:in_13" />
+    </port>
+    <port name="capture_14">
+      <connection port="SC_Spat:in_14" />
+    </port>
+    <port name="capture_15">
+      <connection port="SC_Spat:in_15" />
+    </port>
+    <port name="capture_16">
+      <connection port="SC_Spat:in_16" />
+    </port>
+    <port name="capture_17">
+      <connection port="SC_Spat:in_17" />
+    </port>
+    <port name="capture_18">
+      <connection port="SC_Spat:in_18" />
+    </port>
+    <port name="capture_19">
+      <connection port="SC_Spat:in_19" />
+    </port>
+    <port name="capture_20">
+      <connection port="SC_Spat:in_20" />
+    </port>
+    <port name="capture_21">
+      <connection port="SC_Spat:in_21" />
+    </port>
+    <port name="capture_22">
+      <connection port="SC_Spat:in_22" />
+    </port>
+    <port name="capture_23">
+      <connection port="SC_Spat:in_23" />
+    </port>
+    <port name="capture_24">
+      <connection port="SC_Spat:in_24" />
+    </port>
+    <port name="capture_25">
+      <connection port="SC_Spat:in_25" />
+    </port>
+    <port name="capture_26">
+      <connection port="SC_Spat:in_26" />
+    </port>
+    <port name="capture_27">
+      <connection port="SC_Spat:in_27" />
+    </port>
+    <port name="capture_28">
+      <connection port="SC_Spat:in_28" />
+    </port>
+    <port name="capture_29">
+      <connection port="SC_Spat:in_29" />
+    </port>
+    <port name="capture_30">
+      <connection port="SC_Spat:in_30" />
+    </port>
+    <port name="capture_31">
+      <connection port="SC_Spat:in_31" />
+    </port>
+    <port name="capture_32">
+      <connection port="SC_Spat:in_32" />
+    </port>
+    <port name="capture_33" />
+    <port name="capture_34" />
+    <port name="capture_35" />
+    <port name="capture_36" />
+    <port name="capture_37" />
+    <port name="capture_38" />
+    <port name="capture_39" />
+    <port name="capture_40" />
+    <port name="capture_41" />
+    <port name="capture_42" />
+    <port name="capture_43" />
+    <port name="capture_44" />
+    <port name="capture_45" />
+    <port name="capture_46" />
+    <port name="capture_47" />
+    <port name="capture_48" />
+  </client>
+  <client name="SC_Spat">
+    <port name="out_1">
+      <connection port="system:playback_1" />
+    </port>
+    <port name="out_2">
+      <connection port="system:playback_2" />
+    </port>
+    <port name="out_3">
+      <connection port="system:playback_3" />
+    </port>
+    <port name="out_4">
+      <connection port="system:playback_4" />
+    </port>
+    <port name="out_5">
+      <connection port="AllRADecoder:in_1" />
+    </port>
+    <port name="out_6">
+      <connection port="AllRADecoder:in_2" />
+    </port>
+    <port name="out_7">
+      <connection port="AllRADecoder:in_3" />
+    </port>
+    <port name="out_8">
+      <connection port="AllRADecoder:in_4" />
+    </port>
+    <port name="out_9">
+      <connection port="AllRADecoder:in_5" />
+    </port>
+    <port name="out_10">
+      <connection port="AllRADecoder:in_6" />
+    </port>
+    <port name="out_11">
+      <connection port="AllRADecoder:in_7" />
+    </port>
+    <port name="out_12">
+      <connection port="AllRADecoder:in_8" />
+    </port>
+    <port name="out_13">
+      <connection port="AllRADecoder:in_9" />
+    </port>
+    <port name="out_14">
+      <connection port="AllRADecoder:in_10" />
+    </port>
+    <port name="out_15">
+      <connection port="AllRADecoder:in_11" />
+    </port>
+    <port name="out_16">
+      <connection port="AllRADecoder:in_12" />
+    </port>
+    <port name="out_17">
+      <connection port="AllRADecoder:in_13" />
+    </port>
+    <port name="out_18">
+      <connection port="AllRADecoder:in_14" />
+    </port>
+    <port name="out_19">
+      <connection port="AllRADecoder:in_15" />
+    </port>
+    <port name="out_20" />
+    <port name="out_21" />
+    <port name="out_22" />
+    <port name="out_23" />
+    <port name="out_24" />
+    <port name="out_25" />
+    <port name="out_26" />
+    <port name="out_27" />
+    <port name="out_28" />
+    <port name="out_29" />
+    <port name="out_30" />
+    <port name="out_31" />
+    <port name="out_32" />
+  </client>
+  <client name="AllRADecoder">
+    <port name="out_1">
+      <connection port="system:playback_1" />
+      <connection port="speaker_meter:meter_1" />
+    </port>
+    <port name="out_2">
+      <connection port="system:playback_2" />
+      <connection port="speaker_meter:meter_2" />
+    </port>
+    <port name="out_3">
+      <connection port="system:playback_3" />
+      <connection port="speaker_meter:meter_3" />
+    </port>
+    <port name="out_4">
+      <connection port="system:playback_4" />
+      <connection port="speaker_meter:meter_4" />
+    </port>
+    <port name="out_5">
+      <connection port="speaker_meter:meter_5" />
+    </port>
+    <port name="out_6">
+      <connection port="speaker_meter:meter_6" />
+    </port>
+    <port name="out_7">
+      <connection port="speaker_meter:meter_7" />
+    </port>
+    <port name="out_8">
+      <connection port="speaker_meter:meter_8" />
+    </port>
+    <port name="out_9">
+      <connection port="speaker_meter:meter_9" />
+    </port>
+    <port name="out_10">
+      <connection port="speaker_meter:meter_10" />
+    </port>
+    <port name="out_11">
+      <connection port="speaker_meter:meter_11" />
+    </port>
+    <port name="out_12">
+      <connection port="speaker_meter:meter_12" />
+    </port>
+    <port name="out_13">
+      <connection port="speaker_meter:meter_13" />
+    </port>
+    <port name="out_14">
+      <connection port="speaker_meter:meter_14" />
+    </port>
+    <port name="out_15">
+      <connection port="speaker_meter:meter_15" />
+    </port>
+    <port name="out_16">
+      <connection port="speaker_meter:meter_16" />
+    </port>
+    <port name="out_17">
+      <connection port="speaker_meter:meter_17" />
+    </port>
+    <port name="out_18">
+      <connection port="speaker_meter:meter_18" />
+    </port>
+    <port name="out_19">
+      <connection port="speaker_meter:meter_19" />
+    </port>
+    <port name="out_20">
+      <connection port="speaker_meter:meter_20" />
+    </port>
+    <port name="out_21">
+      <connection port="speaker_meter:meter_21" />
+    </port>
+    <port name="out_22">
+      <connection port="speaker_meter:meter_22" />
+    </port>
+    <port name="out_23">
+      <connection port="speaker_meter:meter_23" />
+    </port>
+    <port name="out_24">
+      <connection port="speaker_meter:meter_24" />
+    </port>
+    <port name="out_25" />
+    <port name="out_26" />
+    <port name="out_27" />
+    <port name="out_28" />
+    <port name="out_29" />
+    <port name="out_30" />
+    <port name="out_31" />
+    <port name="out_32" />
+    <port name="out_33" />
+    <port name="out_34" />
+    <port name="out_35" />
+    <port name="out_36" />
+    <port name="out_37" />
+    <port name="out_38" />
+    <port name="out_39" />
+    <port name="out_40" />
+    <port name="out_41" />
+    <port name="out_42" />
+    <port name="out_43" />
+    <port name="out_44" />
+    <port name="out_45" />
+    <port name="out_46" />
+    <port name="out_47" />
+    <port name="out_48" />
+    <port name="out_49" />
+    <port name="out_50" />
+    <port name="out_51" />
+    <port name="out_52" />
+    <port name="out_53" />
+    <port name="out_54" />
+    <port name="out_55" />
+    <port name="out_56" />
+    <port name="out_57" />
+    <port name="out_58" />
+    <port name="out_59" />
+    <port name="out_60" />
+    <port name="out_61" />
+    <port name="out_62" />
+    <port name="out_63" />
+    <port name="out_64" />
+  </client>
+  <client name="speaker_meter">
+    <port name="monitor_1" />
+    <port name="monitor_2" />
+    <port name="monitor_3" />
+    <port name="monitor_4" />
+    <port name="monitor_5" />
+    <port name="monitor_6" />
+    <port name="monitor_7" />
+    <port name="monitor_8" />
+    <port name="monitor_9" />
+    <port name="monitor_10" />
+    <port name="monitor_11" />
+    <port name="monitor_12" />
+    <port name="monitor_13" />
+    <port name="monitor_14" />
+    <port name="monitor_15" />
+    <port name="monitor_16" />
+    <port name="monitor_17" />
+    <port name="monitor_18" />
+    <port name="monitor_19" />
+    <port name="monitor_20" />
+    <port name="monitor_21" />
+    <port name="monitor_22" />
+    <port name="monitor_23" />
+    <port name="monitor_24" />
+  </client>
+</jack>
+</aj-snapshot>
