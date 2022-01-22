@@ -2,29 +2,30 @@
 <aj-snapshot>
 <alsa>
   <client name="System">
-    <port id="0" />
+    <port id="0">
+      <connection client="SuperCollider" port="0" />
+    </port>
     <port id="1" />
   </client>
   <client name="Midi Through">
     <port id="0" />
   </client>
-  <client name="USB MIDI Interface">
+  <client name="MT4">
     <port id="0">
       <connection client="SuperCollider" port="0" />
     </port>
-  </client>
-  <client name="Client-128" />
-  <client name="SuperCollider">
-    <port id="1" />
-    <port id="2" />
-    <port id="3" />
-    <port id="4" />
-    <port id="5" />
-    <port id="6">
-      <connection client="USB MIDI Interface" port="0" />
+    <port id="1">
+      <connection client="SuperCollider" port="1" />
     </port>
-    <port id="7" />
-    <port id="8" />
+    <port id="2">
+      <connection client="SuperCollider" port="2" />
+    </port>
   </client>
+  <client name="SuperCollider">
+    <port id="3">
+      <connection client="MT4" port="0" />
+    </port>
+  </client>
+  <client name="Client-129" />
 </alsa>
 </aj-snapshot>
