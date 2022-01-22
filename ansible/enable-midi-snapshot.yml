@@ -1,0 +1,27 @@
+---
+- hosts: remote
+  remote_user: "{{admin_user}}"
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: copying snapshot service
+      copy:
+        src: ../Services/user/scspat-snapshot-midi.service
+        dest: /etc/systemd/user
+        owner: root
+        group: root
+
+
+- hosts: remote
+  remote_user: "{{admin_user}}"
+  gather_facts: no
+  connection: ssh
+  tasks:
+    - name: Enable snapshot service and ensure it is not masked
+      ansible.builtin.systemd:
+        name: scspat-snapshot
+        enabled: yes
+        masked: no
+        scope: user
