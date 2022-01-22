@@ -2,4 +2,5 @@
 192.168.1.15
 
 [remote:vars]
+admin_user=anwaldt
 vnc_password=12345678
