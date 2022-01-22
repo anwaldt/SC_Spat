@@ -2,12 +2,31 @@
 ~spatial_OSC  = NetAddr("192.168.1.31", 9595);
 
 // outgoing OSC connection for send gain data:
-~gain_OSC     = NetAddr("192.168.1.31", 9596);
+~gain_OSC     = NetAddr("localhost", 9596);
 
 thisProcess.openUDPPort(~input_OSC);
 
 post("Listening on port: ");
 postln(thisProcess.openPorts);
+
+
+
+/////////////////////////////////////////////////////////////////
+// sd
+/////////////////////////////////////////////////////////////////
+
+OSCdef('/send/gain',
+	{
+		arg msg, time, addr, recvPort;
+
+		var src  = msg[1];
+		var dest = msg[2];
+		var gain = msg[3];
+
+		~gain_BUS[src].setAt(dest,gain);
+
+},'/send/gain');
+
 
 /////////////////////////////////////////////////////////////////
 // Set source control to LFO or direct
@@ -187,19 +206,20 @@ OSCdef('/lfo/offset',
 
 		var azim, elev, dist;
 
+			azim = ~monitor_azim_BUS.getnSynchronous(~nSpatialInputs);
+			elev = ~monitor_elev_BUS.getnSynchronous(~nSpatialInputs);
+			dist = ~monitor_dist_BUS.getnSynchronous(~nSpatialInputs);
+
 		for (0, ~nSpatialInputs-1, {
 
 			arg i;
 
-			azim = ~monitor_azim_BUS.getnSynchronous(~nSpatialInputs)[i];
-			elev = ~monitor_elev_BUS.getnSynchronous(~nSpatialInputs)[i];
-			dist = ~monitor_dist_BUS.getnSynchronous(~nSpatialInputs)[i];
 
-			~spatial_OSC.sendMsg('/source/aed', i, azim, elev, dist);
+			~spatial_OSC.sendMsg('/source/aed', i, azim[i], elev[i], dist[i]);
 
 		});
 
-		0.05.wait;
+		0.1.wait;
 	});
 
 });
@@ -223,7 +243,7 @@ OSCdef('/lfo/offset',
 						~gain_OSC.sendMsg("/send/level", i, j, array[j]);
 				});
 
-				0.01.wait;
+				0.001.wait;
 		});
 	});
 });
@@ -231,4 +251,3 @@ OSCdef('/lfo/offset',
 ~send_sends_ROUTINE.play;
 
 
-~send_sends_ROUTINE.stop;
