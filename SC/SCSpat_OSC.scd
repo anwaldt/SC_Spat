@@ -1,13 +1,39 @@
-// outgoing OSC connection for spatial data:
-~spatial_OSC  = NetAddr("192.168.1.31", 9595);
+/////////////////////////////////////////////////////////////////
 
-// outgoing OSC connection for send gain data:
-~gain_OSC     = NetAddr("localhost", 9596);
+/////////////////////////////////////////////////////////////////
 
 thisProcess.openUDPPort(~input_OSC);
 
 post("Listening on port: ");
 postln(thisProcess.openPorts);
+
+
+/////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////
+
+// outgoing OSC connection for spatial data:
+~spatial_OSC  =  NetAddr("192.168.1.31", 9595);
+
+// outgoing OSC connections for send gain data:
+~gain_OSC     = [];
+
+// add connection via OSC command
+OSCdef('/addlistener/gains',
+	{
+		arg msg, time, addr, recvPort;
+
+		var address = msg[1];
+		var port    = msg[2];
+
+		postln('Added listener: '+address.asString+' '+port.asString);
+
+		~gain_OSC.add(NetAddr(address, port));
+
+});
+
+~gain_OSC.add(NetAddr("192.168.1.31", 9898));
+
 
 
 
@@ -206,9 +232,9 @@ OSCdef('/lfo/offset',
 
 		var azim, elev, dist;
 
-			azim = ~monitor_azim_BUS.getnSynchronous(~nSpatialInputs);
-			elev = ~monitor_elev_BUS.getnSynchronous(~nSpatialInputs);
-			dist = ~monitor_dist_BUS.getnSynchronous(~nSpatialInputs);
+		azim = ~monitor_azim_BUS.getnSynchronous(~nSpatialInputs);
+		elev = ~monitor_elev_BUS.getnSynchronous(~nSpatialInputs);
+		dist = ~monitor_dist_BUS.getnSynchronous(~nSpatialInputs);
 
 		for (0, ~nSpatialInputs-1, {
 
@@ -227,7 +253,6 @@ OSCdef('/lfo/offset',
 ~send_positions_ROUTINE.play;
 
 
-
 ~send_sends_ROUTINE = Routine({
 
 	inf.do({
@@ -237,10 +262,10 @@ OSCdef('/lfo/offset',
 
 				var array = ~gain_BUS[i].getnSynchronous(~nDirectInputs+~nSpatialInputs);
 
-				for (0, ~nSpatialInputs-1,
+				for (0, ~nDirectInputs+~nSpatialInputs-1,
 					{ arg j;
 
-						~gain_OSC.sendMsg("/send/level", i, j, array[j]);
+						~gain_OSC.do({arg e; e.sendMsg("/send/level", i, j, array[j])});
 				});
 
 				0.001.wait;
@@ -250,4 +275,5 @@ OSCdef('/lfo/offset',
 
 ~send_sends_ROUTINE.play;
 
+~send_sends_ROUTINE.stop;
 

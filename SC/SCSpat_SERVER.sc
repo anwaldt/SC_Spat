@@ -285,7 +285,7 @@ s.waitForBoot({
 	// Listeners:
 	/////////////////////////////////////////////////////////////////
 
-	//(~root_DIR++"SCSpat_OSC.scd").load;
+	(~root_DIR++"SCSpat_OSC.scd").load;
 	(~root_DIR++"SCSpat_MIDI.scd").load;
 
 	/////////////////////////////////////////////////////////////////
@@ -298,7 +298,7 @@ s.waitForBoot({
 
 
 	// ~gain_BUS_direct.do({arg e,i; e.setAt(i,0)});
-	~gain_BUS.do({arg e,i; e.setAll(0)});
+	// ~gain_BUS.do({arg e,i; e.setAll(0)});
 	// ~gain_BUS[0].setAt(0,1);
 
 	// set to identity matrix
