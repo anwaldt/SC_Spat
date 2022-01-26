@@ -7,21 +7,30 @@ from math import floor
 
 import threading
 
+import argparse
+import yaml
+
+import socket
+
 from oscpy.server import OSCThreadServer
 from oscpy.client import OSCClient
 
 from kivy.core.window import Window
+from kivy.config import ConfigParser
 
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 
 from kivy.app import App
 from kivy.base import runTouchApp
 
 from kivy.uix.widget import Widget
 from kivy.properties import ListProperty, StringProperty, BooleanProperty, NumericProperty
+
 from kivy.lang import Builder
 from kivy.graphics import Color, Ellipse
 
@@ -59,7 +68,7 @@ Builder.load_string('''
 class FaderBarWidget(Widget):
 
     text          = StringProperty('as')
-    color         = ListProperty([1, 1, 0])
+    color         = ListProperty([0.5, 1, 0])
     ellipse_size  = ListProperty([60,60])
     ellipse_pos   = ListProperty([22,22])
     pos           = ListProperty([22,22])
@@ -77,19 +86,20 @@ class FaderBarWidget(Widget):
 
 class FaderWidget(Widget):
 
-    def __init__(self, ind, **kwargs):
+    box_pos  = ListProperty([100,100])
+    box_size = ListProperty([60,800])
+    color    = ListProperty([1,0.5,0])
+
+    def __init__(self, ind, addr, port, **kwargs):
 
         self.source = 0
 
         self.idx = ind
 
-        self.osc_client = OSCClient("127.0.0.1", 8989)
+        self.osc_client = OSCClient(addr, port)
 
         super(FaderWidget, self).__init__(**kwargs)
 
-    box_pos  = 100,100
-    box_size = 60,900
-    color    = 1,0,0
 
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
@@ -97,13 +107,13 @@ class FaderWidget(Widget):
             gain = (touch.pos[1]-self.pos[1]) / self.size[1]
 
             self.osc_client.send_message(b'/send/gain', [self.source, self.idx, gain])
-            print([self.idx, self.source, gain])
+            #print([self.idx, self.source, gain])
 
     def on_touch_move(self, touch):
         if self.collide_point(*touch.pos):
             gain = (touch.pos[1]-self.pos[1]) / self.size[1]
             self.osc_client.send_message(b'/send/gain', [self.source, self.idx, gain])
-            print([self.idx, self.source, gain])
+            #print([self.idx, self.source, gain])
 
     def set_source(self,src):
         self.source=src
@@ -111,61 +121,107 @@ class FaderWidget(Widget):
 # creating the App class
 class SourceViewer(App):
 
+    # default config is created on first run
+    def build_config(self, config):
+        config.setdefaults(
+            'self', 
+            {
+            'n_channels': 16,
+            'receive_port': '8989'            
+            })
+            
+        config.setdefaults(
+            'renderbox', 
+            {
+            'address': '127.0.0.1',
+            'port': '8989'            
+             })
+
     def build(self):
 
-        self.active_source = 0;
+        config =  self.config
+
+        self.render_address = config.get('renderbox', 'address')
+        self.render_port    = config.getint('renderbox', 'port')
+
+        self.receive_port    = config.getint('self', 'receive_port')
+        self.n_channels      = config.getint('self', 'n_channels')
+
+        print(self.render_address)
+        print(self.render_port)
+
+        self.osc_client = OSCClient(self.render_address, self.render_port)
+
+        # notify rendering server
+        self.osc_client.send_message(b'/addlistener/gains',  [self.receive_port])
+
+
+        n_channels = 16
+
+        self.active_source = 0
 
         self.main_layout   = GridLayout(rows=1,cols=2, row_default_height=40, spacing=50, size_hint_x=1,size_hint_y=1)
 
-        self.xyl =  RelativeLayout()
+        # a GridLayout for the faders
+        self.xyl =  GridLayout(rows=3,col_default_width=80, cols =  n_channels,size_hint_x=1,size_hint_y=1)
         self.main_layout.add_widget(self.xyl)
 
         self.faders = []
 
-        for i in range(16):
-            f = FaderWidget(i)
-            c = 1+floor(i/2)
+        for i in range(n_channels):
+            l = Label(text=str(i), font_size=30, bold=True, halign='center')
+            self.xyl.add_widget(l)
 
-            f.color = ((0.33*c)%1, (0.5+c*0.4)%1 ,(0.2*c)%1)
-            f.ellipse_pos   = [i*50,i*50]
-            f.pos   = [i*100,100]
+        for i in range(n_channels):
+            f = FaderWidget(i,self.render_address, self.render_port)
 
-            f.text  = str(i)
+            if i<2:
+                f.color = [1,0,0]
+
+            else:
+                f.color = [0,1,1]
+
+            f.ids.bar.ellipse_pos   = [0,0]
+            f.pos  = [i*80,100]
+
+            f.text = str(i)
+
             self.faders.append(f)
             self.xyl.add_widget(f)
 
-        self.button_grid = GridLayout(rows=9,cols=2, row_default_height=40, spacing=50, size_hint_x=0.2,size_hint_y=1)
+        self.button_grid = GridLayout(rows=(int(n_channels/2)+1),cols=2, row_default_height=40, spacing=50, size_hint_x=0.2,size_hint_y=1)
 
         self.main_layout.add_widget(self.button_grid)
 
         self.select_buttons = []
 
-        for i in range(16):
+        for i in range(n_channels):
 
             self.select_buttons.append(Button(text='Source '+str(i)))
 
-        for i in range(16):
+        for i in range(n_channels):
 
             self.button_grid.add_widget(self.select_buttons[i])
             self.select_buttons[i].background_color = (0, 0.5, 0.6,1)
             self.select_buttons[i].bind(on_press= partial(self.toggle_source,i))
 
 
-        #self.all_visible_button = Button(text='View All')
-        #self.button_grid.add_widget(self.all_visible_button)
-        #self.all_visible_button.bind(on_press= partial(self.all_visible))
+        self.settings_button = Button(text='View All')
+        self.button_grid.add_widget(self.settings_button)
+        self.settings_button.bind(on_press= partial(self.open_settings))
 
-        #self.all_invisible_button = Button(text='View None')
-        #self.button_grid.add_widget(self.all_invisible_button)
-        #self.all_invisible_button.bind(on_press= partial(self.all_invisible))
-
+        self.default_routing_button = Button(text='View None')
+        self.button_grid.add_widget(self.default_routing_button)
+        self.default_routing_button.bind(on_press= partial(self.default_routing))
 
 
         self.osc_server    =  OSCThreadServer()
-        self.socket = self.osc_server.listen(address='0.0.0.0', port=9596, default=True)
+        self.socket = self.osc_server.listen(address='0.0.0.0', port=self.receive_port, default=True)
         self.osc_server.bind(b'/send/level', self.send_level_handler)
 
         self.toggle_source(0,self.select_buttons[0])
+
+
 
         return self.main_layout
 
@@ -184,6 +240,8 @@ class SourceViewer(App):
 
     def toggle_source(self,ind,button):
 
+
+
         self.active_source = ind;
 
         # dim other buttons
@@ -196,23 +254,23 @@ class SourceViewer(App):
         for f in self.faders:
             f.set_source(ind)
 
-    def all_visible(self,button):
+    def open_settings(self,button):
 
-        for i in range(16):
-            self.sources[i].alpha   = 1
-            self.sources[i].visible = True
-            self.select_buttons[i].background_color = (0, 0.5, 0.6,1)
+        content = Button(text='Close me!')
+        popup = Popup(content=content, auto_dismiss=False)
 
-    def all_invisible(self,button):
+        content.bind(on_touch_down=popup.dismiss)
 
-        for i in range(16):
-            self.sources[i].alpha   = 0.1
-            self.sources[i].visible = False
-            self.select_buttons[i].background_color = (1, 0, 0,0.3)
+        # open the popup
+        popup.open()
+
+
+    def default_routing(self,button):
+
+        x=1
+
 
 # run the App
 if __name__=='__main__':
-
-    #Window.fullscreen = True
 
     SourceViewer().run()

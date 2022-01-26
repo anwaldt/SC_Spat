@@ -1,19 +1,26 @@
-/////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////
-
-thisProcess.openUDPPort(~input_OSC);
-
-post("Listening on port: ");
-postln(thisProcess.openPorts);
-
 
 /////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////
 
 // outgoing OSC connection for spatial data:
-~spatial_OSC  =  NetAddr("192.168.1.31", 9595);
+~spatial_OSC [];
+
+// add connection via OSC command
+OSCdef('/addlistener/position',
+	{
+		arg msg, time, addr, recvPort;
+
+		var port    = msg[1];
+
+		postln('Added listener: '++addr.ip++' '++port.asString);
+
+		~spatial_OSC = ~spatial_OSC.add(NetAddr(addr.ip, port));
+
+},'/addlistener/position');
+
+
+
 
 // outgoing OSC connections for send gain data:
 ~gain_OSC     = [];
@@ -23,18 +30,13 @@ OSCdef('/addlistener/gains',
 	{
 		arg msg, time, addr, recvPort;
 
-		var address = msg[1];
-		var port    = msg[2];
+		var port    = msg[1];
 
-		postln('Added listener: '+address.asString+' '+port.asString);
+		postln('Added listener: '++addr.ip++' '++port.asString);
 
-		~gain_OSC.add(NetAddr(address, port));
+		~gain_OSC = ~gain_OSC.add(NetAddr(addr.ip, port));
 
-});
-
-~gain_OSC.add(NetAddr("192.168.1.31", 9898));
-
-
+},'/addlistener/gains');
 
 
 /////////////////////////////////////////////////////////////////
@@ -236,12 +238,9 @@ OSCdef('/lfo/offset',
 		elev = ~monitor_elev_BUS.getnSynchronous(~nSpatialInputs);
 		dist = ~monitor_dist_BUS.getnSynchronous(~nSpatialInputs);
 
-		for (0, ~nSpatialInputs-1, {
+		for (0, ~nSpatialInputs-1, { arg i;
 
-			arg i;
-
-
-			~spatial_OSC.sendMsg('/source/aed', i, azim[i], elev[i], dist[i]);
+			~spatial_OSC.do({arg e; e.sendMsg('/source/aed', i, azim[i], elev[i], dist[i])});
 
 		});
 
@@ -262,8 +261,7 @@ OSCdef('/lfo/offset',
 
 				var array = ~gain_BUS[i].getnSynchronous(~nDirectInputs+~nSpatialInputs);
 
-				for (0, ~nDirectInputs+~nSpatialInputs-1,
-					{ arg j;
+				for (0, ~nDirectInputs+~nSpatialInputs-1, { arg j;
 
 						~gain_OSC.do({arg e; e.sendMsg("/send/level", i, j, array[j])});
 				});
@@ -275,5 +273,4 @@ OSCdef('/lfo/offset',
 
 ~send_sends_ROUTINE.play;
 
-~send_sends_ROUTINE.stop;
 

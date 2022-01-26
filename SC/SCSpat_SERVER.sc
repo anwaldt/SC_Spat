@@ -18,9 +18,9 @@ Henrik von Coler
 ~input_OSC      = 8989;
 
 // number of buses to the spatial modules
-~nSpatialInputs   = 16;
+~nSpatialInputs   = 14;
 
-~nDirectInputs    = 4;
+~nDirectInputs    = 2;
 
 // HOA Order
 ~hoa_order = 3;
@@ -294,6 +294,16 @@ s.waitForBoot({
 
 
 	ServerMeter(s);
+
+
+/////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////
+
+thisProcess.openUDPPort(~input_OSC);
+
+post("Listening on port: ");
+postln(thisProcess.openPorts);
 
 
 
