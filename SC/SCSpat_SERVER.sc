@@ -228,7 +228,7 @@ s.waitForBoot({
 				target: ~spatial_GROUP
 		);)
 	});
- 	s.sync;
+	s.sync;
 
 	// ~hoa_panners.do({arg e,i; e.set(\out_bus,~ambi_BUS.index)});
 
@@ -296,14 +296,14 @@ s.waitForBoot({
 	ServerMeter(s);
 
 
-/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
 
-thisProcess.openUDPPort(~input_OSC);
+	thisProcess.openUDPPort(~input_OSC);
 
-post("Listening on port: ");
-postln(thisProcess.openPorts);
+	post("Listening on port: ");
+	postln(thisProcess.openPorts);
 
 
 

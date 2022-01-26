@@ -13,7 +13,7 @@ OSCdef('/addlistener/position',
 
 		var port    = msg[1];
 
-		postln('Added listener: '++addr.ip++' '++port.asString);
+		postln('Added source position listener: '++addr.ip++' '++port.asString);
 
 		~spatial_OSC = ~spatial_OSC.add(NetAddr(addr.ip, port));
 
@@ -32,7 +32,7 @@ OSCdef('/addlistener/gains',
 
 		var port    = msg[1];
 
-		postln('Added listener: '++addr.ip++' '++port.asString);
+		postln('Added send gain listener: '++addr.ip++' '++port.asString);
 
 		~gain_OSC = ~gain_OSC.add(NetAddr(addr.ip, port));
 
@@ -244,7 +244,7 @@ OSCdef('/lfo/offset',
 
 		});
 
-		0.1.wait;
+		0.01.wait;
 	});
 
 });
