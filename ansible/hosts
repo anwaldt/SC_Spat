@@ -3,4 +3,5 @@
 
 [remote:vars]
 admin_user=anwaldt
+audio_user=anwaldt
 vnc_password=12345678
