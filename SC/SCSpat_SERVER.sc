@@ -20,6 +20,8 @@ Henrik von Coler
 // number of buses to the spatial modules
 ~nSpatialInputs   = 14;
 
+~n_stereo = (~nSpatialInputs/2).asInteger;
+
 ~nDirectInputs    = 2;
 
 // HOA Order
@@ -183,7 +185,7 @@ s.waitForBoot({
 	~mod_GROUP = Group.after(~input_GROUP);
 	s.sync;
 
-	for (0, (~nSpatialInputs/2) -1, {arg idx;
+	for (0, (~n_stereo) -1, {arg idx;
 
 		post('Adding LFO Module: ');
 		idx.postln;
@@ -202,10 +204,10 @@ s.waitForBoot({
 	});
 	s.sync;
 
-	~lfo_duration_BUS  = Bus.control(s, (~nSpatialInputs/2));
-	~lfo_direction_BUS = Bus.control(s, (~nSpatialInputs/2));
-	~lfo_gain_BUS      = Bus.control(s, (~nSpatialInputs/2));
-	~lfo_offset_BUS    = Bus.control(s, (~nSpatialInputs/2));
+	~lfo_duration_BUS  = Bus.control(s, (~n_stereo).asInteger);
+	~lfo_direction_BUS = Bus.control(s, (~n_stereo).asInteger);
+	~lfo_gain_BUS      = Bus.control(s, (~n_stereo).asInteger);
+	~lfo_offset_BUS    = Bus.control(s, (~n_stereo).asInteger);
 	s.sync;
 
 	~lfo.do({arg e,i; e.map(\dur,    ~lfo_duration_BUS.index+i)});

@@ -273,6 +273,7 @@ OSCdef('/lfo/offset',
 
 ~send_positions_ROUTINE.play;
 
+/////////////////////////////////////////////////////////////////
 
 ~send_sends_ROUTINE = Routine({
 
@@ -294,5 +295,40 @@ OSCdef('/lfo/offset',
 });
 
 ~send_sends_ROUTINE.play;
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+~send_lfo_ROUTINE = Routine({
+
+	inf.do({
+
+		var a1 = ~lfo_duration_BUS.getnSynchronous(~n_stereo);
+		var a2 = ~lfo_direction_BUS.getnSynchronous(~n_stereo);
+		var a3 = ~lfo_gain_BUS.getnSynchronous(~n_stereo);
+		var a4 = ~lfo_offset_BUS.getnSynchronous(~n_stereo);
+
+		for(0, ~n_stereo -1, { arg i;
+
+			~gain_OSC.do({arg e;
+
+				e.sendMsg("/lfo/dur", a1[i]);
+				e.sendMsg("/lfo/dir", a2[i]);
+				e.sendMsg("/lfo/gain", a3[i]);
+				e.sendMsg("/lfo/offset", a4[i]);
+
+			});
+
+			0.01.wait;
+		});
+	});
+});
+
+~send_lfo_ROUTINE.play;
+
+// ~send_lfo_ROUTINE.stop;
+
 
 

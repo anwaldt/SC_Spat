@@ -21,7 +21,7 @@ in the help files of the SC-HOA externals.
 
 The ADT can be directly included as a git submodule:
 
-    $ git clone --recurse-submodules https://gitlab.tubit.tu-berlin.de/henrikvoncoler/sc_spat.git
+    $ git clone --recurse-submodules https://github.com/anwaldt/SC_Spat.git
 
 
 **ADT Bugfixes:**
