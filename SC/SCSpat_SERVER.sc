@@ -108,12 +108,12 @@ s.waitForBoot({
 	~control_dist_BUS.setAll(1);
 
 	// buses for LFO control
-	~lfo_azim_BUS = Bus.control(s,~nSpatialInputs);
-	~lfo_azim_BUS.setAll(0);
-	~lfo_elev_BUS = Bus.control(s,~nSpatialInputs);
-	~lfo_elev_BUS.setAll(0);
-	~lfo_dist_BUS = Bus.control(s,~nSpatialInputs);
-	~lfo_dist_BUS.setAll(1);
+	~automate_azim_BUS = Bus.control(s,~nSpatialInputs);
+	~automate_azim_BUS.setAll(0);
+	~automate_elev_BUS = Bus.control(s,~nSpatialInputs);
+	~automate_elev_BUS.setAll(0);
+	~automate_dist_BUS = Bus.control(s,~nSpatialInputs);
+	~automate_dist_BUS.setAll(1);
 
 	// only for monitoring
 	~monitor_azim_BUS = Bus.control(s,~nSpatialInputs);
@@ -194,15 +194,24 @@ s.waitForBoot({
 					\trig, 0,
 					\rate, 1,
 					\dur,  1,
-					\out_bus1,  ~lfo_azim_BUS.index + (idx*2),
-					\out_bus2,  ~lfo_azim_BUS.index + (idx*2) + 1
+					\out_bus1,  ~automate_azim_BUS.index + (idx*2),
+					\out_bus2,  ~automate_azim_BUS.index + (idx*2) + 1
 				],
 				target: ~mod_GROUP);
 		);
 	});
-
 	s.sync;
 
+	~lfo_duration_BUS  = Bus.control(s, (~nSpatialInputs/2));
+	~lfo_direction_BUS = Bus.control(s, (~nSpatialInputs/2));
+	~lfo_gain_BUS      = Bus.control(s, (~nSpatialInputs/2));
+	~lfo_offset_BUS    = Bus.control(s, (~nSpatialInputs/2));
+	s.sync;
+
+	~lfo.do({arg e,i; e.map(\dur,    ~lfo_duration_BUS.index+i)});
+	~lfo.do({arg e,i; e.map(\dir,    ~lfo_direction_BUS.index.asInteger +i)});
+	~lfo.do({arg e,i; e.map(\gain,   ~lfo_gain_BUS.index.asInteger+i)});
+	~lfo.do({arg e,i; e.map(\offset, ~lfo_offset_BUS.index.asInteger+i)});
 
 	/////////////////////////////////////////////////////////////////
 	// SPATIAL SECTION
@@ -252,10 +261,10 @@ s.waitForBoot({
 	s.sync;
 
 
-	~direct_output1 = {|gain = 1|;Out.ar(0 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output2 = {|gain = 1|;Out.ar(1 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output3 = {|gain = 1|;Out.ar(2 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output4 = {|gain = 1|;Out.ar(3 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output1 = {|gain = 1| Out.ar(0 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output2 = {|gain = 1| Out.ar(1 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output3 = {|gain = 1| Out.ar(2 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output4 = {|gain = 1| Out.ar(3 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
 
 
 	~hoa_output = {|gain=1| Out.ar(~nDirectInputs ,gain*In.ar(~ambi_BUS.index,~n_hoa_channels))}.play;

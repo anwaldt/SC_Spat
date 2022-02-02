@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////////////////
 
 // outgoing OSC connection for spatial data:
-~spatial_OSC [];
+~spatial_OSC = [];
 
 // add connection via OSC command
 OSCdef('/addlistener/position',
@@ -84,12 +84,12 @@ OSCdef('/encoder/mode',
 				postln("Setting all encoders to LFO!");
 				~binaural_panners.do(
 					{arg e,i;
-						e.map(\azim,  ~lfo_azim_BUS.index + i);
+						e.map(\azim,  ~automate_azim_BUS.index + i);
 					}
 				);
 
 				~azim_MAPPER.do({arg e,i;
-					e.set(\inbus,  ~lfo_azim_BUS.index + i);
+					e.set(\inbus,  ~automate_azim_BUS.index + i);
 				});
 			}
 		);
@@ -179,6 +179,9 @@ OSCdef('/lfo/trigger',
 	},'/lfo/trigger'
 );
 
+
+
+
 OSCdef('/lfo/gain',
 	{
 		arg msg, time, addr, recvPort;
@@ -187,7 +190,9 @@ OSCdef('/lfo/gain',
 		ind = msg[1];
 		val = msg[2];
 
-		~lfo[ind].set(\gain, val);
+		// ~lfo[ind].set(\gain, val);
+
+		~lfo_gain_BUS.setAt(ind,val);
 
 	},'/lfo/gain'
 );
@@ -201,7 +206,8 @@ OSCdef('/lfo/dur',
 		ind = msg[1];
 		val = msg[2];
 
-		~lfo[ind].set(\dur, val);
+		// ~lfo[ind].set(\dur, val);
+		~lfo_duration_BUS.setAt(ind,val);
 
 	},'/lfo/dur'
 );
@@ -215,7 +221,9 @@ OSCdef('/lfo/dir',
 		ind = msg[1];
 		val = msg[2];
 
-		~lfo[ind].set(\dir, val);
+		//~lfo[ind].set(\dir, val);
+
+		~lfo_direction_BUS.setAt(ind,val);
 
 	},'/lfo/dir'
 );
@@ -229,7 +237,9 @@ OSCdef('/lfo/offset',
 		ind = msg[1];
 		val = msg[2];
 
-		~lfo[ind].set(\offset, val);
+		// ~lfo[ind].set(\offset, val);
+
+		~lfo_offset_BUS.setAt(ind,val);
 
 	},'/lfo/offset'
 );
@@ -275,7 +285,7 @@ OSCdef('/lfo/offset',
 
 				for (0, ~nDirectInputs+~nSpatialInputs-1, { arg j;
 
-						~gain_OSC.do({arg e; e.sendMsg("/send/level", i, j, array[j])});
+					~gain_OSC.do({arg e; e.sendMsg("/send/level", i, j, array[j])});
 				});
 
 				0.001.wait;
