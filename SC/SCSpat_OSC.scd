@@ -101,6 +101,18 @@ OSCdef('/encoder/mode',
 /////////////////////////////////////////////////////////////////
 
 
+OSCdef('/gain/hoa',
+	{
+		arg msg, time, addr, recvPort;
+
+		var gain = msg[1];
+
+		~hoa_output.set(\gain,gain);
+
+},'/gain/hoa');
+
+
+
 ~azim_OSC = OSCFunc(
 	{
 		arg msg, time, addr, recvPort;

@@ -252,14 +252,16 @@ s.waitForBoot({
 	s.sync;
 
 
-	~direct_output1 = {Out.ar(0 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output2 = {Out.ar(1 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output3 = {Out.ar(2 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output4 = {Out.ar(3 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output1 = {|gain = 1|;Out.ar(0 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output2 = {|gain = 1|;Out.ar(1 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output3 = {|gain = 1|;Out.ar(2 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output4 = {|gain = 1|;Out.ar(3 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
 
-	~hoa_output = {Out.ar(~nDirectInputs ,In.ar(~ambi_BUS.index,~n_hoa_channels))}.play;
+
+	~hoa_output = {|gain=1| Out.ar(~nDirectInputs ,gain*In.ar(~ambi_BUS.index,~n_hoa_channels))}.play;
 	s.sync;
 
+	~hoa_output.set(\gain,2.5);
 
 	~direct_output1.moveToTail(~output_GROUP);
 	~direct_output2.moveToTail(~output_GROUP);
@@ -268,18 +270,17 @@ s.waitForBoot({
 
 	~hoa_output.moveToTail(~output_GROUP);
 
-
 	~decoder = Synth(\hoa_binaural_decoder_3,
 		[
 			\in_bus, ~ambi_BUS.index,
 			\out_bus, ~nDirectInputs+~n_hoa_channels
 		],
 		target: ~output_GROUP);
-
 	s.sync;
 
 	~decoder.set(\in_bus,~ambi_BUS);
 	~decoder.set(\out_bus,~nDirectInputs+~n_hoa_channels);
+	~decoder.set(\gain, 2);
 
 	/////////////////////////////////////////////////////////////////
 	// Listeners:
