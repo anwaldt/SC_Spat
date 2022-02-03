@@ -1,0 +1,17 @@
+[Unit]
+Description=Jack audio server
+After=sound.target dev-snd-by\x2dpath-pci\x2d0000:00:14.0\x2dusb\x2d0:8:1.0.device
+Requires=dev-snd-by\x2dpath-pci\x2d0000:00:14.0\x2dusb\x2d0:8:1.0.device
+
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+PrivateTmp=true
+#Environment="JACK_NO_AUDIO_RESERVATION=1"
+ExecStart=/usr/bin/jackd -S -P 95 -a a -d alsa -d hw:KTUSB -p 128 n 2
+LimitRTPRIO=95
+LimitRTTIME=infinity
+LimitMEMLOCK=infinity

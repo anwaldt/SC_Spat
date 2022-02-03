@@ -1,0 +1,15 @@
+[Unit]
+Description=Snapshot Service
+After=scspat-jack.service
+Requires=scspat-jack.service
+
+
+[Service]
+Type=idle
+PrivateTmp=true
+ExecStartPre=/bin/sleep 2
+WorkingDirectory=/home/anwaldt/SOUND/SC_Spat/config
+ExecStart=/usr/local/bin/PanoramixApp -L Order3quad.txt
+
+[Install]
+WantedBy=default.target

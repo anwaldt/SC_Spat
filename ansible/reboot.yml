@@ -1,0 +1,7 @@
+---
+- hosts: remote
+  remote_user: "{{admin_user}}"
+  become: yes
+  tasks:
+    - name: Reboot
+      reboot:
