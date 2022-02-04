@@ -266,7 +266,7 @@ OSCdef('/lfo/offset',
 
 		});
 
-		0.01.wait;
+		0.005.wait;
 	});
 
 });
@@ -312,16 +312,16 @@ OSCdef('/lfo/offset',
 
 		for(0, ~n_stereo -1, { arg i;
 
-			~gain_OSC.do({arg e;
+			~spatial_OSC.do({arg e;
 
-				e.sendMsg("/lfo/dur", a1[i]);
-				e.sendMsg("/lfo/dir", a2[i]);
-				e.sendMsg("/lfo/gain", a3[i]);
-				e.sendMsg("/lfo/offset", a4[i]);
+				e.sendMsg("/lfo/dur",    i, a1[i]);
+				e.sendMsg("/lfo/dir",    i, a2[i]);
+				e.sendMsg("/lfo/gain",   i, a3[i]);
+				e.sendMsg("/lfo/offset", i, a4[i]);
 
 			});
 
-			0.01.wait;
+			0.001.wait;
 		});
 	});
 });
