@@ -11,7 +11,7 @@ WantedBy=multi-user.target
 Type=simple
 PrivateTmp=true
 #Environment="JACK_NO_AUDIO_RESERVATION=1"
-ExecStart=/usr/bin/jackd -S -P 95 -a a -d alsa -d hw:KTUSB -p 128 n 2
+ExecStart=/usr/bin/jackd -S -P 95 -a a -d alsa -d hw:KTUSB -p 64 n 2
 LimitRTPRIO=95
 LimitRTTIME=infinity
 LimitMEMLOCK=infinity

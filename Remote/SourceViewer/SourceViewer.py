@@ -57,8 +57,8 @@ Builder.load_string('''
         color: 0,0,0,1
 
 <FaderWidget>:
-    size_hint_x: None
-    size_hint_y: None
+    size_hint_x: 0.2
+    size_hint_y: 0.2
     size: self.box_size
     pos: self.box_pos
     canvas.before:
@@ -66,7 +66,7 @@ Builder.load_string('''
             rgb: self.color
         RoundedRectangle:
             id: frame
-            size: self.box_size
+            size: [self.size[0]*0.9, self.size[1]*0.9]
             pos: self.pos
             radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
     FaderBarWidget:
@@ -80,7 +80,7 @@ Builder.load_string('''
         valign: 'top'
         text: root.text
         color: 1,1,1,1
-        
+
 <FaderBarWidget>:
     canvas:
         Color:
@@ -117,14 +117,14 @@ class FaderWidget(Widget):
     box_size = ListProperty([80,400])
     color    = ListProperty([0.3, 0.3, 0.3])
     text     = StringProperty('SSS')
-    
+
 
     def __init__(self, path, addr, port, **kwargs):
 
         self.index  = 0
-       
+
         self.min    = 0
-        self.max    = 10 
+        self.max    = 10
         self.path   = path
         self.source = 0
 
@@ -134,7 +134,7 @@ class FaderWidget(Widget):
 
 
     def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):            
+        if self.collide_point(*touch.pos):
             gain = ((touch.pos[1]-self.pos[1]) / self.size[1]) * self.max
             self.osc_client.send_message(bytes(self.path,encoding='utf8') , [self.index, gain])
             #print([self.idx, self.source, gain])
@@ -147,21 +147,21 @@ class FaderWidget(Widget):
 
     def set_source(self,src):
         self.source=src
-        
+
     def on_receive(self, *values):
-        
-        
+
+
         src    = values[0]
-            
+
         if src==self.index:
 
             gain   = values[1]
-                
+
             # print(gain)
-            
+
             y = self.pos[1] + (gain/self.max) * self.size[1] -  (0.5*self.ids.bar.ellipse_size[1])
 
-            self.ids.bar.ellipse_pos = [self.pos[0], y] #[self.faders[dest].pos[0],y]
+            self.ids.bar.ellipse_pos = [self.pos[0] + (self.size[0]/2) - (self.ids.bar.ellipse_size[0]/2), y] #[self.faders[dest].pos[0],y]
 
     def set_index(self, ind):
         self.index = ind;
@@ -177,7 +177,7 @@ class SourceWidget(Widget):
     ellipse_size  = ListProperty([40,40])
     ellipse_pos   = ListProperty([22,22])
     pos           = ListProperty([22,22])
-    alpha         = NumericProperty(1)
+    alpha         = NumericProperty(0.5)
     visible       = True
 
     def on_touch_down(self, touch):
@@ -215,6 +215,8 @@ class SourceViewer(App):
 
         config =  self.config
 
+        self.active_lfo     = 0
+
         self.render_address = config.get('renderbox', 'address')
         self.render_port    = config.getint('renderbox', 'port')
 
@@ -232,17 +234,17 @@ class SourceViewer(App):
 
         self.main_layout =  GridLayout(rows=1,cols=4, row_default_height=40, spacing=50, size_hint_x=1,size_hint_y=1)
 
-        self.lfo_layout = LfoMainWidget(size_hint_x=0.2)
+        self.lfo_layout = GridLayout(rows=4,cols=2,size_hint_x=0.15)
         self.main_layout.add_widget(self.lfo_layout)
 
 
-        self.lfo_dur_fader = FaderWidget('/lfo/dur', self.render_address, self.render_port)
+        self.lfo_dur_fader = FaderWidget('/lfo/dur', self.render_address, self.render_port,size_hint_x=0.2,size_hint_y=0.2)
         self.lfo_dur_fader.box_pos = 10,50
         self.lfo_dur_fader.text = "DURATION"
         self.lfo_layout.add_widget(self.lfo_dur_fader)
 
         self.lfo_dir_fader = FaderWidget('/lfo/dir', self.render_address, self.render_port)
-        self.lfo_dir_fader.box_pos = 100,50 
+        self.lfo_dir_fader.box_pos = 100,50
         self.lfo_dir_fader.text = "DIRECTION"
         self.lfo_layout.add_widget(self.lfo_dir_fader)
 
@@ -257,6 +259,14 @@ class SourceViewer(App):
         self.lfo_off_fader.text = "OFFSET"
         self.lfo_layout.add_widget(self.lfo_off_fader)
 
+        self.lfo_activate_button = Button(text='LFO',size_hint_x=0.1,size_hint_y=0.05)
+        self.lfo_layout.add_widget(self.lfo_activate_button)
+        self.lfo_activate_button.bind(on_press= partial(self.lfo_activate_button_callback))
+
+        self.lfo_deactivate_button = Button(text='DIRECT',size_hint_x=0.1,size_hint_y=0.05)
+        self.lfo_layout.add_widget(self.lfo_deactivate_button)
+        self.lfo_deactivate_button.bind(on_press= partial(self.lfo_deactivate_button_callback))
+
         self.lfo_button_grid = GridLayout(rows=(int(self.n_sources/2)), row_default_height=40, spacing=50, size_hint_x=0.1,size_hint_y=1)
         self.main_layout.add_widget(self.lfo_button_grid)
 
@@ -265,9 +275,9 @@ class SourceViewer(App):
         for i in range(int(self.n_sources/2)):
 
             self.lfo_buttons.append(Button(text='LFO '+str(i)))
-            
+
         for i in range(int(self.n_sources/2)):
-            
+
             self.lfo_button_grid.add_widget(self.lfo_buttons[i])
             self.lfo_buttons[i].background_color = (0, 0.5, 0.6,1)
             self.lfo_buttons[i].bind(on_press= partial(self.select_lfo,i))
@@ -323,8 +333,8 @@ class SourceViewer(App):
         self.osc_server  =  OSCThreadServer()
         self.socket      = self.osc_server.listen(address='0.0.0.0', port=self.receive_port, default=True)
         self.osc_server.bind(b'/source/aed', self.aed_handler)
-        
-        
+
+
         # bind all LFO controls
         self.osc_server.bind(bytes(self.lfo_dur_fader.path ,encoding='utf8'), self.lfo_dur_fader.on_receive)
         self.osc_server.bind(bytes(self.lfo_dir_fader.path ,encoding='utf8'), self.lfo_dir_fader.on_receive)
@@ -381,14 +391,19 @@ class SourceViewer(App):
             self.sources[i].alpha   = 0.1
             self.sources[i].visible = False
             self.select_buttons[i].background_color = (1, 0, 0,0.3)
-            
-            
-    def select_lfo(self,ind,button):        
+
+
+    def select_lfo(self,ind,button):
         self.lfo_dur_fader.set_index(ind)
         self.lfo_dir_fader.set_index(ind)
         self.lfo_gain_fader.set_index(ind)
         self.lfo_off_fader.set_index(ind)
 
+    def lfo_activate_button_callback(self,button):
+        self.osc_client.send_message(b'/encoder/mode',  [self.active_lfo, b'lfo'])
+
+    def lfo_deactivate_button_callback(self,button):
+        self.osc_client.send_message(b'/encoder/mode',  [self.active_lfo, b'direct'])
 # run the App
 if __name__=='__main__':
 
