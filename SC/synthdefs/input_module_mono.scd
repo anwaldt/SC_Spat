@@ -8,7 +8,7 @@ SynthDef(\input_module_mono,
 
 		var in, output, gain;
 
-		for (0, 19,
+		for (0, 16,
 			{ arg cnt;
 
 				// get the gain value from control bus:
