@@ -23,6 +23,7 @@ Henrik von Coler
 ~n_stereo = (~nSpatialInputs/2).asInteger;
 
 ~nDirectInputs    = 2;
+~nDirectOutputs   = 4;
 
 // HOA Order
 ~hoa_order = 3;
@@ -100,7 +101,6 @@ s.waitForBoot({
 	s.sync;
 
 
-
 	// buses for direct control
 	~control_azim_BUS = Bus.control(s,~nSpatialInputs);
 	~control_azim_BUS.setAll(0);
@@ -165,7 +165,7 @@ s.waitForBoot({
 		post('Adding spatial input module: ');
 		idx.postln;
 
-		~spatial_inputs = ~spatial_inputs.add(
+		~all_inputs = ~all_inputs.add(
 			Synth(\input_module_mono,
 				[
 					\input_bus,           idx,
@@ -263,16 +263,17 @@ s.waitForBoot({
 	s.sync;
 
 
-	~direct_output1 = {|gain = 1| Out.ar(0 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output2 = {|gain = 1| Out.ar(1 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output3 = {|gain = 1| Out.ar(2 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
-	~direct_output4 = {|gain = 1| Out.ar(3 ,Mix.ar(In.ar(~audio_send_BUS.index,4)))}.play;
+	~direct_output1 = {|gain = 1| Out.ar(0, Mix.ar(In.ar(~audio_send_BUS.index+0,2)))}.play;
+	~direct_output2 = {|gain = 1| Out.ar(1, Mix.ar(In.ar(~audio_send_BUS.index+0,2)))}.play;
+~direct_output3 = {|gain = 1| Out.ar(2, Mix.ar(In.ar(~audio_send_BUS.index+0,2)))}.play;
+	~direct_output4 = {|gain = 1| Out.ar(3, Mix.ar(In.ar(~audio_send_BUS.index+0,2)))}.play;
 
 
-	~hoa_output = {|gain=1| Out.ar(~nDirectInputs ,gain*In.ar(~ambi_BUS.index,~n_hoa_channels))}.play;
+
+	~hoa_output = {|gain=1| Out.ar(~nDirectOutputs ,gain*In.ar(~ambi_BUS.index,~n_hoa_channels))}.play;
 	s.sync;
 
-	~hoa_output.set(\gain,2.5);
+	~hoa_output.set(\gain,2);
 
 	~direct_output1.moveToTail(~output_GROUP);
 	~direct_output2.moveToTail(~output_GROUP);
@@ -297,7 +298,7 @@ s.waitForBoot({
 	// Listeners:
 	/////////////////////////////////////////////////////////////////
 
-	(~root_DIR++"SCSpat_OSC.scd").load;
+(~root_DIR++"SCSpat_OSC.scd").load;
 	(~root_DIR++"SCSpat_MIDI.scd").load;
 
 	/////////////////////////////////////////////////////////////////
@@ -319,9 +320,9 @@ s.waitForBoot({
 
 
 
-	// ~gain_BUS_direct.do({arg e,i; e.setAt(i,0)});
 	// ~gain_BUS.do({arg e,i; e.setAll(0)});
-	// ~gain_BUS[0].setAt(0,1);
+
+	// ~gain_BUS[1].setAt(1,1);
 
 	// set to identity matrix
 	~gain_BUS.do({arg e,i; e.setAt(i,1)});

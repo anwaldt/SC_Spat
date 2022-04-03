@@ -63,34 +63,21 @@ OSCdef('/send/gain',
 OSCdef('/encoder/mode',
 	{
 		arg msg, time, addr, recvPort;
-		var mode = msg[1];
+		var src  = msg[1];
+		var mode = msg[2];
 
 		switch(mode,
 			'direct',
 			{
-				postln("Setting all encoders to direct control!");
-				~binaural_panners.do(
-					{arg e,i;
-						e.map(\azim,  ~control_azim_BUS.index + (i));
-					}
-				);
-
-				~azim_MAPPER.do({arg e,i;
-					e.set(\inbus,  ~control_azim_BUS.index + i);
-				});
+				postln("Setting encoder to direct control!");
+				//~binaural_panners[src].map(\azim,  ~control_azim_BUS.index + (src));
+				~azim_MAPPER[src].set(\inbus,  ~control_azim_BUS.index + src);
 			},
 			'lfo',
 			{
-				postln("Setting all encoders to LFO!");
-				~binaural_panners.do(
-					{arg e,i;
-						e.map(\azim,  ~automate_azim_BUS.index + i);
-					}
-				);
-
-				~azim_MAPPER.do({arg e,i;
-					e.set(\inbus,  ~automate_azim_BUS.index + i);
-				});
+				postln("Setting encoder to LFO!");
+				//~binaural_panners[src].map(\azim,  ~automate_azim_BUS.index + (src));
+				~azim_MAPPER[src].set(\inbus,  ~automate_azim_BUS.index + src);
 			}
 		);
 	},'/encoder/mode'
