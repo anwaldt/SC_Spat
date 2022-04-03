@@ -213,7 +213,7 @@ class SourceViewer(App):
 
     def build(self):
 
-        config =  self.config
+        config              = self.config
 
         self.active_lfo     = 0
 
@@ -394,6 +394,14 @@ class SourceViewer(App):
 
 
     def select_lfo(self,ind,button):
+
+
+        for b in self.lfo_buttons:
+
+            b.background_color = (1, 0.5, 0,0.3)
+
+        self.lfo_buttons[ind].background_color = (1, 1, 0,1)
+
         self.lfo_dur_fader.set_index(ind)
         self.lfo_dir_fader.set_index(ind)
         self.lfo_gain_fader.set_index(ind)

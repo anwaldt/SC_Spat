@@ -1,0 +1,15 @@
+---
+- hosts: machines
+  remote_user: anwaldt
+  become: yes
+  tasks:
+
+    - name: Install oscpy
+      pip:
+        name: oscpy
+        executable: pip3
+
+    - name: Install kivy
+      pip:
+        name: kivy
+        executable: pip3

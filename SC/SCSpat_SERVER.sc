@@ -1,6 +1,6 @@
 /*
 
-A minimal binaural rendering server.
+A minimal HOA and binaural rendering server.
 
 - based on SC-HOA
 - individual OSC listeners for spherical coordinates
@@ -326,4 +326,7 @@ s.waitForBoot({
 	// set to identity matrix
 	~gain_BUS.do({arg e,i; e.setAt(i,1)});
 
+	for(0,~nSpatialInputs-1, {arg i;
+	~control_azim_BUS.setAt(i,(i/~nSpatialInputs)*2*pi);
+});
 });

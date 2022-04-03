@@ -6,11 +6,19 @@ toolboxes, allowing an easy customization of rendering servers.
 This repository features several application-specific tools
 which may serve as templates for new projects.
 
+
+## Running it
+
+
+
 ## SuperCollider
 
 The HOA part and the binaural rendering are also based on the SC-HOA library. Using the SC-HOA library requires the SC3-Plugins:
 https://github.com/florian-grond/SC-HOA
 
+The quark is needed for the HOA classes:
+
+  Quarks.install("https://github.com/florian-grond/SC-HOA")
 
 ## ADT
 
@@ -26,8 +34,8 @@ The ADT can be directly included as a git submodule:
 
 **ADT Bugfixes:**
 
-There are some necessary changes 
-to the Octave script `run_dec_*.m`, 
+There are some necessary changes
+to the Octave script `run_dec_*.m`,
 created by the SC-HOA tools.
 
 - Set plot flag == false segfaults otherwise.
@@ -39,6 +47,9 @@ created by the SC-HOA tools.
 % convert the faustfile generated with the abisonics decoder toolkit from above into scsynth and supernova Ugens
 unix(["faust2supercollider -noprefix -sn -ks ",out_path,num2str(order,0),".dsp"]);
 ```
+## IEM
+
+Read this before creating loudspeaker configs for the IEM allrad decoder.
 
 ## Puredata
 
@@ -53,5 +64,5 @@ for OSC communication.
 The visualization patches included in the repository
 are designed to get a simple impression of the
 sources' spatial distribution.
-Install [GEM](https://puredata.info/downloads/gem/) for using 
+Install [GEM](https://puredata.info/downloads/gem/) for using
 the visualization patches.

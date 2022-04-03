@@ -1,7 +1,10 @@
-[remote]
-192.168.1.15
+hosts=local
+localhost  ansible_connection=local
 
-[remote:vars]
+[machines]
+localhost
+
+[machines:vars]
 admin_user=anwaldt
 audio_user=anwaldt
 vnc_password=12345678
