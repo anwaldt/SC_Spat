@@ -2,6 +2,23 @@
 File.readAllString("SC/beatspat_SERVER.sc","r").interpret;
 
 
+~decoder.set(\gain, 0.5);
+
+
+
+MIDIdef(\binaural_gain,
+	{
+
+		arg ... args;
+
+		var gain = pow(args[0]/127,2);
+
+		postln(gain);
+
+		~decoder.set(\gain, gain);
+
+},62,nil,\control,nil);
+
 
 // scopes for different signals and controls
 
@@ -27,7 +44,7 @@ for(0,~nSpatialInputs-1, {arg i;
 
 (
 for(0,~nSpatialInputs-1, {arg i;
-	~control_elev_BUS.setAt(i,(i/~nSpatialInputs)*pi);
+	~control_elev_BUS.setAt(i,(i/~nSpatialInputs)*0.25*pi);
 });
 )
 
@@ -41,16 +58,6 @@ for (0, ~nVbap -1, {arg idx;
 
 )
 
-
- // set lfo rates:
-(
-
-for (0, ~nVbap -1, {arg idx;
-	~lfo[idx].set(\dur, 1);
-
-});
-
-)
 
 
 ~lfo[0].set(\offset,0);
