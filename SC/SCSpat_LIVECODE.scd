@@ -38,7 +38,7 @@ MIDIdef(\binaural_gain,
 // make a perfect circle around listener position with all sources
 (
 for(0,~nSpatialInputs-1, {arg i;
-	~control_azim_BUS.setAt(i,(i/~nSpatialInputs)*2*pi);
+	~control_azim_BUS.setAt(i,(i/~nSpatialInputs)*pi-(pi/2));
 });
 )
 

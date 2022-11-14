@@ -15,10 +15,10 @@ Henrik von Coler
 
 ~server_ADDRESS = 58010;
 
-~input_OSC      = 8989;
+~input_OSC      = 7878;
 
 // number of buses to the spatial modules
-~nSpatialInputs   = 16;
+~nSpatialInputs   = 14;
 
 ~n_stereo = (~nSpatialInputs/2).asInteger;
 
@@ -298,7 +298,8 @@ s.waitForBoot({
 	/////////////////////////////////////////////////////////////////
 
 	(~root_DIR++"SCSpat_OSC.scd").load;
-	(~root_DIR++"SCSpat_MIDI.scd").load;
+
+	// (~root_DIR++"SCSpat_MIDI.scd").load;
 
 	/////////////////////////////////////////////////////////////////
 	//

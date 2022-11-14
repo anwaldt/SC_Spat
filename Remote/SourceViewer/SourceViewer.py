@@ -194,43 +194,41 @@ class SourceWidget(Widget):
 # creating the App class
 class SourceViewer(App):
 
-
     # default config is created on first run
     def build_config(self, config):
         config.setdefaults(
             'self',
             {
             'n_sources': 14,
-            'receive_port': '8988'
+            'receive_port': '6767'
             })
 
         config.setdefaults(
             'renderbox',
             {
-            'address': '127.0.0.1',
+            'address': '192.168.1.15',
             'port': '8989'
              })
 
     def build(self):
 
-        config              = self.config
 
         self.active_lfo     = 0
 
+        # READ data from config
+        config              = self.config
         self.render_address = config.get('renderbox', 'address')
         self.render_port    = config.getint('renderbox', 'port')
-
         self.receive_port   = config.getint('self', 'receive_port')
         self.n_sources      = config.getint('self', 'n_sources')
-
         print(self.render_address)
         print(self.render_port)
+
 
         self.osc_client = OSCClient(self.render_address, self.render_port)
 
         # notify rendering server
         self.osc_client.send_message(b'/addlistener/position',  [self.receive_port])
-
 
         self.main_layout =  GridLayout(rows=1,cols=4, row_default_height=40, spacing=50, size_hint_x=1,size_hint_y=1)
 
@@ -412,8 +410,11 @@ class SourceViewer(App):
 
     def lfo_deactivate_button_callback(self,button):
         self.osc_client.send_message(b'/encoder/mode',  [self.active_lfo, b'direct'])
+
 # run the App
 if __name__=='__main__':
+
+    Window.size = (1920, 1020)
 
     #Window.fullscreen = True
 
