@@ -273,4 +273,6 @@ class SourceViewer(App):
 # run the App
 if __name__=='__main__':
 
+    Window.size = (1920, 1080)
+
     SourceViewer().run()

@@ -291,7 +291,7 @@ s.waitForBoot({
 
 	~decoder.set(\in_bus,~ambi_BUS);
 	~decoder.set(\out_bus,~nDirectInputs+~n_hoa_channels);
-	~decoder.set(\gain, 0.5);
+	~decoder.set(\gain, 1);
 
 	/////////////////////////////////////////////////////////////////
 	// Listeners:

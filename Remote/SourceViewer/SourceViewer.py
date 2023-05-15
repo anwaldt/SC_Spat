@@ -58,7 +58,7 @@ Builder.load_string('''
 
 <FaderWidget>:
     size_hint_x: 0.2
-    size_hint_y: 0.2
+    size_hint_y: 0.1
     size: self.box_size
     pos: self.box_pos
     canvas.before:
@@ -150,14 +150,11 @@ class FaderWidget(Widget):
 
     def on_receive(self, *values):
 
-
         src    = values[0]
 
         if src==self.index:
 
             gain   = values[1]
-
-            # print(gain)
 
             y = self.pos[1] + (gain/self.max) * self.size[1] -  (0.5*self.ids.bar.ellipse_size[1])
 
@@ -206,8 +203,8 @@ class SourceViewer(App):
         config.setdefaults(
             'renderbox',
             {
-            'address': '192.168.1.15',
-            'port': '8989'
+            'address': 'localhost',
+            'port': '7878'
              })
 
     def build(self):
@@ -334,10 +331,10 @@ class SourceViewer(App):
 
 
         # bind all LFO controls
-        self.osc_server.bind(bytes(self.lfo_dur_fader.path ,encoding='utf8'), self.lfo_dur_fader.on_receive)
-        self.osc_server.bind(bytes(self.lfo_dir_fader.path ,encoding='utf8'), self.lfo_dir_fader.on_receive)
+        self.osc_server.bind(bytes(self.lfo_dur_fader.path  ,encoding='utf8'), self.lfo_dur_fader.on_receive)
+        self.osc_server.bind(bytes(self.lfo_dir_fader.path  ,encoding='utf8'), self.lfo_dir_fader.on_receive)
         self.osc_server.bind(bytes(self.lfo_gain_fader.path ,encoding='utf8'), self.lfo_gain_fader.on_receive)
-        self.osc_server.bind(bytes(self.lfo_off_fader.path ,encoding='utf8'), self.lfo_off_fader.on_receive)
+        self.osc_server.bind(bytes(self.lfo_off_fader.path  ,encoding='utf8'), self.lfo_off_fader.on_receive)
 
 
         return self.main_layout
@@ -393,6 +390,7 @@ class SourceViewer(App):
 
     def select_lfo(self,ind,button):
 
+        self.active_lfo = ind
 
         for b in self.lfo_buttons:
 
@@ -414,7 +412,7 @@ class SourceViewer(App):
 # run the App
 if __name__=='__main__':
 
-    Window.size = (1920, 1020)
+    Window.size = (1920, 1080)
 
     #Window.fullscreen = True
 
